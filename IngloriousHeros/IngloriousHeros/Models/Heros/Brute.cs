@@ -1,6 +1,8 @@
-﻿namespace IngloriousHeros.Models.Heros
+﻿using IngloriousHeros.Models.Contracts;
+
+namespace IngloriousHeros.Models.Heros
 {
-    public class Brute
+    public class Brute : IHClass
     {
         //TODO: Implement brute class
     }

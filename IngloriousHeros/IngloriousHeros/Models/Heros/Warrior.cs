@@ -1,6 +1,8 @@
-﻿namespace IngloriousHeros.Models.Heros
+﻿using IngloriousHeros.Models.Contracts;
+
+namespace IngloriousHeros.Models.Heros
 {
-    public class Warrior
+    public class Warrior : IHClass
     {
         //TODO: Implement warrior class
     }

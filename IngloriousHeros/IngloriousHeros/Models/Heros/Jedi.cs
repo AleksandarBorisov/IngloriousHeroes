@@ -1,6 +1,8 @@
-﻿namespace IngloriousHeros.Models.Heros
+﻿using IngloriousHeros.Models.Contracts;
+
+namespace IngloriousHeros.Models.Heros
 {
-    public class Jedi
+    public class Jedi : IHClass
     {
         //TODO: Implement jedi class
     }
