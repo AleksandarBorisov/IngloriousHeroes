@@ -1,6 +1,6 @@
 ﻿namespace IngloriousHeros.Models.Contracts
 {
-    public interface IArmour : IItem
+    public interface IArmour
     {
         //TODO: Implement IArmour interface
     }

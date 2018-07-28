@@ -1,6 +1,8 @@
-﻿namespace IngloriousHeros.Models.Armours
+﻿using IngloriousHeros.Models.Contracts;
+
+namespace IngloriousHeros.Models.Armours
 {
-    public class Ring
+    public class Ring : IArmour
     {
         //TODO: Implement ring class
     }

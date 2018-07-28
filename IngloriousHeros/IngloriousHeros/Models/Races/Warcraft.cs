@@ -10,6 +10,6 @@ namespace IngloriousHeros.Models.Races
 
         public Race Name => this.Name;
 
-        public IEnumerable<IHero> HeroClasses => throw new System.NotImplementedException();
+        public List<ISpecialSkills> SpecialSkills => throw new System.NotImplementedException();
     }
 }

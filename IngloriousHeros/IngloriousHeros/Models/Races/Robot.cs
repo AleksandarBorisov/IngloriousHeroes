@@ -8,8 +8,8 @@ namespace IngloriousHeros.Models.Races
     {
         private const Race name = Race.Robot;
 
-        public Race Name => this.Name;
+        public Race Name => throw new System.NotImplementedException();
 
-        public IEnumerable<IHero> HeroClasses => throw new System.NotImplementedException();
+        public List<ISpecialSkills> SpecialSkills => throw new System.NotImplementedException();
     }
 }

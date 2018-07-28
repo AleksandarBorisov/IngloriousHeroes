@@ -1,6 +1,8 @@
-﻿namespace IngloriousHeros.Models.Armours
+﻿using IngloriousHeros.Models.Contracts;
+
+namespace IngloriousHeros.Models.Armours
 {
-    public class Shield
+    public class Shield : IArmour
     {
         //TODO: Implement shield class
     }

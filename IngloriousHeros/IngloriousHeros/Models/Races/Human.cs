@@ -6,10 +6,16 @@ namespace IngloriousHeros.Models.Races
 {
     public abstract class Human : IRace
     {
-        private const Race name = Race.Human;
+        private Race name = Race.Human;
 
-        public Race Name => this.Name;
+        public Race Name
+        {
+            get
+            {
+                return this.name;
+            }
+        }
 
-        public IEnumerable<IHero> HeroClasses => throw new System.NotImplementedException();
+        public List<ISpecialSkills> SpecialSkills => throw new System.NotImplementedException();
     }
 }

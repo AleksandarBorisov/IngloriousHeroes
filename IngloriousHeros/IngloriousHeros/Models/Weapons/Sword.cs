@@ -1,6 +1,8 @@
-﻿namespace IngloriousHeros.Models.Weapons
+﻿using IngloriousHeros.Models.Contracts;
+
+namespace IngloriousHeros.Models.Weapons
 {
-    public class Sword
+    public class Sword : IWeapon
     {
         //TODO: Implement sword class
     }
