@@ -1,23 +1,53 @@
 ﻿using System.Collections.Generic;
 using IngloriousHeros.Contracts;
 using IngloriousHeros.Models.Races;
-
+using IngloriousHeros.Providers;
 
 namespace IngloriousHeros.Models.Heros
 {
     public class Archer : Human, IHero
     {
-        //Реално Archer-a ще си вземе расата и специалните умения от типа раса, който му подадем
-        //Защото в началото ние не знаем Archer-a от коя раса е
-        //Ако Archer-a наследи директно расата, ще трябва да го дефинираме за всяка една раса
-        //Изтрих абстрактния клас Hero, защото ние така или инче ще трябва да дефинираме stats за всеки герой
-        //От IItem ще дойде влиянието на самата битка върху stats на героя
+        private double health;
 
-        public int Health => throw new System.NotImplementedException();
+        private double armour;
 
-        public int Armour => throw new System.NotImplementedException();
+        private double damage;
 
-        public int Damage => throw new System.NotImplementedException();
+        private double healthConst = 0.9;
+
+        private double armourConst = 1.1;
+
+        private double damageConst = 1.0;
+
+        public double Health
+        {
+            get => health;
+            set
+            {
+                ValueCheck.Positive(value, "Health can't be negative!");
+                this.health = base.InitialHealth * healthConst;
+            }
+        }
+
+        public double Armour
+        {
+            get => this.armour;
+            set
+            {
+                ValueCheck.Positive(value, "Armour can't be negative!");
+                this.armour = base.InitialArmour * armourConst;
+            }
+        }
+
+        public double Damage
+        {
+            get => this.damage;
+            set
+            {
+                ValueCheck.Positive(value, "Damage can't be negative!");
+                this.damage = base.InitialDamage * damageConst;
+            }
+        }
 
         public IEnumerable<ISpecialItem> Inventory => throw new System.NotImplementedException();
 

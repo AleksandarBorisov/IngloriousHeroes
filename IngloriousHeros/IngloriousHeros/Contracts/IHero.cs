@@ -4,9 +4,9 @@ namespace IngloriousHeros.Contracts
 {
     public interface IHero : IExhaustible
     {
-        int Health { get; }
-        int Armour { get; }
-        int Damage { get; }
+        double Health { get; }
+        double Armour { get; }
+        double Damage { get; }
 
         IEnumerable<ISpecialItem> Inventory { get; }
     }
