@@ -1,4 +1,5 @@
-﻿using IngloriousHeros.Models.Contracts;
+﻿using System.Collections.Generic;
+using IngloriousHeros.Models.Contracts;
 using IngloriousHeros.Models.Races;
 
 
@@ -17,6 +18,8 @@ namespace IngloriousHeros.Models.Heros
         public int Armour => throw new System.NotImplementedException();
 
         public int Damage => throw new System.NotImplementedException();
+
+        public IEnumerable<ISpecialItem> Inventory => throw new System.NotImplementedException();
 
         //TODO: Implement archer class
         public void TakeDamage(int damage)
