@@ -35,7 +35,7 @@
   <Class Name="IngloriousHeros.Models.Heros.Archer">
     <Position X="0.5" Y="13.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAACACAAAAAAAAAAAgAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
+      <HashCode>AAAACACAAAAAAAAAAAgAAAAAAAAAAAAAAAAAggAAAAA=</HashCode>
       <FileName>Models\Heros\Archer.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -43,7 +43,7 @@
   <Class Name="IngloriousHeros.Models.Heros.Brute">
     <Position X="8" Y="8.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAACACAAAAAAAAAAAgAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
+      <HashCode>AAAACACAAAAAAAAAAAgAAAAAAAAAAAAAAAAAggAAAAA=</HashCode>
       <FileName>Models\Heros\Brute.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -51,7 +51,7 @@
   <Class Name="IngloriousHeros.Models.Heros.Gnome">
     <Position X="3" Y="8.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAACACAAAAAAAAAAAgAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
+      <HashCode>AAAACACAAAAAAAAAAAgAAAAAAAAAAAAAAAAAggAAAAA=</HashCode>
       <FileName>Models\Heros\Gnome.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -59,7 +59,7 @@
   <Class Name="IngloriousHeros.Models.Heros.Jedi">
     <Position X="2.75" Y="13.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAACACAAAAAAAAAAAgAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
+      <HashCode>AAAACACAAAAAAAAAAAgAAAAAAAAAAAAAAAAAggAAAAA=</HashCode>
       <FileName>Models\Heros\Jedi.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -67,7 +67,7 @@
   <Class Name="IngloriousHeros.Models.Heros.Warrior">
     <Position X="5.75" Y="8.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAACACAAAAAAAAAAAgAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
+      <HashCode>AAAACACAAAAAAAAAAAgAAAAAAAAAAAAAAAAAggAAAAA=</HashCode>
       <FileName>Models\Heros\Warrior.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -75,7 +75,7 @@
   <Class Name="IngloriousHeros.Models.Heros.Wizzard">
     <Position X="0.75" Y="8.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAACACAAAAAAAAAAAgAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
+      <HashCode>AAAACACAAAAAAAAAAAgAAAAAAAAAAAAAAAAAggAAAAA=</HashCode>
       <FileName>Models\Heros\Wizzard.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />

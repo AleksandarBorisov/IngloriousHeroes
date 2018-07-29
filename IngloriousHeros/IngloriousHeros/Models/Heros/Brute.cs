@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using IngloriousHeros.Models.Common;
-using IngloriousHeros.Models.Contracts;
+using IngloriousHeros.Contracts;
 using IngloriousHeros.Models.Races;
+using IngloriousHeros.Contracts;
 
 namespace IngloriousHeros.Models.Heros
 {

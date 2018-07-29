@@ -1,4 +1,4 @@
-﻿using IngloriousHeros.Models.Contracts;
+﻿using IngloriousHeros.Contracts;
 
 namespace IngloriousHeros.Models.Armours
 {

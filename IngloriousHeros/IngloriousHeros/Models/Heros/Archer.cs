@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using IngloriousHeros.Models.Contracts;
+using IngloriousHeros.Contracts;
 using IngloriousHeros.Models.Races;
 
 

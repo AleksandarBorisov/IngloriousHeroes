@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using IngloriousHeros.Models.SpecialSkills;
 
-namespace IngloriousHeros.Models.Contracts
+namespace IngloriousHeros.Contracts
 {
     public interface IRace
     {

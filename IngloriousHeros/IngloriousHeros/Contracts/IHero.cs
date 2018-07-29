@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace IngloriousHeros.Models.Contracts
+namespace IngloriousHeros.Contracts
 {
     public interface IHero : IExhaustible
     {
