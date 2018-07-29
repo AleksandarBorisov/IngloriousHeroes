@@ -1,6 +1,6 @@
 ﻿namespace IngloriousHeros.Models.Common
 {
-    public enum Race
+    public enum RaceName
     {
         Human,
         Robot,

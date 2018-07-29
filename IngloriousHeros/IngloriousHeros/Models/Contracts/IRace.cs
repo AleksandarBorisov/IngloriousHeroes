@@ -6,7 +6,7 @@ namespace IngloriousHeros.Models.Contracts
 {
     public interface IRace
     {
-        Race Name { get; }
+        RaceName Race { get; }
 
         List<ISpecialSkills> SpecialSkills { get; }
 

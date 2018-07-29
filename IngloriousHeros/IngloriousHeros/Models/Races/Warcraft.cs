@@ -6,9 +6,9 @@ namespace IngloriousHeros.Models.Races
 {
     public abstract class Warcraft : IRace
     {
-        private const Race name = Race.Warcraft;
+        private const RaceName race = RaceName.Warcraft;
 
-        public Race Name => this.Name;
+        public RaceName Race => race;
 
         public List<ISpecialSkills> SpecialSkills => throw new System.NotImplementedException();
     }

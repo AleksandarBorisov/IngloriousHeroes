@@ -1,10 +1,10 @@
 ﻿using IngloriousHeros.Models.Contracts;
 
-namespace IngloriousHeros.Models.Armours
+namespace IngloriousHeros.Models.Items
 {
-    public class Shield : IArmour
+    public class Metal : IItem
     {
-        //TODO: Implement shield class
+        //TODO: Implement metal class
         public void TakeDamage(int damage)
         {
             throw new System.NotImplementedException();

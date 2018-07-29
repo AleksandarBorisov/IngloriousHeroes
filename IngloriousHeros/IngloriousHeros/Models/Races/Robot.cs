@@ -6,9 +6,9 @@ namespace IngloriousHeros.Models.Races
 {
     public abstract class Robot : IRace
     {
-        private const Race name = Race.Robot;
+        private const RaceName race = RaceName.Robot;
 
-        public Race Name => throw new System.NotImplementedException();
+        public RaceName Race => race;
 
         public List<ISpecialSkills> SpecialSkills => throw new System.NotImplementedException();
     }

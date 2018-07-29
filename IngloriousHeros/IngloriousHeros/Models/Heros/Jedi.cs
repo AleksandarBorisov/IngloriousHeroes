@@ -1,13 +1,12 @@
 ﻿using IngloriousHeros.Models.Common;
 using IngloriousHeros.Models.Contracts;
+using IngloriousHeros.Models.Races;
 
 namespace IngloriousHeros.Models.Heros
 {
-    public class Jedi : IHero, IItem
+    public class Jedi : Human, IHero
     {
         //TODO: Implement jedi class
-        public Race HeroRace => throw new System.NotImplementedException();
-
         public int Health => throw new System.NotImplementedException();
 
         public int Armour => throw new System.NotImplementedException();
