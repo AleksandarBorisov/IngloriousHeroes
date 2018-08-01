@@ -1,12 +1,12 @@
-﻿using System;
-
-namespace IngloriousHeros
+﻿namespace IngloriousHeros
 {
+    using Tests;
+
     public class Startup
     {
-        static void Main()
+        public static void Main()
         {
-            //TODO: Implement engine
+            GameEngineTest.Run();
         }
     }
 }
