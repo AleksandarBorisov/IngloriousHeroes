@@ -2,7 +2,7 @@
 
 namespace IngloriousHeros.Models.Armours
 {
-    public class Shield : IArmour
+    public class Shield //: IArmour
     {
         //TODO: Implement shield class
         public void TakeDamage(int damage)

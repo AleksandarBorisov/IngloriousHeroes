@@ -2,7 +2,7 @@
 
 namespace IngloriousHeros.Models.Items
 {
-    public class Potion : IItem
+    public class Potion //: IItem
     {
         //TODO: Implement potion class
         public void TakeDamage(int damage)

@@ -6,7 +6,6 @@
       <HashCode>AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
       <FileName>Models\Armours\Helmet.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="IngloriousHeros.Models.Armours.Platemail" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="25" Y="1.5" Width="1.5" />
@@ -14,7 +13,6 @@
       <HashCode>AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
       <FileName>Models\Armours\Platemail.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="IngloriousHeros.Models.Armours.Ring" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="28.5" Y="1.5" Width="1.5" />
@@ -22,7 +20,6 @@
       <HashCode>AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
       <FileName>Models\Armours\Ring.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="IngloriousHeros.Models.Armours.Shield" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="25" Y="2.5" Width="1.5" />
@@ -30,12 +27,11 @@
       <HashCode>AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
       <FileName>Models\Armours\Shield.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="IngloriousHeros.Models.Heros.Archer" Collapsed="true">
     <Position X="13.5" Y="8.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAACACAAAAAiAAAAAgAARAAAAAAAAAAAAEAggAAAAg=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
       <FileName>Models\Heros\Archer.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -43,7 +39,7 @@
   <Class Name="IngloriousHeros.Models.Heros.Brute" Collapsed="true">
     <Position X="18.5" Y="5.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAACACAAAAAiAAAAAgAARAAAAAAAAAAAAEAggAAAAg=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
       <FileName>Models\Heros\Brute.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -51,39 +47,35 @@
   <Class Name="IngloriousHeros.Models.Heros.Gnome" Collapsed="true">
     <Position X="13.5" Y="5.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAACACAAAAAiAAAAAgAARAAAAAAAAAAAAEAggAAAAg=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
       <FileName>Models\Heros\Gnome.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
   </Class>
   <Class Name="IngloriousHeros.Models.Heros.Jedi" Collapsed="true">
     <Position X="15.75" Y="8.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAACACAAAAAiAAAAAgAARAAAAAAAAAAAAEAggAAAAg=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
       <FileName>Models\Heros\Jedi.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
   </Class>
   <Class Name="IngloriousHeros.Models.Heros.Warrior" Collapsed="true">
     <Position X="20.75" Y="5.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAACACAAAAAiAAAAAgAARAAAAAAAAAAAAEAggAAAAg=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
       <FileName>Models\Heros\Warrior.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
   </Class>
   <Class Name="IngloriousHeros.Models.Heros.Wizzard" Collapsed="true">
     <Position X="15.75" Y="5.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAACACAAAAAiAAAAAgAARAAAAAAAAAAAAEAggAAAAg=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
       <FileName>Models\Heros\Wizzard.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
   </Class>
   <Class Name="IngloriousHeros.Models.Races.Human" Collapsed="true">
     <Position X="14.75" Y="7.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>QgAAAEIAAAAAAAAAAAAACAAAAAiAAAAAgAAAAABAAAA=</HashCode>
+      <HashCode>QAAACECAAABAiAAAAAgAAAQAAABEAAACAAAAggBAAAg=</HashCode>
       <FileName>Models\Races\Human.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -91,7 +83,7 @@
   <Class Name="IngloriousHeros.Models.Races.Robot" Collapsed="true">
     <Position X="19.75" Y="4.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>QgAAAEIAAAAAAAAAAAAACAAAAAiAAAAAgAAAAABAAAA=</HashCode>
+      <HashCode>QAAACECAAABAiAAAAAgAAAQAAABEAAAAAAAAggBACAg=</HashCode>
       <FileName>Models\Races\Robot.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -99,7 +91,7 @@
   <Class Name="IngloriousHeros.Models.Races.Warcraft" Collapsed="true">
     <Position X="14.75" Y="4.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>QgAAAEIAAAAAAAAAAAAACAAAAAiAAAAAgAAAAABAAAA=</HashCode>
+      <HashCode>QAAACECAAABAiAAAAAgAAAQAAABEAAAAAAAAggBAAAg=</HashCode>
       <FileName>Models\Races\Warcraft.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -110,7 +102,6 @@
       <HashCode>AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
       <FileName>Models\SpecialItems\Ammo.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="IngloriousHeros.Models.Items.Metal" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="23.25" Y="1.5" Width="1.5" />
@@ -118,7 +109,6 @@
       <HashCode>AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
       <FileName>Models\SpecialItems\Metal.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="IngloriousHeros.Models.Items.Potion" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="26.75" Y="1.5" Width="1.5" />
@@ -126,7 +116,6 @@
       <HashCode>AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
       <FileName>Models\SpecialItems\Potion.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="IngloriousHeros.Models.SpecialSkills.HumanSkills" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="26.75" Y="0.5" Width="1.5" />
@@ -155,7 +144,7 @@
   <Class Name="IngloriousHeros.Models.Weapons.Laser" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="28.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
+      <HashCode>AAAAAAQABAAAAgQAAAIAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
       <FileName>Models\Weapons\Laser.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
@@ -166,7 +155,6 @@
       <HashCode>AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
       <FileName>Models\Weapons\Spear.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="IngloriousHeros.Models.Weapons.Staff" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="28.5" Y="2.5" Width="1.5" />
@@ -174,7 +162,6 @@
       <HashCode>AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
       <FileName>Models\Weapons\Staff.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="IngloriousHeros.Models.Weapons.Sword" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="23.25" Y="3.5" Width="1.5" />
@@ -182,7 +169,6 @@
       <HashCode>AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
       <FileName>Models\Weapons\Sword.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Interface Name="IngloriousHeros.Contracts.IArmour" Collapsed="true">
     <Position X="18.25" Y="3.25" Width="1.5" />
@@ -201,7 +187,7 @@
   <Interface Name="IngloriousHeros.Contracts.IHero" Collapsed="true">
     <Position X="13.75" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAACACAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAgAAAAA=</HashCode>
+      <HashCode>AAAACACAAABAAAAAAAgAAAQAAAAAAAAAAAAAAgAAAAA=</HashCode>
       <FileName>Contracts\IHero.cs</FileName>
     </TypeIdentifier>
   </Interface>
@@ -236,7 +222,7 @@
   <Interface Name="IngloriousHeros.Contracts.IWeapon" Collapsed="true">
     <Position X="20.5" Y="3.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAgQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Contracts\IWeapon.cs</FileName>
     </TypeIdentifier>
   </Interface>

@@ -2,7 +2,7 @@
 
 namespace IngloriousHeros.Models.Weapons
 {
-    public class Staff : IWeapon
+    public class Staff //: IWeapon
     {
         //TODO: Implement staff class
         public void TakeDamage(int damage)

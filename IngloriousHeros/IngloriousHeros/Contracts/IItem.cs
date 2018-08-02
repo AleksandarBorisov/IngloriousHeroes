@@ -1,8 +1,12 @@
-﻿namespace IngloriousHeros.Contracts
+﻿using IngloriousHeros.Models.Heros;
+
+namespace IngloriousHeros.Contracts
 {
     public interface IItem : IExhaustible
     {
-        void UseItem();
+        //IHero Owner { get; }
+
+        void UseItem(IHero hero);
         //TODO: Implement IItem interface
     }
 }

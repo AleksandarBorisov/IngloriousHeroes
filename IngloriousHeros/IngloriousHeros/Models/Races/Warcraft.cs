@@ -4,7 +4,7 @@ using IngloriousHeros.Contracts;
 
 namespace IngloriousHeros.Models.Races
 {
-    public abstract class Warcraft : IRace, IHero
+    public abstract class Warcraft : IRace//, IHero
     {
         private string name;
         private double health;

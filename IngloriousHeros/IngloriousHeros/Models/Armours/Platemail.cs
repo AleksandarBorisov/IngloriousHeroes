@@ -2,7 +2,7 @@
 
 namespace IngloriousHeros.Models.Armours
 {
-    public class Platemail : IArmour
+    public class Platemail //: IArmour
     {
         //TODO: Implement platemail class
         public void TakeDamage(int damage)

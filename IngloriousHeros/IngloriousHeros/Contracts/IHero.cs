@@ -6,14 +6,14 @@ namespace IngloriousHeros.Contracts
     {
         string Name { get; }
 
-        double Health { get; }
+        double Health { get; set; }//Modified property added setter
 
         double Armour { get; }
 
-        double Damage { get; }
+        double Damage { get; set; }//Modified property added setter
 
-        int AttackDelay { get; }
+        int AttackDelay { get; set; }//Modified property added setter
 
-        IEnumerable<ISpecialItem> Inventory { get; }
+        IEnumerable<IItem> Inventory { get; set; }//Modified property added setter
     }
 }
