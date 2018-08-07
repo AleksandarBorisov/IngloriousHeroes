@@ -29,23 +29,22 @@ namespace IngloriousHeros.Tests
 
             List<IItem> weaponsLegolas = new List<IItem>()
             {
-                new Laser(5, 10),
-                new Laser(5, 100),
+                new Laser(10),
+                new Spear(5),
                 //new Helmet(5,100),
-                new Laser(5, 50),
-                new Laser(5, 0),
+                new Staff(5),
+                new Sword(5),
                 //new Helmet(5,100),
-                new Laser(5, 100),
+                new Laser(5)
             };
             List<IItem> weaponsOptimusPrime = new List<IItem>()
             {
-                new Laser(5, 10),
-                new Laser(5, 100),
+                new Staff(5),
+                new Laser(5),
                 //new Helmet(5,100),
-                new Laser(5, 50),
-                new Laser(5, 0),
+                new Spear(5),
                 //new Helmet(5,100),
-                new Laser(5, 100),
+                new Sword(5),
             };
             //I've added this invontory items to the constructor of an Archer, modified the constructor respectively
             IHero Legolas = GameUnitFactory.CreateGameUnit<Archer>("Legolas", 100, 4, 300, weaponsLegolas);

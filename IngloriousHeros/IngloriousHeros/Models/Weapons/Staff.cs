@@ -2,17 +2,10 @@
 
 namespace IngloriousHeros.Models.Weapons
 {
-    public class Staff //: IWeapon
+    public class Staff : Weapon
     {
-        //TODO: Implement staff class
-        public void TakeDamage(int damage)
+        public Staff(int bonusDamage) : base(bonusDamage)
         {
-            throw new System.NotImplementedException();
-        }
-
-        public void UseItem()
-        {
-            throw new System.NotImplementedException();
         }
     }
 }

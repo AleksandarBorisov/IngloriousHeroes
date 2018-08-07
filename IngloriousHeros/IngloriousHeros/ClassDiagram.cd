@@ -3,9 +3,10 @@
   <Class Name="IngloriousHeros.Models.Armours.Helmet" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
+      <HashCode>AAQAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
       <FileName>Models\Armours\Helmet.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="IngloriousHeros.Models.Armours.Platemail" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="25" Y="1.5" Width="1.5" />
@@ -34,7 +35,6 @@
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
       <FileName>Models\Heros\Archer.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
   </Class>
   <Class Name="IngloriousHeros.Models.Heros.Brute" Collapsed="true">
     <Position X="18.5" Y="5.75" Width="1.5" />
@@ -42,7 +42,6 @@
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
       <FileName>Models\Heros\Brute.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
   </Class>
   <Class Name="IngloriousHeros.Models.Heros.Gnome" Collapsed="true">
     <Position X="13.5" Y="5.75" Width="1.5" />
@@ -54,7 +53,7 @@
   <Class Name="IngloriousHeros.Models.Heros.Jedi" Collapsed="true">
     <Position X="15.75" Y="8.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Heros\Jedi.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -144,10 +143,9 @@
   <Class Name="IngloriousHeros.Models.Weapons.Laser" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="28.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAQABAAAAgQAAAIAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Weapons\Laser.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="IngloriousHeros.Models.Weapons.Spear" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="26.75" Y="2.5" Width="1.5" />

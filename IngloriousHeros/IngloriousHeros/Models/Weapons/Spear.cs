@@ -2,17 +2,10 @@
 
 namespace IngloriousHeros.Models.Weapons
 {
-    public class Spear //: IWeapon
+    public class Spear : Weapon
     {
-        //TODO: Implement spear class
-        public void TakeDamage(int damage)
+        public Spear(int bonusDamage) : base(bonusDamage)
         {
-            throw new System.NotImplementedException();
-        }
-
-        public void UseItem()
-        {
-            throw new System.NotImplementedException();
         }
     }
 }

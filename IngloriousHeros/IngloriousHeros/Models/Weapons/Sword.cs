@@ -2,17 +2,10 @@
 
 namespace IngloriousHeros.Models.Weapons
 {
-    public class Sword //: IWeapon
+    public class Sword : Weapon
     {
-        //TODO: Implement sword class
-        public void TakeDamage(int damage)
+        public Sword(int bonusDamage) : base(bonusDamage)
         {
-            throw new System.NotImplementedException();
-        }
-
-        public void UseItem()
-        {
-            throw new System.NotImplementedException();
         }
     }
 }
