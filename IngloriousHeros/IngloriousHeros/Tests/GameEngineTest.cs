@@ -22,6 +22,9 @@ namespace IngloriousHeros.Tests
         {
             Console.CursorVisible = false;
 
+            //IHero Legolas = GameUnitFactory.CreateGameUnit<Archer>("Legolas", 100, 1, 1000);
+            //IHero OptimusPrime = GameUnitFactory.CreateGameUnit<Brute>("Optimus Prime", 100, 10, 1000);
+
             List<IItem> weapons = new List<IItem>()
             {
                 new Laser(5, 10),
@@ -32,6 +35,7 @@ namespace IngloriousHeros.Tests
                 new Helmet(5,100),
                 new Laser(5, 100),
             };
+
             //I've added this invontory items to the constructor of an Archer, modified the constructor respectively
             IHero Legolas = GameUnitFactory.CreateGameUnit<Archer>("Legolas", 100, 4, 300, weapons);
             IHero OptimusPrime = GameUnitFactory.CreateGameUnit<Brute>("Optimus Prime", 100, 7, 1000, weapons);
