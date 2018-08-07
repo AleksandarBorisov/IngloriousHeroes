@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace IngloriousHeros.Core.UI
@@ -25,6 +26,19 @@ namespace IngloriousHeros.Core.UI
         public Queue<string> Elements
         {
             get => this.elements;
+        }
+
+        public void PrintBuffer()
+        {
+            int row = 5;
+
+            foreach (string message in this.Elements)
+            {
+                Console.SetCursorPosition(10, row);
+                Console.Write(new string(' ', Console.WindowWidth));
+                Console.SetCursorPosition(10, row++);
+                Console.WriteLine(message);
+            }
         }
     }
 }

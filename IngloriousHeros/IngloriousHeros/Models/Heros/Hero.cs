@@ -1,6 +1,9 @@
 ﻿using IngloriousHeros.Contracts;
+using IngloriousHeros.Core.Battle;
+using IngloriousHeros.Core.UI;
 using IngloriousHeros.Models.Common;
 using System.Collections.Generic;
+using System.Threading;
 
 namespace IngloriousHeros.Models.Heros
 {
@@ -87,6 +90,8 @@ namespace IngloriousHeros.Models.Heros
                 this.inventory = value;
             }
         }
+
+        public abstract void Attack(IHero oponent, Battle battle);
 
         public virtual void TakeDamage(int damage)
         {

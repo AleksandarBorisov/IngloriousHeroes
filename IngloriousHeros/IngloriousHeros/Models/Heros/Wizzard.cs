@@ -1,4 +1,5 @@
 ﻿using IngloriousHeros.Contracts;
+using IngloriousHeros.Core.Battle;
 using IngloriousHeros.Models.Common;
 using IngloriousHeros.Models.Races;
 using System.Collections.Generic;
@@ -20,6 +21,11 @@ namespace IngloriousHeros.Models.Heros
         {
             get => this.spells;
             set => this.spells = value;
+        }
+
+        public override void Attack(IHero oponent, Battle battle)
+        {
+            throw new System.NotImplementedException();
         }
 
         public override void TakeDamage(int damage)

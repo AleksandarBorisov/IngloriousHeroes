@@ -1,4 +1,5 @@
-﻿using IngloriousHeros.Models.Common;
+﻿using IngloriousHeros.Core.Battle;
+using IngloriousHeros.Models.Common;
 using System.Collections.Generic;
 
 namespace IngloriousHeros.Contracts
@@ -18,5 +19,7 @@ namespace IngloriousHeros.Contracts
         Location HbLocation { get; set; }
 
         IEnumerable<IItem> Inventory { get; set; }
+
+        void Attack(IHero oponent, Battle battle);
     }
 }

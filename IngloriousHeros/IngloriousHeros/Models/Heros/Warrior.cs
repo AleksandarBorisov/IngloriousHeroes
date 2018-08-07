@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using IngloriousHeros.Contracts;
+using IngloriousHeros.Core.Battle;
 using IngloriousHeros.Models.Common;
 using IngloriousHeros.Models.Races;
 using IngloriousHeros.Providers;
@@ -14,6 +15,11 @@ namespace IngloriousHeros.Models.Heros
             : base(name, health, damage, attackDelay, hbLocation, items)
         {
 
+        }
+
+        public override void Attack(IHero oponent, Battle battle)
+        {
+            throw new System.NotImplementedException();
         }
 
         public override void TakeDamage(int damage)
