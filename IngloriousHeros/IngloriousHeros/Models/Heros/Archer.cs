@@ -1,10 +1,9 @@
 ﻿using IngloriousHeros.Contracts;
-using IngloriousHeros.Models.Races;
 using System.Collections.Generic;
 
 namespace IngloriousHeros.Models.Heros
 {
-    public class Archer : Hero//Human
+    public class Archer : Hero//, IHuman
     {
         //TODO: Add properties specific to class Archer
         //I've modified this constuctor to take as parameter List of items

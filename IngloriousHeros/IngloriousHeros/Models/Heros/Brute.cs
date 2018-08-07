@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace IngloriousHeros.Models.Heros
 {
-    public class Brute : Robot, IHero
+    public class Brute : Hero //IRobot, IHero
     {
         //TODO: Add properties specific to class Brute
         //I've modified this constuctor to take as parameter List of items

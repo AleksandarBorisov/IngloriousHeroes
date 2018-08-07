@@ -20,6 +20,8 @@ namespace IngloriousHeros.Tests
 
         public static void Run()
         {
+            Console.WindowWidth = 120;
+            Console.WindowHeight = 30;
             Console.CursorVisible = false;
 
             //IHero Legolas = GameUnitFactory.CreateGameUnit<Archer>("Legolas", 100, 1, 1000);
