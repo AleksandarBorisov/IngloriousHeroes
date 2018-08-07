@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using IngloriousHeros.Contracts;
+using IngloriousHeros.Models.Common;
 using IngloriousHeros.Models.Races;
 using IngloriousHeros.Providers;
 
@@ -9,8 +10,8 @@ namespace IngloriousHeros.Models.Heros
     {
         //TODO: Add properties specific to class Warrior
 
-        public Warrior(string name, double health, double damage, int attackDelay, List<IItem> items)
-            : base(name, health, damage, attackDelay, items)
+        public Warrior(string name, double health, double damage, int attackDelay, Location hbLocation, List<IItem> items)
+            : base(name, health, damage, attackDelay, hbLocation, items)
         {
 
         }

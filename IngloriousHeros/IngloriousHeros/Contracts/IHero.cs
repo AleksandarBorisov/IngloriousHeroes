@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using IngloriousHeros.Models.Common;
+using System.Collections.Generic;
 
 namespace IngloriousHeros.Contracts
 {
@@ -13,6 +14,8 @@ namespace IngloriousHeros.Contracts
         double Damage { get; set; }
 
         int AttackDelay { get; set; }
+
+        Location HbLocation { get; set; }
 
         IEnumerable<IItem> Inventory { get; set; }
     }
