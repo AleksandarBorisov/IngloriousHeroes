@@ -1,4 +1,5 @@
 ﻿using IngloriousHeros.Contracts;
+using IngloriousHeros.Models.Common;
 using System.Collections.Generic;
 
 namespace IngloriousHeros.Models.Heros
@@ -10,14 +11,16 @@ namespace IngloriousHeros.Models.Heros
         private double armour;
         private double damage;
         private int attackDelay;
+        private Location hbLocation;
         private IEnumerable<IItem> inventory;
 
-        public Hero(string name, double health, double damage, int attackDelay, List<IItem> items)
+        public Hero(string name, double health, double damage, int attackDelay, Location hbLocation, List<IItem> items)
         {
             this.Name = name;
             this.Health = health;
             this.Damage = damage;
             this.AttackDelay = attackDelay;
+            this.HbLocation = hbLocation;
             this.Inventory = items;
         }
 
@@ -65,6 +68,12 @@ namespace IngloriousHeros.Models.Heros
 
             // Add validation
             set => this.attackDelay = value;
+        }
+
+        public Location HbLocation
+        {
+            get => this.hbLocation;
+            set => this.hbLocation = value;
         }
 
         public IEnumerable<IItem> Inventory
