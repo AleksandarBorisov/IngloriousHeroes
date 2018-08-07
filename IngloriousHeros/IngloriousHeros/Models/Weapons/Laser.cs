@@ -11,8 +11,6 @@ namespace IngloriousHeros.Models.Weapons
         private int bonusDamage;
 
         private int bonusAtackDelay;
-        //I've Added properties and fields for Damage and AtackDelay and ethod UseItem, modified IWeapon and IItem interfaces
-        //TODO: Implement laser class
 
         public Laser(int bonusDamage, int bonusAtackDelay)
         {
@@ -30,23 +28,17 @@ namespace IngloriousHeros.Models.Weapons
         }
 
 
-        public void UseItem(IHero hero)
+        public int UseItem(IHero hero)
         {
-            var newInventory = hero.Inventory.OrderBy(x => x.GetType() != typeof(IWeapon)).ToList();
-            var weaponItem = hero.Inventory.OrderBy(x => x.GetType() != typeof(IWeapon)).FirstOrDefault(w => w is IWeapon);
-            if (weaponItem != null)
-            {//Тук трябва да решим кой от двата варианта да оставим
-                //Трябва да измислим начин да прескочим първия срещнат елемент и да вземам останалите
-                //IEnumerable<IItem> newInventory = hero.Inventory.OrderBy(t => t.GetType().Name).Skip(1);
-                //IEnumerable<IItem> newInventory = hero.Inventory.TakeWhile(x => x != weaponItem).Skip(1);
-                //List<IItem> tempList = hero.Inventory as List<IItem>;
-                //tempList.Remove(weaponItem);
-                hero.Inventory = newInventory;
-                hero.Damage += this.BonusDamage;
-                hero.AttackDelay -= this.BonusAtackDelay;
-
+            var weaponItem = hero.Inventory.First();
+            int givenDamage = (weaponItem as Laser).BonusDamage;
+            BonusDamage--;
+            if (BonusDamage == 0)
+            {
+                (hero.Inventory as List<IItem>).Remove(weaponItem);
             }
-        }
 
+            return givenDamage;
+        }
     }
 }

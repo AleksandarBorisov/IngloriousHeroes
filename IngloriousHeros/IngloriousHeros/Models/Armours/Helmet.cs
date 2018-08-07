@@ -24,5 +24,10 @@ namespace IngloriousHeros.Models.Armours
         {
             throw new System.NotImplementedException();
         }
+
+        int IItem.UseItem(IHero hero)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

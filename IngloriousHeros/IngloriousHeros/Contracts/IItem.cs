@@ -6,7 +6,7 @@ namespace IngloriousHeros.Contracts
     {
         //IHero Owner { get; }
 
-        void UseItem(IHero hero);
+        int UseItem(IHero hero);
         //TODO: Implement IItem interface
     }
 }
