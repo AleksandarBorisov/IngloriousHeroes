@@ -1,14 +1,15 @@
 ﻿using IngloriousHeros.Contracts;
 using IngloriousHeros.Models.Races;
+using System.Collections.Generic;
 
 namespace IngloriousHeros.Models.Heros
 {
     public class Brute : Robot, IHero
     {
         //TODO: Add properties specific to class Brute
-
-        public Brute(string name, double health, double damage, int attackDelay)
-            : base(name, health, damage, attackDelay)
+        //I've modified this constuctor to take as parameter List of items
+        public Brute(string name, double health, double damage, int attackDelay, List<IItem> items)
+            : base(name, health, damage, attackDelay, items)
         {
             
         }

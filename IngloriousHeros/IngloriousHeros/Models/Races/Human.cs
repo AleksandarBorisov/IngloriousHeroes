@@ -12,13 +12,15 @@ namespace IngloriousHeros.Models.Races
         private double damage;
         private int attackDelay;
         private const RaceName race = RaceName.Human;
-
-        public Human(string name, double health, double damage, int attackDelay)
+        private IEnumerable<IItem> inventory;
+        //I've added private field inventory
+        public Human(string name, double health, double damage, int attackDelay, List<IItem> items)
         {
             this.Name = name;
             this.Health = health;
             this.Damage = damage;
             this.AttackDelay = attackDelay;
+            this.Inventory = items;
         }
 
         public string Name
@@ -69,7 +71,17 @@ namespace IngloriousHeros.Models.Races
 
         public RaceName Race => race;
 
-        public IEnumerable<ISpecialItem> Inventory => throw new System.NotImplementedException();
+        public IEnumerable<IItem> Inventory
+        {
+            get
+            {
+                return this.inventory;
+            }
+            set
+            {
+                this.inventory = value;
+            }
+        }
 
         public List<ISpecialSkills> SpecialSkills => throw new System.NotImplementedException();
 

@@ -5,6 +5,9 @@ using IngloriousHeros.Models.Heros;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Linq;
+using System.Collections.Generic;
+using IngloriousHeros.Models.Weapons;
 
 namespace IngloriousHeros.Tests
 {
@@ -18,8 +21,22 @@ namespace IngloriousHeros.Tests
         {
             Console.CursorVisible = false;
 
-            IHero Legolas = GameUnitFactory.CreateGameUnit<Archer>("Legolas", 100, 4, 300);
-            IHero OptimusPrime = GameUnitFactory.CreateGameUnit<Brute>("Optimus Prime", 100, 7, 1000);
+<<<<<<< HEAD
+            IHero Legolas = GameUnitFactory.CreateGameUnit<Archer>("Legolas", 100, 1, 1000);
+            IHero OptimusPrime = GameUnitFactory.CreateGameUnit<Brute>("Optimus Prime", 100, 10, 1000);
+=======
+            List<IItem> weapons = new List<IItem>()
+            {
+                new Laser(5, 10),
+                new Laser(6, 100),
+                new Laser(2, 50),
+                new Laser(3, 0),
+                new Laser(5, 100),
+            };
+            //I've added this invontory items to the constructor of an Archer, modified the constructor respectively
+            IHero Legolas = GameUnitFactory.CreateGameUnit<Archer>("Legolas", 100, 4, 300, weapons);
+            IHero OptimusPrime = GameUnitFactory.CreateGameUnit<Brute>("Optimus Prime", 100, 7, 1000, weapons);
+>>>>>>> f0bc8096f0fdfb3015977f44271c92c83b78b507
 
             HealthBar.Draw(Legolas.Name, 1, 10);
             HealthBar.Draw(OptimusPrime.Name, 1, 90);
@@ -73,7 +90,11 @@ namespace IngloriousHeros.Tests
         private static void Attack(IHero hero, IHero oponent, int row, int col)
         {
             Thread.Sleep(hero.AttackDelay);
-
+            foreach (var item in hero.Inventory)
+            {
+                item.UseItem(hero);
+            }
+            // I've added this foreach to loop through the hero inventory and hero inventory
             // Modify hero.Damage
             // ForEach hero.Invertory and apply an item of type Weapon (if any), then remove it from the list
             oponent.TakeDamage((int)hero.Damage);

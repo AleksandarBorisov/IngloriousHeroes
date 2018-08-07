@@ -3,7 +3,7 @@ using IngloriousHeros.Models.Races;
 
 namespace IngloriousHeros.Models.Heros
 {
-    public class Wizzard : Warcraft, IHero
+    public class Wizzard : Warcraft//, IHero
     {
         //TODO: Add properties specific to class Warrior
 

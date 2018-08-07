@@ -11,14 +11,16 @@ namespace IngloriousHeros.Models.Races
         private double armour;
         private double damage;
         private int attackDelay;
+        private IEnumerable<IItem> inventory;
         private const RaceName race = RaceName.Robot;
-
-        public Robot(string name, double health, double damage, int attackDelay)
+        //I've added private field inventory
+        public Robot(string name, double health, double damage, int attackDelay, List<IItem> items)
         {
             this.Name = name;
             this.Health = health;
             this.Damage = damage;
             this.AttackDelay = attackDelay;
+            this.Inventory = items;
         }
 
         //TODO: Validate all properties
@@ -56,7 +58,17 @@ namespace IngloriousHeros.Models.Races
 
         public List<ISpecialSkills> SpecialSkills => throw new System.NotImplementedException();
 
-        public IEnumerable<ISpecialItem> Inventory => throw new System.NotImplementedException();
+        public IEnumerable<IItem> Inventory
+        {
+            get
+            {
+                return this.inventory;
+            }
+            set
+            {
+                this.inventory = value;
+            }
+        }
 
         public virtual void TakeDamage(int damage)
         {

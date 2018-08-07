@@ -2,7 +2,7 @@
 
 namespace IngloriousHeros.Models.Armours
 {
-    public class Ring : IArmour
+    public class Ring// : IArmour
     {
         //TODO: Implement ring class
         public void TakeDamage(int damage)

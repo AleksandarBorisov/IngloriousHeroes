@@ -3,7 +3,7 @@ using IngloriousHeros.Models.Races;
 
 namespace IngloriousHeros.Models.Heros
 {
-    public class Gnome : Warcraft, IHero
+    public class Gnome : Warcraft//, IHero
     {
         //TODO: Add properties specific to class Gnome
 

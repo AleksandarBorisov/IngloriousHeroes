@@ -5,12 +5,12 @@ using IngloriousHeros.Providers;
 
 namespace IngloriousHeros.Models.Heros
 {
-    public class Warrior : Robot, IHero
+    public class Warrior : Robot//, IHero
     {
         //TODO: Add properties specific to class Warrior
 
-        public Warrior(string name, double health, double damage, int attackDelay)
-            : base(name, health, damage, attackDelay)
+        public Warrior(string name, double health, double damage, int attackDelay, List<IItem> items)
+            : base(name, health, damage, attackDelay, items)
         {
 
         }

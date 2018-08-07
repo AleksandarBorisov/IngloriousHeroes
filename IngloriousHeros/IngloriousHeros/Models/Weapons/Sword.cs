@@ -2,7 +2,7 @@
 
 namespace IngloriousHeros.Models.Weapons
 {
-    public class Sword : IWeapon
+    public class Sword //: IWeapon
     {
         //TODO: Implement sword class
         public void TakeDamage(int damage)

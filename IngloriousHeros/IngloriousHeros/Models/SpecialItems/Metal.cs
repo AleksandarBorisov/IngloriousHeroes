@@ -2,7 +2,7 @@
 
 namespace IngloriousHeros.Models.Items
 {
-    public class Metal : IItem
+    public class Metal //: IItem
     {
         //TODO: Implement metal class
         public void TakeDamage(int damage)
