@@ -5,7 +5,7 @@ using IngloriousHeros.Providers;
 
 namespace IngloriousHeros.Models.Heros
 {
-    public class Warrior : Robot//, IHero
+    public class Warrior : Hero //IRobot//, IHero
     {
         //TODO: Add properties specific to class Warrior
 

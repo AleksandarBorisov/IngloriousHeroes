@@ -6,11 +6,8 @@ namespace IngloriousHeros.Contracts
 {
     public interface IRace
     {
-
         RaceName Race { get; }
 
         List<ISpecialSkills> SpecialSkills { get; }
-
-        //TODO: Implement IRace interface
     }
 }
