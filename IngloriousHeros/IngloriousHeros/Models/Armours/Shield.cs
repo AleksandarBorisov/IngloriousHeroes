@@ -2,17 +2,10 @@
 
 namespace IngloriousHeros.Models.Armours
 {
-    public class Shield //: IArmour
+    public class Shield : Armour
     {
-        //TODO: Implement shield class
-        public void TakeDamage(int damage)
+        public Shield(int bonusArmour) : base(bonusArmour)
         {
-            throw new System.NotImplementedException();
-        }
-
-        public void UseItem()
-        {
-            throw new System.NotImplementedException();
         }
     }
 }

@@ -2,17 +2,10 @@
 
 namespace IngloriousHeros.Models.Armours
 {
-    public class Platemail //: IArmour
+    public class Platemail : Armour
     {
-        //TODO: Implement platemail class
-        public void TakeDamage(int damage)
+        public Platemail(int bonusArmour) : base(bonusArmour)
         {
-            throw new System.NotImplementedException();
-        }
-
-        public void UseItem()
-        {
-            throw new System.NotImplementedException();
         }
     }
 }

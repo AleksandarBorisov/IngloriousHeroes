@@ -16,15 +16,14 @@ namespace IngloriousHeros.Models.Weapons
 
         public int UseItem(IHero hero)
         {
-            var weaponItem = hero.Inventory.First();
-            int givenDamage = this.BonusDamage;
+            int damageToAdd = this.BonusDamage;//Работим с инстанцията, от която сме извикали метода UseItem
             BonusDamage--;//Засега не използваме TakeDamage, защото не сме сложили Charge-ове на самия Item
             if (BonusDamage == 0)
             {
-                (hero.Inventory as List<IItem>).Remove(weaponItem);
+                (hero.Inventory as List<IItem>).Remove(this);
             }
 
-            return givenDamage;
+            return damageToAdd;
         }
 
         public void TakeDamage(int damage)

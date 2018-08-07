@@ -2,6 +2,6 @@
 {
     public interface IArmour : IItem
     {
-        //TODO: Implement IArmour interface
+        int BonusArmour { get; set; }
     }
 }

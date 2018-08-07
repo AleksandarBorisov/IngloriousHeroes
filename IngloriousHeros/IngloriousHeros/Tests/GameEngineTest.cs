@@ -30,26 +30,25 @@ namespace IngloriousHeros.Tests
 
             List<IItem> weaponsLegolas = new List<IItem>()
             {
-                new Laser(10),
-                new Spear(5),
+                //new Laser(10),
+                //new Spear(5),
                 //new Helmet(5,100),
-                new Staff(5),
-                new Sword(5),
+                new Helmet(50),
+                //new Ring(20),
                 //new Helmet(5,100),
-                new Laser(5)
+                //new Laser(5)
             };
             List<IItem> weaponsOptimusPrime = new List<IItem>()
             {
-                new Staff(5),
-                new Laser(5),
-                //new Helmet(5,100),
-                new Spear(5),
-                //new Helmet(5,100),
-                new Sword(5),
+                //new Staff(5),
+                new Helmet(50),
+                //new Laser(5),
+                //new Spear(5),
+                //new Sword(5),
             };
             //I've added this invontory items to the constructor of an Archer, modified the constructor respectively
-            IHero Legolas = GameUnitFactory.CreateGameUnit<Archer>("Legolas", 100, 4, 300, heroHB, weaponsLegolas);
-            IHero OptimusPrime = GameUnitFactory.CreateGameUnit<Brute>("Optimus Prime", 100, 7, 1000, oponentHB, weaponsOptimusPrime);
+            IHero Legolas = GameUnitFactory.CreateGameUnit<Archer>("Legolas", 100, 10, 300, heroHB, weaponsLegolas);
+            IHero OptimusPrime = GameUnitFactory.CreateGameUnit<Brute>("Optimus Prime", 100, 10, 1000, oponentHB, weaponsOptimusPrime);
 
             HealthBar.Draw(Legolas);
             HealthBar.Draw(OptimusPrime);
@@ -104,20 +103,27 @@ namespace IngloriousHeros.Tests
         {
             Thread.Sleep(hero.AttackDelay);
 
-            int bonusDamage = 0;
+            int bonusDamage = 0;//0 point bonus to damage
+            int bonusArmour = 0;//0 % reduction of damage
 
-            if (hero.Inventory.Count() > 0)
+            if (hero.Inventory.Count() > 0 && hero.Inventory.Any(w => w is IWeapon))
             {
-                bonusDamage = hero.Inventory.First().UseItem(hero);
+                bonusDamage = hero.Inventory.First(w => w is IWeapon).UseItem(hero);
             }
 
-            oponent.TakeDamage((int)hero.Damage + bonusDamage);
+            if (oponent.Inventory.Count() > 0 && oponent.Inventory.Any(a => a is IArmour))
+            {
+                bonusArmour = oponent.Inventory.First(a => a is IArmour).UseItem(hero);
+            }//Точно на десетата атака двете нишки се засичат и се обърква кой е hero и кой е oponent
+            //Виж дефиницията на класа Armour, за повече обяснения
+
+            oponent.TakeDamage((int)((hero.Damage + bonusDamage) * (1 - bonusArmour / 100.0)));
 
             lock (_lock)
             {
                 if (!cts.Token.IsCancellationRequested)
                 {
-                    messageBuffer.Enqueue($"{hero.Name} deals {hero.Damage + bonusDamage} damage to {oponent.Name}.");
+                    messageBuffer.Enqueue($"{hero.Name} deals {(int)((hero.Damage + bonusDamage) * (1 - bonusArmour / 100.0))} damage to {oponent.Name}.");
                     PrintBuffer();
                     HealthBar.Update(oponent);
                 }

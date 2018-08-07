@@ -2,17 +2,10 @@
 
 namespace IngloriousHeros.Models.Armours
 {
-    public class Ring// : IArmour
+    public class Ring : Armour
     {
-        //TODO: Implement ring class
-        public void TakeDamage(int damage)
+        public Ring(int bonusArmour) : base(bonusArmour)
         {
-            throw new System.NotImplementedException();
-        }
-
-        public void UseItem()
-        {
-            throw new System.NotImplementedException();
         }
     }
 }
