@@ -36,7 +36,8 @@ namespace IngloriousHeros.Models.Weapons
             if (weaponItem != null)
             {//Тук трябва да решим кой от двата варианта да оставим
                 //Трябва да измислим начин да прескочим първия срещнат елемент и да вземам останалите
-                IEnumerable<IItem> newInventory = hero.Inventory.TakeWhile(x => x != weaponItem);
+                IEnumerable<IItem> newInventory = hero.Inventory.OrderBy(t => t.GetType().Name).Skip(1);
+                //IEnumerable<IItem> newInventory = hero.Inventory.TakeWhile(x => x != weaponItem).Skip(1);
                 //List<IItem> tempList = hero.Inventory as List<IItem>;
                 //tempList.Remove(weaponItem);
                 hero.Inventory = newInventory;

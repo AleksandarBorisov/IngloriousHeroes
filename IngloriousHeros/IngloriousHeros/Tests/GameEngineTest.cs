@@ -85,10 +85,10 @@ namespace IngloriousHeros.Tests
         private static void Attack(IHero hero, IHero oponent, int row, int col)
         {
             Thread.Sleep(hero.AttackDelay);
-            foreach (var item in hero.Inventory)
-            {
-                item.UseItem(hero);
-            }
+            // foreach (var item in hero.Inventory)
+            //{
+            hero.Inventory.First().UseItem(hero);
+            //}
             // I've added this foreach to loop through the hero inventory and hero inventory
             // Modify hero.Damage
             // ForEach hero.Invertory and apply an item of type Weapon (if any), then remove it from the list
