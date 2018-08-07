@@ -4,91 +4,22 @@ using IngloriousHeros.Contracts;
 
 namespace IngloriousHeros.Models.Races
 {
-    public abstract class Human : IRace, IHero
+    public abstract class Human : IRace
     {
-        private string name;
-        private double health;
-        private double armour;
-        private double damage;
-        private int attackDelay;
         private const RaceName race = RaceName.Human;
-        private IEnumerable<IItem> inventory;
-        //I've added private field inventory
-        public Human(string name, double health, double damage, int attackDelay, List<IItem> items)
+        public List<ISpecialSkills> specialSkills;
+
+        public Human(List<ISpecialSkills> specialSkills)
         {
-            this.Name = name;
-            this.Health = health;
-            this.Damage = damage;
-            this.AttackDelay = attackDelay;
-            this.Inventory = items;
-        }
-
-        public string Name
-        {
-            get => this.name;
-
-            // Add validation
-            set => this.name = value;
-        }
-
-        public double Health
-        {
-            get => this.health;
-            set
-            {
-                //ValueCheck.Positive(value, "Health can't be negative!");
-                this.health = value;
-            }
-        }
-
-        public double Armour
-        {
-            get => this.armour;
-            set
-            {
-                //ValueCheck.Positive(value, "Armour can't be negative!");
-                this.armour = value;
-            }
-        }
-
-        public double Damage
-        {
-            get => this.damage;
-            set
-            {
-                //ValueCheck.Positive(value, "Damage can't be negative!");
-                this.damage = value;
-            }
-        }
-
-        public int AttackDelay
-        {
-            get => this.attackDelay;
-
-            // Add validation
-            set => this.attackDelay = value;
+            this.SpecialSkills = specialSkills;
         }
 
         public RaceName Race => race;
 
-        public IEnumerable<IItem> Inventory
+        public List<ISpecialSkills> SpecialSkills
         {
-            get
-            {
-                return this.inventory;
-            }
-            set
-            {
-                this.inventory = value;
-            }
-        }
-
-        public List<ISpecialSkills> SpecialSkills => throw new System.NotImplementedException();
-
-        public virtual void TakeDamage(int damage)
-        {
-            // Iterate through Inventory and use items to modify damage before appolying to health
-            this.Health -= damage;
+            get => this.specialSkills;
+            set => this.specialSkills = value;
         }
     }
 }

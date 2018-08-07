@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace IngloriousHeros.Models.Heros
 {
-    public class Archer : Human, IHero
+    public class Archer : Human, Hero
     {
         //TODO: Add properties specific to class Archer
         //I've modified this constuctor to take as parameter List of items
@@ -13,9 +13,6 @@ namespace IngloriousHeros.Models.Heros
         {
 
         }
-
-
-
 
         public override void TakeDamage(int damage)
         {

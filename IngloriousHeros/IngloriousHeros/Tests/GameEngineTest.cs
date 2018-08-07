@@ -21,13 +21,9 @@ namespace IngloriousHeros.Tests
         {
             Console.CursorVisible = false;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-            IHero Legolas = GameUnitFactory.CreateGameUnit<Archer>("Legolas", 100, 1, 1000);
-            IHero OptimusPrime = GameUnitFactory.CreateGameUnit<Brute>("Optimus Prime", 100, 10, 1000);
-=======
-=======
->>>>>>> f0bc8096f0fdfb3015977f44271c92c83b78b507
+            //IHero Legolas = GameUnitFactory.CreateGameUnit<Archer>("Legolas", 100, 1, 1000);
+            //IHero OptimusPrime = GameUnitFactory.CreateGameUnit<Brute>("Optimus Prime", 100, 10, 1000);
+
             List<IItem> weapons = new List<IItem>()
             {
                 new Laser(5, 10),
@@ -36,13 +32,10 @@ namespace IngloriousHeros.Tests
                 new Laser(3, 0),
                 new Laser(5, 100),
             };
+
             //I've added this invontory items to the constructor of an Archer, modified the constructor respectively
             IHero Legolas = GameUnitFactory.CreateGameUnit<Archer>("Legolas", 100, 4, 300, weapons);
             IHero OptimusPrime = GameUnitFactory.CreateGameUnit<Brute>("Optimus Prime", 100, 7, 1000, weapons);
-<<<<<<< HEAD
->>>>>>> f0bc8096f0fdfb3015977f44271c92c83b78b507
-=======
->>>>>>> f0bc8096f0fdfb3015977f44271c92c83b78b507
 
             HealthBar.Draw(Legolas.Name, 1, 10);
             HealthBar.Draw(OptimusPrime.Name, 1, 90);
