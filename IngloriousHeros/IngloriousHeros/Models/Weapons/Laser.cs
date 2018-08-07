@@ -32,11 +32,12 @@ namespace IngloriousHeros.Models.Weapons
 
         public void UseItem(IHero hero)
         {
-            var weaponItem = hero.Inventory.FirstOrDefault(w => w is IWeapon);
+            var newInventory = hero.Inventory.OrderBy(x => x.GetType() != typeof(IWeapon)).ToList();
+            var weaponItem = hero.Inventory.OrderBy(x => x.GetType() != typeof(IWeapon)).FirstOrDefault(w => w is IWeapon);
             if (weaponItem != null)
             {//Тук трябва да решим кой от двата варианта да оставим
                 //Трябва да измислим начин да прескочим първия срещнат елемент и да вземам останалите
-                IEnumerable<IItem> newInventory = hero.Inventory.OrderBy(t => t.GetType().Name).Skip(1);
+                //IEnumerable<IItem> newInventory = hero.Inventory.OrderBy(t => t.GetType().Name).Skip(1);
                 //IEnumerable<IItem> newInventory = hero.Inventory.TakeWhile(x => x != weaponItem).Skip(1);
                 //List<IItem> tempList = hero.Inventory as List<IItem>;
                 //tempList.Remove(weaponItem);

@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Linq;
 using System.Collections.Generic;
 using IngloriousHeros.Models.Weapons;
+using IngloriousHeros.Models.Armours;
 
 namespace IngloriousHeros.Tests
 {
@@ -25,8 +26,10 @@ namespace IngloriousHeros.Tests
             {
                 new Laser(5, 10),
                 new Laser(6, 100),
+                new Helmet(5,100),
                 new Laser(2, 50),
                 new Laser(3, 0),
+                new Helmet(5,100),
                 new Laser(5, 100),
             };
             //I've added this invontory items to the constructor of an Archer, modified the constructor respectively
