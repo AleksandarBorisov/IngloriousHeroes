@@ -9,6 +9,7 @@ using System.Linq;
 using System.Collections.Generic;
 using IngloriousHeros.Models.Weapons;
 using IngloriousHeros.Models.Armours;
+using IngloriousHeros.Models.Common;
 
 namespace IngloriousHeros.Tests
 {
@@ -24,8 +25,8 @@ namespace IngloriousHeros.Tests
             Console.WindowHeight = 30;
             Console.CursorVisible = false;
 
-            //IHero Legolas = GameUnitFactory.CreateGameUnit<Archer>("Legolas", 100, 1, 1000);
-            //IHero OptimusPrime = GameUnitFactory.CreateGameUnit<Brute>("Optimus Prime", 100, 10, 1000);
+            Location heroHB = new Location(1, 10);
+            Location oponentHB = new Location(1, 90);
 
             List<IItem> weaponsLegolas = new List<IItem>()
             {
@@ -47,22 +48,22 @@ namespace IngloriousHeros.Tests
                 new Sword(5),
             };
             //I've added this invontory items to the constructor of an Archer, modified the constructor respectively
-            IHero Legolas = GameUnitFactory.CreateGameUnit<Archer>("Legolas", 100, 4, 300, weaponsLegolas);
-            IHero OptimusPrime = GameUnitFactory.CreateGameUnit<Brute>("Optimus Prime", 100, 7, 1000, weaponsOptimusPrime);
+            IHero Legolas = GameUnitFactory.CreateGameUnit<Archer>("Legolas", 100, 4, 300, heroHB, weaponsLegolas);
+            IHero OptimusPrime = GameUnitFactory.CreateGameUnit<Brute>("Optimus Prime", 100, 7, 1000, oponentHB, weaponsOptimusPrime);
 
-            HealthBar.Draw(Legolas.Name, 1, 10);
-            HealthBar.Draw(OptimusPrime.Name, 1, 90);
+            HealthBar.Draw(Legolas);
+            HealthBar.Draw(OptimusPrime);
             Console.SetCursorPosition(0, 4);
             Console.WriteLine("Fight history:");
 
             Console.BackgroundColor = ConsoleColor.Black;
-            Task.Factory.StartNew(() => BeginBattle(Legolas, OptimusPrime, 1, 110));
-            Task.Factory.StartNew(() => BeginBattle(OptimusPrime, Legolas, 1, 30));
+            Task.Factory.StartNew(() => BeginBattle(Legolas, OptimusPrime));
+            Task.Factory.StartNew(() => BeginBattle(OptimusPrime, Legolas));
 
             Console.ReadLine();
         }
 
-        public static void BeginBattle(IHero hero, IHero oponent, int row, int col)
+        public static void BeginBattle(IHero hero, IHero oponent)
         {
             // The lock code-block ensures that at any given time, 
             // common resources are being used by only one task
@@ -71,7 +72,7 @@ namespace IngloriousHeros.Tests
             {
                 if (oponent.Health > 0)
                 {
-                    Attack(hero, oponent, row, col);
+                    Attack(hero, oponent);
                 }
                 else
                 {
@@ -99,7 +100,7 @@ namespace IngloriousHeros.Tests
             }
         }
 
-        private static void Attack(IHero hero, IHero oponent, int row, int col)
+        private static void Attack(IHero hero, IHero oponent)
         {
             Thread.Sleep(hero.AttackDelay);
 
@@ -118,7 +119,7 @@ namespace IngloriousHeros.Tests
                 {
                     messageBuffer.Enqueue($"{hero.Name} deals {hero.Damage + bonusDamage} damage to {oponent.Name}.");
                     PrintBuffer();
-                    HealthBar.Update((int)oponent.Health, row, col);
+                    HealthBar.Update(oponent);
                 }
             }
         }

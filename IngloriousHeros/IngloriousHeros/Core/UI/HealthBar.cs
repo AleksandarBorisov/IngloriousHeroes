@@ -1,17 +1,18 @@
-﻿using System;
+﻿using IngloriousHeros.Contracts;
+using System;
 
 namespace IngloriousHeros.Core.UI
 {
     public class HealthBar
     {
-        public static void Draw(string name, int row, int col)
+        public static void Draw(IHero hero)
         {
-            Console.SetCursorPosition(col, row);
-            Console.Write($"{name} health: ");
+            Console.SetCursorPosition(hero.HbLocation.Col, hero.HbLocation.Row);
+            Console.Write($"{hero.Name} health: ");
 
             for (int i = 0; i < 20; i++)
             {
-                Console.SetCursorPosition(i + col, row + 1);
+                Console.SetCursorPosition(i + hero.HbLocation.Col, hero.HbLocation.Row + 1);
                 Console.BackgroundColor = ConsoleColor.Green;
                 Console.Write(' ');
             }
@@ -19,16 +20,16 @@ namespace IngloriousHeros.Core.UI
             Console.BackgroundColor = ConsoleColor.Black;
         }
 
-        public static void Update(int health, int row, int col)
+        public static void Update(IHero hero)
         {
-            int damage = 100 - health;
+            int damage = 100 - (int)hero.Health;
             int startIndex = damage / 5;
 
             Console.BackgroundColor = ConsoleColor.Red;
 
             for (int i = 1; i <= startIndex; i++)
             {
-                Console.SetCursorPosition(col - i, row + 1);
+                Console.SetCursorPosition(hero.HbLocation.Col + 20 - i, hero.HbLocation.Row + 1);
                 Console.WriteLine(' ');
             }
 

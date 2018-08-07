@@ -1,4 +1,5 @@
 ﻿using IngloriousHeros.Contracts;
+using IngloriousHeros.Models.Common;
 using System.Collections.Generic;
 
 namespace IngloriousHeros.Models.Heros
@@ -7,8 +8,8 @@ namespace IngloriousHeros.Models.Heros
     {
         //TODO: Add properties specific to class Archer
         //I've modified this constuctor to take as parameter List of items
-        public Archer(string name, double health, double damage, int attackDelay, List<IItem> items)
-            : base(name, health, damage, attackDelay, items)
+        public Archer(string name, double health, double damage, int attackDelay, Location hbLocation, List<IItem> items)
+            : base(name, health, damage, attackDelay, hbLocation, items)
         {
 
         }
