@@ -22,28 +22,22 @@ namespace IngloriousHeros.Models.Heros
             Thread.Sleep(this.AttackDelay);
 
             int bonusDamage = 0;//0 point bonus to damage
-            int bonusArmour = 0;//0 % reduction of damage
 
             if (this.Inventory.Count() > 0 && this.Inventory.Any(w => w is IWeapon))
             {
                 bonusDamage = this.Inventory.First(w => w is IWeapon).UseItem(this);
             }
 
-            //This should be implemented in TakeDamage(this.Damage)-- > it will be called by the oponent
-            if (oponent.Inventory.Count() > 0 && oponent.Inventory.Any(a => a is IArmour))
-            {
-                bonusArmour = oponent.Inventory.First(a => a is IArmour).UseItem(this);
-            }
-
             lock (Battle.EnvLock)
             {
                 if (!Battle.Cts.Token.IsCancellationRequested)
-                {
-                    oponent.TakeDamage((int)this.Damage);
-                    // The formula below should be checked
-                    Battle.MessageBuffer.Enqueue($"{this.Name} deals {(int)((this.Damage + bonusDamage) * (1 - bonusArmour / 100.0))} damage to {oponent.Name}.");
-                    Battle.MessageBuffer.PrintBuffer();
+                {//The problem here will be that this message says how much damage is dealt, but not how much damage is made
+                    //I think The message should be moved to the Amrour area where the reduction of the damage is made, in order
+                    // to display the actual damage being made
+                    oponent.TakeDamage((int)this.Damage + bonusDamage);
+                    //I moved the buffer in take damage because i suggested it's more suitable there
                     HealthBar.Update(oponent);
+
                 }
             }
         }

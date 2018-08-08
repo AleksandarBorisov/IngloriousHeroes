@@ -4,6 +4,7 @@ using IngloriousHeros.Core.UI;
 using IngloriousHeros.Models.Common;
 using System.Collections.Generic;
 using System.Threading;
+using System.Linq;
 
 namespace IngloriousHeros.Models.Heros
 {
@@ -96,7 +97,17 @@ namespace IngloriousHeros.Models.Heros
         public virtual void TakeDamage(int damage)
         {
             // Iterate through Inventory and use items to modify damage before appolying to health
-            this.Health -= damage;
+            int bonusArmour = 0;//0 % reduction of damage
+
+            if (Inventory.Count() > 0 && Inventory.Any(a => a is IArmour))
+            {
+                bonusArmour = Inventory.First(a => a is IArmour).UseItem(this);
+            }
+            // The formula below is fixed
+            Battle.MessageBuffer.Enqueue($"{this.Name} received {(int)(this.Damage) * (1 - bonusArmour / 100.0)} damage by.");// damage to {oponent.Name}.");
+            Battle.MessageBuffer.PrintBuffer();
+
+            this.Health -= damage * (1 - bonusArmour / 100.0);
         }
     }
 }

@@ -16,13 +16,13 @@ namespace IngloriousHeros.Models.Armours
         }
 
         public int UseItem(IHero hero)
-        {//TODO: Fix Armour
+        {//We have to decide if the last hit breaks the item or the item ends when it expires and the hero acquires a new one if he has
             int armourToAdd = this.BonusArmour;
-            BonusArmour -= 10;//От тук надолу гърми на десетия удар. Вижда се че се опитва от инвенторите на Archer-a
-            if (BonusArmour <= 0)//да извади Армора на Brute-a
+            BonusArmour -= 10;
+            if (BonusArmour <= 0)
             {
                 (hero.Inventory as List<IItem>).Remove(this);
-            }//Тук пише ^ Archer                         ^ Тук е Армора на Brute-a
+            }
 
             return armourToAdd;
 
