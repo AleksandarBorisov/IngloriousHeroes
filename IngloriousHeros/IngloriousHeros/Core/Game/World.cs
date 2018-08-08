@@ -1,5 +1,7 @@
 ﻿using IngloriousHeros.Contracts;
+using IngloriousHeros.Core.Factories;
 using IngloriousHeros.Models.Common;
+using IngloriousHeros.Models.Heros;
 using System;
 using System.Collections.Generic;
 
@@ -16,13 +18,13 @@ namespace IngloriousHeros.Core
         private static Location bufferLocation = new Location(4, 0);
         private static Location outcomeLocation = new Location(26, 0);
 
-        static World()
-        {
-            heroes = new List<IHero>();
-            weapons = new List<IItem>();
-            armours = new List<IItem>();
-            specialItems = new List<IItem>();
-        }
+        //static World()
+        //{
+        //    heroes = new List<IHero>();
+        //    weapons = new List<IItem>();
+        //    armours = new List<IItem>();
+        //    specialItems = new List<IItem>();
+        //}
 
         public static IEnumerable<IHero> Heroes => heroes;
 
@@ -43,7 +45,9 @@ namespace IngloriousHeros.Core
         public static void InitializeEnvironment()
         {
             Console.WindowWidth = 120;
+            Console.BufferWidth = Console.WindowWidth;
             Console.WindowHeight = 30;
+            Console.BufferHeight = Console.WindowHeight;
             Console.CursorVisible = false;
         }
 
@@ -58,6 +62,14 @@ namespace IngloriousHeros.Core
         private static void CreateHeroes()
         {
             // Create a list of heros
+            heroes = new List<IHero>
+            {
+                GameUnitFactory.CreateGameUnit<Archer>("Gandalf", 100, 3, 500, HeroHB, new List<IItem>()),
+                GameUnitFactory.CreateGameUnit<Wizzard>("Harry Potter", 100, 3, 500, HeroHB, new List<IItem>()),
+                GameUnitFactory.CreateGameUnit<Gnome>("Tom", 100, 3, 500, HeroHB, new List<IItem>()),
+                GameUnitFactory.CreateGameUnit<Jedi>("Neo from The Matrix", 100, 3, 500, HeroHB, new List<IItem>()),
+                GameUnitFactory.CreateGameUnit<Warrior>("Iron Man", 100, 3, 500, HeroHB, new List<IItem>())
+            };
         }
 
         private static void CreateWeapons()

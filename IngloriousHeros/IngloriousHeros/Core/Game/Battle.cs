@@ -9,8 +9,8 @@ namespace IngloriousHeros.Core.Battle
     public sealed class Battle
     {
         private static readonly CancellationTokenSource cts = new CancellationTokenSource();
-        private readonly object envLock = new object();
-        private readonly MessageBuffer messageBuffer = new MessageBuffer();
+        private static readonly object envLock = new object();
+        private static readonly MessageBuffer messageBuffer = new MessageBuffer();
         private readonly IHero hero;
         private readonly IHero oponent;
 
@@ -22,9 +22,9 @@ namespace IngloriousHeros.Core.Battle
 
         public static CancellationTokenSource Cts => cts;
 
-        public object EnvLock => this.envLock;
+        public static object EnvLock => envLock;
 
-        public MessageBuffer MessageBuffer => this.messageBuffer;
+        public static MessageBuffer MessageBuffer => messageBuffer;
 
         public IHero Hero => this.hero;
 
@@ -51,7 +51,7 @@ namespace IngloriousHeros.Core.Battle
             {
                 if (oponent.Health > 0)
                 {
-                    hero.Attack(oponent, this);
+                    hero.Attack(oponent);
                 }
                 else
                 {

@@ -18,7 +18,7 @@ namespace IngloriousHeros.Models.Heros
             
         }
 
-        public override void Attack(IHero oponent, Battle battle)
+        public override void Attack(IHero oponent)
         {
             Thread.Sleep(this.AttackDelay);
 
@@ -38,14 +38,14 @@ namespace IngloriousHeros.Models.Heros
 
             oponent.TakeDamage((int)((this.Damage + bonusDamage) * (1 - bonusArmour / 100.0)));
 
-            lock (battle.EnvLock)
+            lock (Battle.EnvLock)
             {
                 if (!Battle.Cts.Token.IsCancellationRequested)
                 {
                     // The formula below should be checked
-                    battle.MessageBuffer.Enqueue($"{this.Name} deals {(int)((this.Damage + bonusDamage) * (1 - bonusArmour / 100.0))} damage to {oponent.Name}.");
-                    battle.MessageBuffer.Enqueue($"{this.Name} deals {(int)((this.Damage))} damage to {oponent.Name}.");
-                    battle.MessageBuffer.PrintBuffer();
+                    Battle.MessageBuffer.Enqueue($"{this.Name} deals {(int)((this.Damage + bonusDamage) * (1 - bonusArmour / 100.0))} damage to {oponent.Name}.");
+                    Battle.MessageBuffer.Enqueue($"{this.Name} deals {(int)((this.Damage))} damage to {oponent.Name}.");
+                    Battle.MessageBuffer.PrintBuffer();
                     HealthBar.Update(oponent);
                 }
             }

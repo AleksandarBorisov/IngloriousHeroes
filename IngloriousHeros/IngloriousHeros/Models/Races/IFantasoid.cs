@@ -4,7 +4,7 @@ using IngloriousHeros.Contracts;
 
 namespace IngloriousHeros.Models.Races
 {
-    public interface IWarcraft : IRace
+    public interface IFantasoid : IRace
     {
     }
 }

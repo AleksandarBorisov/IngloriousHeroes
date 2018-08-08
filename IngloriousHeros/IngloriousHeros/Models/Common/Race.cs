@@ -4,6 +4,6 @@
     {
         Human,
         Robot,
-        Warcraft
+        Fantasoid
     }
 }

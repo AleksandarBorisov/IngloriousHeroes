@@ -16,7 +16,7 @@ namespace IngloriousHeros.Models.Heros
 
         }
 
-        public override void Attack(IHero oponent, Battle battle)
+        public override void Attack(IHero oponent)
         {
             throw new System.NotImplementedException();
         }

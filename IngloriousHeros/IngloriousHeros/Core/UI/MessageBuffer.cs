@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using IngloriousHeros.Core.Battle;
 
 namespace IngloriousHeros.Core.UI
 {
@@ -10,12 +11,15 @@ namespace IngloriousHeros.Core.UI
 
         public void Enqueue(string message)
         {
-            if (this.elements.Count == 20)
+            lock (Battle.Battle.EnvLock)
             {
-                this.elements.Dequeue();
-            }
+                if (this.elements.Count == 20)
+                {
+                    this.Elements.Dequeue();
+                }
 
-            this.elements.Enqueue(message);
+                this.Elements.Enqueue(message);
+            }
         }
 
         public IEnumerator GetEnumerator()
@@ -30,14 +34,17 @@ namespace IngloriousHeros.Core.UI
 
         public void PrintBuffer()
         {
-            int row = 5;
-
-            foreach (string message in this.Elements)
+            lock (Battle.Battle.EnvLock)
             {
-                Console.SetCursorPosition(10, row);
-                Console.Write(new string(' ', Console.WindowWidth));
-                Console.SetCursorPosition(10, row++);
-                Console.WriteLine(message);
+                int row = 5;
+
+                foreach (string message in this.Elements)
+                {
+                    Console.SetCursorPosition(10, row);
+                    Console.Write(new string(' ', Console.WindowWidth));
+                    Console.SetCursorPosition(10, row++);
+                    Console.Write(message);
+                }
             }
         }
     }

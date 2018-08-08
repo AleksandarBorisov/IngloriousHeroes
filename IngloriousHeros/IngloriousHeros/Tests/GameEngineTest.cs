@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using IngloriousHeros.Models.Armours;
 using IngloriousHeros.Core.Battle;
 using IngloriousHeros.Core;
+using System.Linq;
 
 namespace IngloriousHeros.Tests
 {
@@ -36,10 +37,13 @@ namespace IngloriousHeros.Tests
                 //new Sword(5),
             };
 
-            IHero Legolas = GameUnitFactory.CreateGameUnit<Archer>("Legolas", 100, 1, 100, World.HeroHB, weaponsLegolas);
-            IHero OptimusPrime = GameUnitFactory.CreateGameUnit<Brute>("Optimus Prime", 100, 1, 110, World.OponentHB, weaponsOptimusPrime);
+            var heroes = World.Heroes.ToList();
 
-            Battle epicBattle = new Battle(Legolas, OptimusPrime);
+            IHero Legolas = GameUnitFactory.CreateGameUnit<Archer>("Legolas", 100, 1, 200, World.HeroHB, weaponsLegolas);
+            //IHero OptimusPrime = GameUnitFactory.CreateGameUnit<Brute>("Optimus Prime", 100, 1, 110, World.OponentHB, weaponsOptimusPrime);
+            IHero Gandalf = GameUnitFactory.CreateGameUnit<Wizzard>("Gandalf", 100, 2, 500, World.OponentHB, new List<IItem>());
+
+            Battle epicBattle = new Battle(Legolas, Gandalf);
             epicBattle.Start();
 
             Console.ReadLine();

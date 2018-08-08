@@ -91,7 +91,7 @@ namespace IngloriousHeros.Models.Heros
             }
         }
 
-        public abstract void Attack(IHero oponent, Battle battle);
+        public abstract void Attack(IHero oponent);
 
         public virtual void TakeDamage(int damage)
         {

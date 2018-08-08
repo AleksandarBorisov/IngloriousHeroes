@@ -20,6 +20,6 @@ namespace IngloriousHeros.Contracts
 
         IEnumerable<IItem> Inventory { get; set; }
 
-        void Attack(IHero oponent, Battle battle);
+        void Attack(IHero oponent);
     }
 }
