@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using IngloriousHeros.Contracts;
 
 namespace IngloriousHeros.Core.UI.Models
 {
-    class FontSolidLetters
+    class FontSolidLetters : IFont
     {
         private readonly string[] letters =
         {

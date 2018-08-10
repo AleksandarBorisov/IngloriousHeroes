@@ -22,7 +22,7 @@ namespace IngloriousHeros.Core.UI
         private readonly IFont captionTwoFont = new FontEmptyLetters();
         private static Location captionThree = new Location(0, 20);
         private const string captionThreeValue = "choose hero";
-        private readonly IFont captionThreeFont = new FontEmptyLetters();
+        private readonly IFont captionThreeFont = new FontSolidLetters();
 
         //HerosModels properties
         private static Location archerModel = new Location(0, 30);
@@ -32,8 +32,8 @@ namespace IngloriousHeros.Core.UI
         private static Location jediModel = new Location(40, 55);
         private static Location bruteModel = new Location(80, 55);
 
-        private static int horizontalStep = (archerModel.Row + warriorModel.Row + gnomeModel.Row) / 3;
-        private static int verticalStep = archerModel.Col - wizzardModel.Col;
+        private static int horizontalStep = (ArcherModel.Row + WarriorModel.Row + GnomeModel.Row) / 3;
+        private static int verticalStep = Math.Abs(ArcherModel.Col - WizzardModel.Col);
 
         private MainScreen()
         {
@@ -109,15 +109,15 @@ namespace IngloriousHeros.Core.UI
                 key = Console.ReadKey(true);
             }
             IHero heroInstance = GameUnitFactory.CreateGameUnit<Archer>("Legolas", 100, 10, 300, World.HeroHB, new List<IItem>());
-            if ((startRow == WarriorModel.Row) && (startCol == WarriorModel.Row))
-            { heroInstance = GameUnitFactory.CreateGameUnit<Brute>("Legolas", 100, 10, 300, World.HeroHB, new List<IItem>()); }
-            if ((startRow == GnomeModel.Row) && (startCol == GnomeModel.Row))
-            { heroInstance = GameUnitFactory.CreateGameUnit<Gnome>("Legolas", 100, 10, 300, World.HeroHB, new List<IItem>()); }
-            if ((startRow == BruteModel.Row) && (startCol == BruteModel.Row))
-            { heroInstance = GameUnitFactory.CreateGameUnit<Jedi>("Legolas", 100, 10, 300, World.HeroHB, new List<IItem>()); }
-            if ((startRow == JediModel.Row) && (startCol == JediModel.Row))
+            if ((startRow == WarriorModel.Row) && (startCol == WarriorModel.Col))
             { heroInstance = GameUnitFactory.CreateGameUnit<Warrior>("Legolas", 100, 10, 300, World.HeroHB, new List<IItem>()); }
-            if ((startRow == WizzardModel.Row) && (startCol ==WizzardModel.Row))
+            if ((startRow == GnomeModel.Row) && (startCol == GnomeModel.Col))
+            { heroInstance = GameUnitFactory.CreateGameUnit<Gnome>("Legolas", 100, 10, 300, World.HeroHB, new List<IItem>()); }
+            if ((startRow == BruteModel.Row) && (startCol == BruteModel.Col))
+            { heroInstance = GameUnitFactory.CreateGameUnit<Brute>("Legolas", 100, 10, 300, World.HeroHB, new List<IItem>()); }
+            if ((startRow == JediModel.Row) && (startCol == JediModel.Col))
+            { heroInstance = GameUnitFactory.CreateGameUnit<Jedi>("Legolas", 100, 10, 300, World.HeroHB, new List<IItem>()); }
+            if ((startRow == WizzardModel.Row) && (startCol ==WizzardModel.Col))
             { heroInstance = GameUnitFactory.CreateGameUnit<Wizzard>("Legolas", 100, 10, 300, World.HeroHB, new List<IItem>()); }
 
             return heroInstance;

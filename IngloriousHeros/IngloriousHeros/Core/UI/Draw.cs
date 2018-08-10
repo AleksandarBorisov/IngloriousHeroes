@@ -57,23 +57,25 @@ namespace IngloriousHeros.Core.UI.Models
             for (int i = 0; i < message.Length; i++)
             {
                 char[,] letterAsCharArray = ProcessLetter(message[i], currentFont);
-                for (int col = 0; col < letterAsCharArray.GetLength(0); col++)
+                for (int col = 0; col < letterAsCharArray.GetLength(1); col++)
                 {
-                    Console.SetCursorPosition(currentRow, currentColumn);
-                    for (int row = 0; row < letterAsCharArray.GetLength(1); row++)
+                    //Console.SetCursorPosition(currentRow, currentColumn);
+                    for (int row = 0; row < letterAsCharArray.GetLength(0); row++)
                     {
+                        //Console.Write(letterAsCharArray[row, col]);
+                        //Console.SetCursorPosition(currentRow, ++currentColumn);
+                        Console.SetCursorPosition(startingRow + col + i * letterAsCharArray.GetLength(1), startinColumn + row);
                         Console.Write(letterAsCharArray[row, col]);
-                        Console.SetCursorPosition(currentRow, ++currentColumn);
                     }
-                    currentRow++;
-                    currentColumn = startinColumn;
+                    //currentRow++;
+                    //currentColumn = startinColumn;
                     Thread.Sleep(leftRightSpeed);
                 }
-                currentRow++;
+                //currentRow++;
             }
         }
 
-        public void CaptionBlinking(int startingRow, int startingColumn, string message, IFont currentAlphabet)
+        public void CaptionBlinking(int startingRow, int startingColumn, string message, IFont currentFont)
         {
             bool printWhiteSpace = false;
             bool keyPressed = false;
@@ -88,7 +90,7 @@ namespace IngloriousHeros.Core.UI.Models
                 int currentRow = startingRow;
                 for (int i = 0; i < message.Length; i++)
                 {
-                    char[,] letterAsCharArray = ProcessLetter(message[i], currentAlphabet);
+                    char[,] letterAsCharArray = ProcessLetter(message[i], currentFont);
                     Console.SetCursorPosition(currentRow, currentColumn++);
                     for (int row = 0; row < letterAsCharArray.GetLength(0); row++)
                     {

@@ -7,7 +7,9 @@ namespace IngloriousHeros.Core.UI.Models
 {
     class HerosModels
     {
-        private string[,] models = new string[Console.WindowWidth, Console.WindowHeight];
+    
+        //The size is determined by the bottom most right most model
+        private string[,] models = new string[MainScreen.BruteModel.Row + 1, MainScreen.BruteModel.Col + 1];
 
         private static HerosModels instanceHolder;
 
