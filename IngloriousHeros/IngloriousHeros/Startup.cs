@@ -1,4 +1,6 @@
-﻿namespace IngloriousHeros
+﻿using IngloriousHeros.Core;
+
+namespace IngloriousHeros
 {
     using Tests;
 
@@ -6,7 +8,8 @@
     {
         public static void Main()
         {
-            GameEngineTest.Run();
+            Engine.Run();
+            //GameEngineTest.Run();
         }
     }
 }

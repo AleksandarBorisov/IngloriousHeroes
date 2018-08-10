@@ -1,0 +1,19 @@
+﻿using IngloriousHeros.Core.Contracts;
+using IngloriousHeros.Contracts;
+using IngloriousHeros.Core.UI;
+using IngloriousHeros.Core.Factories;
+using System.Collections.Generic;
+using IngloriousHeros.Models.Heros;
+
+namespace IngloriousHeros.Core
+{
+    public class Engine : IEngine
+    {
+        public static void Run()
+        {
+            //TODO: Implement everything
+            IHero hero = MainScreen.Instance.Start();
+            //Game.Start(hero);
+        }
+    }
+}

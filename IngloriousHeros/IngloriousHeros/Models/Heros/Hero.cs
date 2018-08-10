@@ -104,6 +104,7 @@ namespace IngloriousHeros.Models.Heros
                 bonusArmour = Inventory.First(a => a is IArmour).UseItem(this);
             }
             // The formula below is fixed
+            
             Battle.MessageBuffer.Enqueue($"{this.Name} received {(int)(this.Damage) * (1 - bonusArmour / 100.0)} damage by.");// damage to {oponent.Name}.");
             Battle.MessageBuffer.PrintBuffer();
 
