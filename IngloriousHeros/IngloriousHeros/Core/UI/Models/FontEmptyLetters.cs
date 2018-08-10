@@ -289,7 +289,7 @@ _________
         {
             get
             {
-                return letters[index];
+                return Letters[index];
             }
         }
 

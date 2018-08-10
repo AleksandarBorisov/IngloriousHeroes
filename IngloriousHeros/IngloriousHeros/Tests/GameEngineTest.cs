@@ -30,7 +30,7 @@ namespace IngloriousHeros.Tests
             List<IItem> weaponsOptimusPrime = new List<IItem>()
             {
                 //new Staff(5),
-                new Helmet(50),
+                //new Helmet(50),
                 new Helmet(50),
                 //new Laser(5),
                 //new Spear(5),
@@ -39,7 +39,7 @@ namespace IngloriousHeros.Tests
 
             var heroes = World.Heroes.ToList();
 
-            IHero Legolas = GameUnitFactory.CreateGameUnit<Archer>("Legolas", 100, 10, 300, World.HeroHB, weaponsLegolas);
+            IHero Legolas = GameUnitFactory.CreateGameUnit<Archer>("Legolas", 100, 5, 500, World.HeroHB, weaponsLegolas);
             IHero OptimusPrime = GameUnitFactory.CreateGameUnit<Brute>("Optimus Prime", 100, 10, 1000, World.OponentHB, weaponsOptimusPrime);
             //IHero Gandalf = GameUnitFactory.CreateGameUnit<Wizzard>("Gandalf", 100, 2, 500, World.OponentHB, new List<IItem>());
 

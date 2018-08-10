@@ -262,7 +262,7 @@ namespace IngloriousHeros.Core.UI.Models
         {
             get
             {
-                return letters[index];
+                return Letters[index];
             }
         }
     }

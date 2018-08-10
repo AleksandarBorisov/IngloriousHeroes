@@ -14,18 +14,18 @@ namespace IngloriousHeros.Core.UI
     {
         private static MainScreen instanceHolder;
 
-        //Caption properties
+        //Caption fields
         private static Location captionOne = new Location(0, 0);
-        private const string captionOneValue = "inglorious";
-        private readonly IFont captionOneFont = new FontEmptyLetters();
+        private static string captionOneValue = "inglorious";
+        private static IFont captionOneFont = new FontEmptyLetters();
         private static Location captionTwo = new Location(70, 9);
-        private const string captionTwoValue = "heros";
-        private readonly IFont captionTwoFont = new FontEmptyLetters();
+        private static string captionTwoValue = "heros";
+        private static IFont captionTwoFont = new FontEmptyLetters();
         private static Location captionThree = new Location(0, 20);
-        private const string captionThreeValue = "choose hero";
-        private readonly IFont captionThreeFont = new FontSolidLetters();
+        private static string captionThreeValue = "choose hero";
+        private static IFont captionThreeFont = new FontSolidLetters();
 
-        //HerosModels properties
+        //HerosModels fields
         private static Location archerModel = new Location(0, 30);
         private static Location warriorModel = new Location(40, 30);
         private static Location gnomeModel = new Location(80, 30);
@@ -41,11 +41,38 @@ namespace IngloriousHeros.Core.UI
 
         }
 
+        public static Location CaptionOne => captionOne;
+
+        public static string CaptionOneValue => captionOneValue;
+
+        public static IFont CaptionOneFont => captionOneFont;
+
+        public static Location CaptionTwo => captionTwo;
+
+        public static string CaptionTwoValue => captionTwoValue;
+
+        public static IFont CaptionTwoFont => captionTwoFont;
+
+        public static Location CaptionThree => captionThree;
+
+        public static string CaptionThreeValue => captionThreeValue;
+
+        public static IFont CaptionThreeFont => captionThreeFont;
+
+        public static int HorizontalStep => horizontalStep;
+
+        public static int VerticalStep => verticalStep;
+
         public static Location ArcherModel => archerModel;
+
         public static Location WarriorModel => warriorModel;
+
         public static Location GnomeModel => gnomeModel;
+
         public static Location BruteModel => bruteModel;
+
         public static Location JediModel => jediModel;
+
         public static Location WizzardModel => wizzardModel;
 
 
@@ -65,9 +92,9 @@ namespace IngloriousHeros.Core.UI
         public IHero Start()
         {
             Draw drawType = Draw.Instance;
-            drawType.CaptionLeftRight(captionOne.Row, captionOne.Col, captionOneValue, captionOneFont);
-            drawType.CaptionLeftRight(captionTwo.Row, captionTwo.Col, captionTwoValue, captionTwoFont);
-            drawType.CaptionBlinking(captionThree.Row, captionThree.Col, captionThreeValue, captionThreeFont);
+            drawType.CaptionLeftRight(CaptionOne.Row, CaptionOne.Col, CaptionOneValue, CaptionOneFont);
+            drawType.CaptionLeftRight(CaptionTwo.Row, CaptionTwo.Col, CaptionTwoValue, CaptionTwoFont);
+            drawType.CaptionBlinking(CaptionThree.Row, CaptionThree.Col, CaptionThreeValue, CaptionThreeFont);
             drawType.HeroModel(ArcherModel.Row, ArcherModel.Col, true);
             drawType.HeroModel(WarriorModel.Row, WarriorModel.Col);
             drawType.HeroModel(GnomeModel.Row, GnomeModel.Col);
@@ -83,28 +110,28 @@ namespace IngloriousHeros.Core.UI
                     && startRow != GnomeModel.Row)
                 {
                     drawType.HeroModel(startRow, startCol);
-                    startRow += horizontalStep;
+                    startRow += HorizontalStep;
                     drawType.HeroModel(startRow, startCol, true);
                 }
                 if (key.Key == ConsoleKey.LeftArrow
                     && startRow != ArcherModel.Row)
                 {
                     drawType.HeroModel(startRow, startCol);
-                    startRow -= horizontalStep;
+                    startRow -= HorizontalStep;
                     drawType.HeroModel(startRow, startCol, true);
                 }
                 if (key.Key == ConsoleKey.UpArrow
                     && startCol != ArcherModel.Col)
                 {
                     drawType.HeroModel(startRow, startCol);
-                    startCol -= verticalStep;
+                    startCol -= VerticalStep;
                     drawType.HeroModel(startRow, startCol, true);
                 }
                 if (key.Key == ConsoleKey.DownArrow
                     && startCol != WizzardModel.Col)
                 {
                     drawType.HeroModel(startRow, startCol);
-                    startCol += verticalStep;
+                    startCol += VerticalStep;
                     drawType.HeroModel(startRow, startCol, true);
                 }
                 key = Console.ReadKey(true);

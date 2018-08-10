@@ -8,8 +8,8 @@ namespace IngloriousHeros
     {
         public static void Main()
         {
-            Engine.Run();
-            //GameEngineTest.Run();
+            //Engine.Run();
+            GameEngineTest.Run();
         }
     }
 }

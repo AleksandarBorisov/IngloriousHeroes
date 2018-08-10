@@ -3,15 +3,21 @@ using IngloriousHeros.Models.Contracts;
 using IngloriousHeros.Core.Game;
 using IngloriousHeros.Core.UI;
 using IngloriousHeros.Models.Common;
-using IngloriousHeros.Models.Contracts;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
+using System;
 
 namespace IngloriousHeros.Models.Heros
 {
     public class Archer : Hero//, IHuman
     {
+        private static bool doubleArrow = false;
+
+        private static int criticalHitCount = 5;
+
+        private static int hitCount = 0;
+        
         //TODO: Add properties specific to class Archer
         public Archer(string name, double health, double damage, int attackDelay, Location hbLocation, List<IItem> items)
             : base(name, health, damage, attackDelay, hbLocation, items)
@@ -23,7 +29,7 @@ namespace IngloriousHeros.Models.Heros
         {
             Thread.Sleep(this.AttackDelay);
 
-            int bonusDamage = 0;//0 point bonus to damage
+            int bonusDamage = 0;
 
             if (this.Inventory.Count() > 0 && this.Inventory.Any(w => w is IWeapon))
             {
@@ -33,11 +39,18 @@ namespace IngloriousHeros.Models.Heros
             lock (Battle.EnvLock)
             {
                 if (!Battle.Cts.Token.IsCancellationRequested)
-                {//The problem here will be that this message says how much damage is dealt, but not how much damage is made
-                    //I think The message should be moved to the Amrour area where the reduction of the damage is made, in order
-                    // to display the actual damage being made
+                {
+
+                    hitCount++;
+                    if (hitCount == criticalHitCount)
+                    {
+                        oponent.TakeDamage((int)this.Damage + bonusDamage);
+                        Battle.MessageBuffer.Enqueue($"{this.Name} made critical hit------------------------------.");// damage to {oponent.Name}.");
+                        Battle.MessageBuffer.PrintBuffer();
+
+                        hitCount = 1;
+                    }
                     oponent.TakeDamage((int)this.Damage + bonusDamage);
-                    //I moved the buffer in take damage because i suggested it's more suitable there
                     HealthBar.Update(oponent);
 
                 }

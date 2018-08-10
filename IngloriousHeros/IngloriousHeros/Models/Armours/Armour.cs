@@ -19,11 +19,11 @@ namespace IngloriousHeros.Models.Armours
         public int UseItem(IHero hero)
         {//We have to decide if the last hit breaks the item or the item ends when it expires and the hero acquires a new one if he has
             int armourToAdd = this.BonusArmour;
-            BonusArmour -= 10;
             if (BonusArmour <= 0)
             {
                 (hero.Inventory as List<IItem>).Remove(this);
             }
+            BonusArmour -= 10;
 
             return armourToAdd;
 
