@@ -1,8 +1,7 @@
-﻿using IngloriousHeros.Core.Battle;
-using IngloriousHeros.Models.Common;
+﻿using IngloriousHeros.Models.Common;
 using System.Collections.Generic;
 
-namespace IngloriousHeros.Contracts
+namespace IngloriousHeros.Models.Contracts
 {
     public interface IHero : IExhaustible
     {

@@ -1,11 +1,10 @@
-﻿using IngloriousHeros.Contracts;
+﻿using IngloriousHeros.Models.Contracts;
 using IngloriousHeros.Core.Factories;
 using IngloriousHeros.Models.Heros;
 using System;
 using System.Collections.Generic;
 using IngloriousHeros.Models.Armours;
-using IngloriousHeros.Core.Battle;
-using IngloriousHeros.Core;
+using IngloriousHeros.Core.Game;
 using System.Linq;
 
 namespace IngloriousHeros.Tests
@@ -41,7 +40,7 @@ namespace IngloriousHeros.Tests
             var heroes = World.Heroes.ToList();
 
             IHero Legolas = GameUnitFactory.CreateGameUnit<Archer>("Legolas", 100, 10, 300, World.HeroHB, weaponsLegolas);
-            Hero OptimusPrime = GameUnitFactory.CreateGameUnit<Brute>("Optimus Prime", 100, 10, 1000, World.OponentHB, weaponsOptimusPrime);
+            IHero OptimusPrime = GameUnitFactory.CreateGameUnit<Brute>("Optimus Prime", 100, 10, 1000, World.OponentHB, weaponsOptimusPrime);
             //IHero Gandalf = GameUnitFactory.CreateGameUnit<Wizzard>("Gandalf", 100, 2, 500, World.OponentHB, new List<IItem>());
 
             Battle epicBattle = new Battle(Legolas, OptimusPrime);

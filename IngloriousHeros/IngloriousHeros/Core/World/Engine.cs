@@ -1,6 +1,6 @@
 ﻿using IngloriousHeros.Core.Contracts;
-using IngloriousHeros.Contracts;
 using IngloriousHeros.Core.UI;
+using IngloriousHeros.Models.Contracts;
 using IngloriousHeros.Core.Factories;
 using System.Collections.Generic;
 using IngloriousHeros.Models.Heros;

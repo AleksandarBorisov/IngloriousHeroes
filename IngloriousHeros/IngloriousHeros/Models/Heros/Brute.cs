@@ -1,11 +1,14 @@
-﻿using IngloriousHeros.Contracts;
-using IngloriousHeros.Core.Battle;
+﻿using IngloriousHeros.Models.Contracts;
+using IngloriousHeros.Core.Game;
 using IngloriousHeros.Core.UI;
 using IngloriousHeros.Models.Common;
+using IngloriousHeros.Models.Heros.Abstracts;
+using IngloriousHeros.Models.Contracts;
 using IngloriousHeros.Models.Races;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
+
 
 namespace IngloriousHeros.Models.Heros
 {

@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using IngloriousHeros.Models.Common;
-using IngloriousHeros.Contracts;
+﻿using IngloriousHeros.Models.Contracts;
 
 namespace IngloriousHeros.Models.Races
 {

@@ -1,6 +1,6 @@
 ﻿using IngloriousHeros.Models.Heros;
 
-namespace IngloriousHeros.Contracts
+namespace IngloriousHeros.Models.Contracts
 {
     public interface IItem : IExhaustible
     {

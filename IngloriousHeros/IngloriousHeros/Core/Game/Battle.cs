@@ -1,10 +1,10 @@
-﻿using IngloriousHeros.Contracts;
-using IngloriousHeros.Core.UI;
+﻿using IngloriousHeros.Core.UI;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using IngloriousHeros.Models.Contracts;
 
-namespace IngloriousHeros.Core.Battle
+namespace IngloriousHeros.Core.Game
 {
     public sealed class Battle
     {

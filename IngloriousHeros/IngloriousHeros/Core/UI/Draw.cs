@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using IngloriousHeros.Contracts;
 using System.Threading;
 using System.Linq;
+using IngloriousHeros.Core.Contracts;
 
 namespace IngloriousHeros.Core.UI.Models
 {

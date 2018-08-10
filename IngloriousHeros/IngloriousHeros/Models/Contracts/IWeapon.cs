@@ -1,4 +1,4 @@
-﻿namespace IngloriousHeros.Contracts
+﻿namespace IngloriousHeros.Models.Contracts
 {
     public interface IWeapon : IItem
     {

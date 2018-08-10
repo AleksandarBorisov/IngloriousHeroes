@@ -1,4 +1,4 @@
-﻿namespace IngloriousHeros.Models
+﻿namespace IngloriousHeros.Models.Common
 {
     public enum HeroType
     {
@@ -8,6 +8,5 @@
         Jedi,
         Warrior,
         Wizzard
-        //TODO: Implement HeroTypes
     }
 }

@@ -1,12 +1,11 @@
-﻿using IngloriousHeros.Contracts;
-using IngloriousHeros.Core.Battle;
+﻿using IngloriousHeros.Models.Contracts;
+using IngloriousHeros.Core.Game;
 using IngloriousHeros.Core.UI;
 using IngloriousHeros.Models.Common;
 using System.Collections.Generic;
-using System.Threading;
 using System.Linq;
 
-namespace IngloriousHeros.Models.Heros
+namespace IngloriousHeros.Models.Heros.Abstracts
 {
     public abstract class Hero : IHero
     {

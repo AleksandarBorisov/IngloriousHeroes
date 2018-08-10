@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
-using IngloriousHeros.Contracts;
-using IngloriousHeros.Core.Battle;
+using IngloriousHeros.Models.Contracts;
+using IngloriousHeros.Core.Game;
 using IngloriousHeros.Models.Common;
 using IngloriousHeros.Models.Races;
 using IngloriousHeros.Providers;
+using IngloriousHeros.Models.Heros.Abstracts;
 
 namespace IngloriousHeros.Models.Heros
 {

@@ -1,11 +1,12 @@
 ﻿using IngloriousHeros.Core.UI.Models;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using IngloriousHeros.Contracts;
 using IngloriousHeros.Models.Heros;
 using IngloriousHeros.Core.Factories;
 using IngloriousHeros.Models.Common;
+using IngloriousHeros.Core.Contracts;
+using IngloriousHeros.Models.Contracts;
+using IngloriousHeros.Core.Game;
 
 namespace IngloriousHeros.Core.UI
 {

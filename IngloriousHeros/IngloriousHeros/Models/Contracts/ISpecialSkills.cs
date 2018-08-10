@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace IngloriousHeros.Contracts
+namespace IngloriousHeros.Models.Contracts
 {
     public interface ISpecialSkills
     {

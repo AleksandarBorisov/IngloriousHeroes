@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace IngloriousHeros.Contracts
+﻿namespace IngloriousHeros.Core.Contracts
 {
     public interface IFont
     {

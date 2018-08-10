@@ -1,7 +1,9 @@
-﻿using IngloriousHeros.Contracts;
-using IngloriousHeros.Core.Battle;
+﻿using IngloriousHeros.Models.Heros.Abstracts;
+using IngloriousHeros.Models.Contracts;
+using IngloriousHeros.Core.Game;
 using IngloriousHeros.Core.UI;
 using IngloriousHeros.Models.Common;
+using IngloriousHeros.Models.Contracts;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;

@@ -1,4 +1,4 @@
-﻿using IngloriousHeros.Contracts;
+﻿using IngloriousHeros.Models.Contracts;
 using IngloriousHeros.Models.Heros;
 using System.Collections.Generic;
 using System.Linq;

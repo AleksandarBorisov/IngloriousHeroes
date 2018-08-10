@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using IngloriousHeros.Core.Battle;
+using IngloriousHeros.Core.Game;
 
 namespace IngloriousHeros.Core.UI
 {
@@ -11,7 +11,7 @@ namespace IngloriousHeros.Core.UI
 
         public void Enqueue(string message)
         {
-            lock (Battle.Battle.EnvLock)
+            lock (Battle.EnvLock)
             {
                 if (this.elements.Count == 20)
                 {
@@ -34,7 +34,7 @@ namespace IngloriousHeros.Core.UI
 
         public void PrintBuffer()
         {
-            lock (Battle.Battle.EnvLock)
+            lock (Battle.EnvLock)
             {
                 int row = 5;
 

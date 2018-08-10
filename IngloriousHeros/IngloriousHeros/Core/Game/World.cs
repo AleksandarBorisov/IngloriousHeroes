@@ -1,11 +1,12 @@
-﻿using IngloriousHeros.Contracts;
+﻿using IngloriousHeros.Models.Contracts;
 using IngloriousHeros.Core.Factories;
 using IngloriousHeros.Models.Common;
 using IngloriousHeros.Models.Heros;
 using System;
 using System.Collections.Generic;
 
-namespace IngloriousHeros.Core
+
+namespace IngloriousHeros.Core.Game
 {
     public static class World
     {

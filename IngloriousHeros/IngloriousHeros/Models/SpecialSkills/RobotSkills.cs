@@ -1,5 +1,5 @@
 ﻿using System;
-using IngloriousHeros.Contracts;
+using IngloriousHeros.Models.Contracts;
 
 namespace IngloriousHeros.Models.SpecialSkills
 {

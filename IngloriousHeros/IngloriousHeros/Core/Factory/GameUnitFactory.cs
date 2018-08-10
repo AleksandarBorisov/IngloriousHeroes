@@ -1,4 +1,4 @@
-﻿using IngloriousHeros.Contracts;
+﻿using IngloriousHeros.Models.Contracts;
 using System;
 
 namespace IngloriousHeros.Core.Factories

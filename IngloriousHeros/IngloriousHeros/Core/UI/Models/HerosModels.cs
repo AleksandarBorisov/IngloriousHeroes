@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using IngloriousHeros.Core.UI;
-
-namespace IngloriousHeros.Core.UI.Models
+﻿namespace IngloriousHeros.Core.UI.Models
 {
     class HerosModels
     {
