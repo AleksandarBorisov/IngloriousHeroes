@@ -6,7 +6,7 @@ namespace IngloriousHeros.Core.UI.Models
     {
         private readonly string[] letters =
         {
-            @"         
+            @"
  _______ 
 (  ___  )
 | (   ) |

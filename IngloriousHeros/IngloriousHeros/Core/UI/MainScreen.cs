@@ -91,9 +91,11 @@ namespace IngloriousHeros.Core.UI
 
         public IHero Start()
         {
+            Console.WindowWidth = 120;
+            Console.WindowHeight = 50;
             Draw drawType = Draw.Instance;
-            drawType.CaptionLeftRight(CaptionOne.Row, CaptionOne.Col, CaptionOneValue, CaptionOneFont);
-            drawType.CaptionLeftRight(CaptionTwo.Row, CaptionTwo.Col, CaptionTwoValue, CaptionTwoFont);
+            drawType.CaptionLeftRight(CaptionOne.Row, CaptionOne.Col, CaptionOneValue, CaptionOneFont, 50);
+            drawType.CaptionLeftRight(CaptionTwo.Row, CaptionTwo.Col, CaptionTwoValue, CaptionTwoFont, 50);
             drawType.CaptionBlinking(CaptionThree.Row, CaptionThree.Col, CaptionThreeValue, CaptionThreeFont);
             drawType.HeroModel(ArcherModel.Row, ArcherModel.Col, true);
             drawType.HeroModel(WarriorModel.Row, WarriorModel.Col);
@@ -136,18 +138,25 @@ namespace IngloriousHeros.Core.UI
                 }
                 key = Console.ReadKey(true);
             }
-            IHero heroInstance = GameUnitFactory.CreateGameUnit<Archer>("Legolas", 100, 10, 300, World.HeroHB, new List<IItem>());
+            Console.Clear();
+            drawType.CaptionLeftRight(30, 15, "choose", CaptionThreeFont, 0);
+            drawType.CaptionLeftRight(18, 25, "username", CaptionThreeFont, 0);
+            Console.SetCursorPosition(Console.WindowWidth / 2, Console.WindowHeight - 10);
+            Console.CursorVisible = true;
+            string userName = Console.ReadLine();
+            World.CreateWorld();
+            IHero heroInstance = GameUnitFactory.CreateGameUnit<Archer>(userName, 100, 3, 500, World.HeroHB, new List<IItem>());
             if ((startRow == WarriorModel.Row) && (startCol == WarriorModel.Col))
-            { heroInstance = GameUnitFactory.CreateGameUnit<Warrior>("Legolas", 100, 10, 300, World.HeroHB, new List<IItem>()); }
+            { heroInstance = GameUnitFactory.CreateGameUnit<Warrior>(userName, 100, 5, 300, World.HeroHB, new List<IItem>()); }
             if ((startRow == GnomeModel.Row) && (startCol == GnomeModel.Col))
-            { heroInstance = GameUnitFactory.CreateGameUnit<Gnome>("Legolas", 100, 10, 300, World.HeroHB, new List<IItem>()); }
+            { heroInstance = GameUnitFactory.CreateGameUnit<Gnome>(userName, 100, 5, 300, World.HeroHB, new List<IItem>()); }
             if ((startRow == BruteModel.Row) && (startCol == BruteModel.Col))
-            { heroInstance = GameUnitFactory.CreateGameUnit<Brute>("Legolas", 100, 10, 300, World.HeroHB, new List<IItem>()); }
+            { heroInstance = GameUnitFactory.CreateGameUnit<Brute>(userName, 100, 5, 300, World.HeroHB, new List<IItem>()); }
             if ((startRow == JediModel.Row) && (startCol == JediModel.Col))
-            { heroInstance = GameUnitFactory.CreateGameUnit<Jedi>("Legolas", 100, 10, 300, World.HeroHB, new List<IItem>()); }
+            { heroInstance = GameUnitFactory.CreateGameUnit<Jedi>(userName, 100, 5, 300, World.HeroHB, new List<IItem>()); }
             if ((startRow == WizzardModel.Row) && (startCol ==WizzardModel.Col))
-            { heroInstance = GameUnitFactory.CreateGameUnit<Wizzard>("Legolas", 100, 10, 300, World.HeroHB, new List<IItem>()); }
-
+            { heroInstance = GameUnitFactory.CreateGameUnit<Wizzard>(userName, 100, 5, 300, World.HeroHB, new List<IItem>()); }
+            Console.Clear();
             return heroInstance;
         }
     }

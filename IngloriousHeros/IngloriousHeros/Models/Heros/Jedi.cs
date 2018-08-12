@@ -16,12 +16,12 @@ namespace IngloriousHeros.Models.Heros
         public Jedi(string name, double health, double damage, int attackDelay, Location hbLocation, List<IItem> items)
             : base(name, health, damage, attackDelay, hbLocation, items)
         {
-
+            this.SpecialSkills = new List<ISpecialSkills>();
         }
 
         public RaceName Race => this.race;
 
-        public List<ISpecialSkills> SpecialSkills => throw new System.NotImplementedException();
+        public List<ISpecialSkills> SpecialSkills { get; set; }
 
         public override void Attack(IHero oponent)
         {

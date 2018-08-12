@@ -7,7 +7,7 @@ namespace IngloriousHeros.Core.UI.Models
 {
     class Draw
     {
-        private const int leftRightSpeed = 50;
+        //private const int leftRightSpeed = 50;
         private const int blinkPause = 200;
 
         private static Draw instanceHolder;
@@ -48,7 +48,7 @@ namespace IngloriousHeros.Core.UI.Models
             return result;
         }
 
-        public void CaptionLeftRight(int startingRow, int startinColumn, string message, IFont currentFont)
+        public void CaptionLeftRight(int startingRow, int startinColumn, string message, IFont currentFont, int leftRightSpeed)
         {
             int currentColumn = startinColumn;
             int currentRow = startingRow;
@@ -57,19 +57,19 @@ namespace IngloriousHeros.Core.UI.Models
                 char[,] letterAsCharArray = ProcessLetter(message[i], currentFont);
                 for (int col = 0; col < letterAsCharArray.GetLength(1); col++)
                 {
-                    //Console.SetCursorPosition(currentRow, currentColumn);
+                    Console.SetCursorPosition(currentRow, currentColumn);
                     for (int row = 0; row < letterAsCharArray.GetLength(0); row++)
                     {
-                        //Console.Write(letterAsCharArray[row, col]);
-                        //Console.SetCursorPosition(currentRow, ++currentColumn);
-                        Console.SetCursorPosition(startingRow + col + i * letterAsCharArray.GetLength(1), startinColumn + row);
                         Console.Write(letterAsCharArray[row, col]);
+                        Console.SetCursorPosition(currentRow, ++currentColumn);
+                        //Console.SetCursorPosition(startingRow + col + i * letterAsCharArray.GetLength(1), startinColumn + row);
+                        //Console.Write(letterAsCharArray[row, col]);
                     }
-                    //currentRow++;
-                    //currentColumn = startinColumn;
+                    currentRow++;
+                    currentColumn = startinColumn;
                     Thread.Sleep(leftRightSpeed);
                 }
-                //currentRow++;
+                currentRow++;
             }
         }
 

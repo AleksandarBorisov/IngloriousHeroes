@@ -34,6 +34,7 @@ namespace IngloriousHeros.Models.Heros
         {
             base.Race = RaceName.Fantasoid;
             this.Spells = spells;
+            this.SpecialSkills = new List<ISpecialSkills>();
         }
 
         public int Mana
@@ -48,11 +49,17 @@ namespace IngloriousHeros.Models.Heros
             set => this.spells = value;
         }
 
+<<<<<<< HEAD
         public Minion MinionUndead
         {
             get => this.minionUndead;
             set => this.minionUndead = value;
         }
+=======
+        public RaceName Race => this.race;
+
+        public List<ISpecialSkills> SpecialSkills {get; set;}
+>>>>>>> 180a5c2eda2e9054bf6b9ccf33b42e7a253089fa
 
         public override void Attack(IHero oponent)
         {

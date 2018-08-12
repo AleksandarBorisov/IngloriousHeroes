@@ -17,6 +17,8 @@ namespace IngloriousHeros.Models.Contracts
 
         int AttackDelay { get; set; }
 
+        int Wins { get; set; }
+
         IHero Oponent { get; set; }
 
         Location HbLocation { get; set; }
