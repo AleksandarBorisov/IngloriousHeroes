@@ -15,6 +15,7 @@ namespace IngloriousHeros.Models.Heros.Abstracts
         private double armour;
         private double damage;
         private int attackDelay;
+        private int wins;
         private IHero oponent;
         private Location hbLocation;
         private IEnumerable<IItem> inventory;
@@ -81,6 +82,15 @@ namespace IngloriousHeros.Models.Heros.Abstracts
             set => this.attackDelay = value;
         }
 
+        public int Wins {
+            get => this.wins;
+            set
+            {
+                //ValueCheck.Positive(value, "Wins can't be negative!");
+                this.wins = value;
+            }
+        }
+
         public IHero Oponent
         {
             get => this.oponent;
@@ -126,5 +136,6 @@ namespace IngloriousHeros.Models.Heros.Abstracts
 
             this.Health -= damage * (1 - bonusArmour / 100.0);
         }
+
     }
 }

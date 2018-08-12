@@ -14,7 +14,7 @@ namespace IngloriousHeros.Core
 {
     public class GameEngine : IEngine
     {
-        public static void Run()
+        public static void Run(IHero hero)
         {
             World.InitializeEnvironment();
             World.CreateWorld();
@@ -22,7 +22,7 @@ namespace IngloriousHeros.Core
             Process soundPlayer = Process.Start(@"../../../../SoundPlayer/bin/Debug/SoundPlayer.exe");
 
             int artefacts = 0;
-            IHero hero = GameUnitFactory.CreateGameUnit<Archer>("Legolas", 100, 5, 500, World.HeroHB, new List<IItem>());
+            //IHero hero = GameUnitFactory.CreateGameUnit<Warrior>("Hercules", 100, 15, 500, World.HeroHB, new List<IItem>());
             IHero enemy = null;
 
             while (hero.Health > 0 && artefacts < 10)

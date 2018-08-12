@@ -84,6 +84,7 @@ namespace IngloriousHeros.Core.Game
                     Console.ForegroundColor = ConsoleColor.Gray;
                     Thread.Sleep(2000);
                     Console.Clear();
+                    hero.Wins++;
                 }
                 else
                 {

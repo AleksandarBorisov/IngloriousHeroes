@@ -18,7 +18,7 @@ namespace IngloriousHeros.Models.Weapons
         {
             int damageToAdd = this.BonusDamage;//Работим с инстанцията, от която сме извикали метода UseItem
             BonusDamage--;//Засега не използваме TakeDamage, защото не сме сложили Charge-ове на самия Item
-            if (BonusDamage == 0)
+            if (BonusDamage <= 0)
             {
                 (hero.Inventory as List<IItem>).Remove(this);
             }

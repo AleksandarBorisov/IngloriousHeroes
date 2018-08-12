@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using IngloriousHeros.Models.Armours;
 using IngloriousHeros.Models.Weapons;
+using IngloriousHeros.Models.SpecialSkills;
 
 namespace IngloriousHeros.Core.Game
 {
@@ -13,22 +14,26 @@ namespace IngloriousHeros.Core.Game
     {
         private static IEnumerable<IHero> heroes;
         private static IEnumerable<IItem> items;
+        private static IEnumerable<ISpecialSkills> robotSkills;
         private static Location heroHB = new Location(1, 10);
         private static Location oponentHB = new Location(1, 90);
         private static Location bufferLocation = new Location(4, 0);
         private static Location outcomeLocation = new Location(26, 0);
 
-        //static World()
+        //static world()
         //{
-        //    heroes = new List<IHero>();
-        //    weapons = new List<IItem>();
-        //    armours = new List<IItem>();
-        //    specialItems = new List<IItem>();
+        //    heroes = new list<ihero>();
+        //    weapons = new list<iitem>();
+        //    armours = new list<iitem>();
+        //    robotSkills = new list<ISpecialSkills>();
+        //    specialitems = new list<iitem>();
         //}
 
         public static IEnumerable<IHero> Heroes => heroes;
 
         public static IEnumerable<IItem> Items => items;
+
+        public static IEnumerable<ISpecialSkills> RobotSkills => robotSkills;
 
         public static Location HeroHB => heroHB;
 
@@ -40,15 +45,17 @@ namespace IngloriousHeros.Core.Game
 
         public static void InitializeEnvironment()
         {
+            Console.Clear();
             Console.WindowWidth = 120;
-            Console.BufferWidth = Console.WindowWidth;
+            Console.BufferWidth = 120;
             Console.WindowHeight = 30;
-            Console.BufferHeight = Console.WindowHeight;
+            Console.BufferHeight = 30;
             Console.CursorVisible = false;
         }
 
         public static void CreateWorld()
         {
+            CreateRobotSkills();
             CreateHeroes();
             CreateItems();
         }
@@ -60,7 +67,7 @@ namespace IngloriousHeros.Core.Game
                 GameUnitFactory.CreateGameUnit<Archer>("Legolas", 100, 3, 500, OponentHB, new List<IItem>()),
                 GameUnitFactory.CreateGameUnit<Wizzard>("Harry Potter", 100, 3, 500, OponentHB, new List<IItem>()),
                 GameUnitFactory.CreateGameUnit<Gnome>("Tom", 100, 3, 500, OponentHB, new List<IItem>()),
-                GameUnitFactory.CreateGameUnit<Jedi>("Neo from The Matrix", 100, 3, 500, OponentHB, new List<IItem>()),
+                GameUnitFactory.CreateGameUnit<Jedi>("Neo from The Matrix", 100, 6, 500, OponentHB, new List<IItem>()),
                 GameUnitFactory.CreateGameUnit<Warrior>("Iron Man", 100, 3, 500, OponentHB, new List<IItem>()),
                 GameUnitFactory.CreateGameUnit<Archer>("Spiderman", 100, 3, 500, OponentHB, new List<IItem>()),
                 GameUnitFactory.CreateGameUnit<Wizzard>("Gandalf", 100, 3, 500, OponentHB, new List<IItem>()),
@@ -114,6 +121,16 @@ namespace IngloriousHeros.Core.Game
                 GameUnitFactory.CreateGameUnit<Sword>(3),
                 GameUnitFactory.CreateGameUnit<Sword>(4),
                 GameUnitFactory.CreateGameUnit<Sword>(5),
+            };
+        }
+
+        private static void CreateRobotSkills()
+        {
+            robotSkills = new List<ISpecialSkills>()
+            {
+                GameUnitFactory.CreateGameUnit<RobotSkills>("RoboKiller", 5, 300, 50, 50),
+                GameUnitFactory.CreateGameUnit<RobotSkills>("RoboKing", 10, 300, 100, 100),
+                GameUnitFactory.CreateGameUnit<RobotSkills>("WorldDestroyer", 15, 300, 150, 150),
             };
         }
     }

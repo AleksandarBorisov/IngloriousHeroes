@@ -19,6 +19,7 @@ namespace IngloriousHeros.Models.Heros
             : base(name, health, damage, attackDelay, hbLocation, items)
         {
             this.Spells = spells;
+            this.SpecialSkills = new List<ISpecialSkills>();
         }
 
         public List<IItem> Spells
@@ -29,7 +30,7 @@ namespace IngloriousHeros.Models.Heros
 
         public RaceName Race => this.race;
 
-        public List<ISpecialSkills> SpecialSkills => throw new System.NotImplementedException();
+        public List<ISpecialSkills> SpecialSkills {get; set;}
 
         public override void Attack(IHero oponent)
         {

@@ -1,13 +1,9 @@
-﻿using IngloriousHeros.Models.Common;
-using System.Collections.Generic;
-using IngloriousHeros.Models.SpecialSkills;
+﻿using System.Collections.Generic;
 
 namespace IngloriousHeros.Models.Contracts
 {
     public interface IRace
     {
-        RaceName Race { get; }
-
-        List<ISpecialSkills> SpecialSkills { get; }
+        List<ISpecialSkills> SpecialSkills { get;}
     }
 }
