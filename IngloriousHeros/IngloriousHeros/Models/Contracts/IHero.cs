@@ -5,6 +5,8 @@ namespace IngloriousHeros.Models.Contracts
 {
     public interface IHero : IExhaustible
     {
+        RaceName Race { get; }
+
         string Name { get; }
 
         double Health { get; set; }
@@ -14,6 +16,8 @@ namespace IngloriousHeros.Models.Contracts
         double Damage { get; set; }
 
         int AttackDelay { get; set; }
+
+        IHero Oponent { get; set; }
 
         Location HbLocation { get; set; }
 

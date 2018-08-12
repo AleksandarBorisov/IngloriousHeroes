@@ -8,16 +8,14 @@ namespace IngloriousHeros.Core.Game
 {
     public sealed class Battle
     {
-        private static readonly CancellationTokenSource cts = new CancellationTokenSource();
+        private static CancellationTokenSource cts;
         private static readonly object envLock = new object();
         private static readonly MessageBuffer messageBuffer = new MessageBuffer();
         private readonly IHero hero;
-        private readonly IHero oponent;
 
-        public Battle(IHero hero, IHero oponent)
+        public Battle(IHero hero)
         {
             this.hero = hero;
-            this.oponent = oponent;
         }
 
         public static CancellationTokenSource Cts => cts;
@@ -28,19 +26,26 @@ namespace IngloriousHeros.Core.Game
 
         public IHero Hero => this.hero;
 
-        public IHero Oponent => this.oponent;
-
         public void Start()
         {
+            cts = new CancellationTokenSource();
             this.DisplayBattleStats();
-            Task.Factory.StartNew(() => this.BeginBattle(this.Hero, this.Oponent));
-            Task.Factory.StartNew(() => this.BeginBattle(this.Oponent, this.Hero));
+
+            Task[] battles = new Task[]
+            {
+                Task.Factory.StartNew(() => this.BeginBattle(this.Hero, this.Hero.Oponent)),
+                Task.Factory.StartNew(() => this.BeginBattle(this.Hero.Oponent, this.Hero))
+            };
+
+            Task.WaitAll(battles);
         }
 
         private void DisplayBattleStats()
         {
+            Console.Clear();
+
             HealthBar.Draw(hero);
-            HealthBar.Draw(oponent);
+            HealthBar.Draw(hero.Oponent);
             Console.SetCursorPosition(World.BufferLocation.Col, World.BufferLocation.Row);
             Console.WriteLine("Fight history:");
         }
@@ -49,7 +54,7 @@ namespace IngloriousHeros.Core.Game
         {
             while (!cts.Token.IsCancellationRequested)
             {
-                if (oponent.Health > 0)
+                if (hero.Oponent.Health > 0)
                 {
                     hero.Attack(oponent);
                 }
@@ -57,7 +62,6 @@ namespace IngloriousHeros.Core.Game
                 {
                     cts.Cancel();
                     PrintOutcome(hero, oponent);
-                    cts.Dispose();
                 }
             }
         }
@@ -78,6 +82,8 @@ namespace IngloriousHeros.Core.Game
                     Console.SetCursorPosition(World.OutcomeLocation.Col, World.OutcomeLocation.Row + 2);
                     Console.WriteLine($"{oponent.Name} health: {(oponent.Health < 0 ? 0 : oponent.Health)}");
                     Console.ForegroundColor = ConsoleColor.Gray;
+                    Thread.Sleep(2000);
+                    Console.Clear();
                 }
                 else
                 {

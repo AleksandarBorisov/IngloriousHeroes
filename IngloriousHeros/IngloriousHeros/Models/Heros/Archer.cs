@@ -7,15 +7,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System;
+using IngloriousHeros.Models.Races;
 
 namespace IngloriousHeros.Models.Heros
 {
-    public class Archer : Hero//, IHuman
+    public class Archer : Hero, IHuman
     {
+        private RaceName race = RaceName.Human;
         private static bool doubleArrow = false;
-
         private static int criticalHitCount = 5;
-
         private static int hitCount = 0;
         
         //TODO: Add properties specific to class Archer
@@ -24,6 +24,10 @@ namespace IngloriousHeros.Models.Heros
         {
 
         }
+
+        public RaceName Race => this.race;
+
+        public List<ISpecialSkills> SpecialSkills => throw new NotImplementedException();
 
         public override void Attack(IHero oponent)
         {
@@ -40,8 +44,8 @@ namespace IngloriousHeros.Models.Heros
             {
                 if (!Battle.Cts.Token.IsCancellationRequested)
                 {
-
                     hitCount++;
+
                     if (hitCount == criticalHitCount)
                     {
                         oponent.TakeDamage((int)this.Damage + bonusDamage);
@@ -51,15 +55,8 @@ namespace IngloriousHeros.Models.Heros
                         hitCount = 1;
                     }
                     oponent.TakeDamage((int)this.Damage + bonusDamage);
-                    HealthBar.Update(oponent);
-
                 }
             }
-        }
-
-        public override void TakeDamage(int damage)
-        {
-            base.TakeDamage(damage);
         }
     }
 }

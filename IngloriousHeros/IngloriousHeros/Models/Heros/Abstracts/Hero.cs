@@ -9,11 +9,13 @@ namespace IngloriousHeros.Models.Heros.Abstracts
 {
     public abstract class Hero : IHero
     {
+        private RaceName race;
         private string name;
         private double health;
         private double armour;
         private double damage;
         private int attackDelay;
+        private IHero oponent;
         private Location hbLocation;
         private IEnumerable<IItem> inventory;
 
@@ -25,6 +27,12 @@ namespace IngloriousHeros.Models.Heros.Abstracts
             this.AttackDelay = attackDelay;
             this.HbLocation = hbLocation;
             this.Inventory = items;
+        }
+
+        public RaceName Race
+        {
+            get => this.race;
+            set => this.race = value;
         }
 
         public string Name
@@ -73,6 +81,12 @@ namespace IngloriousHeros.Models.Heros.Abstracts
             set => this.attackDelay = value;
         }
 
+        public IHero Oponent
+        {
+            get => this.oponent;
+            set => this.oponent = value;
+        }
+
         public Location HbLocation
         {
             get => this.hbLocation;
@@ -102,10 +116,13 @@ namespace IngloriousHeros.Models.Heros.Abstracts
             {
                 bonusArmour = Inventory.First(a => a is IArmour).UseItem(this);
             }
-            // The formula below is fixed
             
-            Battle.MessageBuffer.Enqueue($"{this.Name} received {(int)(this.Damage) * (1 - bonusArmour / 100.0)} damage by.");// damage to {oponent.Name}.");
-            Battle.MessageBuffer.PrintBuffer();
+            if (!Battle.Cts.Token.IsCancellationRequested)
+            {
+                Battle.MessageBuffer.Enqueue($"{this.Oponent.Name} deals {(int)(damage) * (1 - bonusArmour / 100.0)} damage to {this.Name}.");// damage to {oponent.Name}.");
+                Battle.MessageBuffer.PrintBuffer();
+                HealthBar.Update(this);
+            }
 
             this.Health -= damage * (1 - bonusArmour / 100.0);
         }

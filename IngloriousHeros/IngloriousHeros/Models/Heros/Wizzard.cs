@@ -5,11 +5,13 @@ using IngloriousHeros.Models.Heros.Abstracts;
 using IngloriousHeros.Models.Contracts;
 using System.Collections.Generic;
 using System.Threading;
+using IngloriousHeros.Models.Races;
 
 namespace IngloriousHeros.Models.Heros
 {
-    public class Wizzard : Hero //IWarcraft//, IHero
+    public class Wizzard : Hero, IFantasoid
     {
+        private RaceName race = RaceName.Fantasoid;
         private List<IItem> spells;
         private bool hasUsedSpell = false;
 
@@ -25,6 +27,10 @@ namespace IngloriousHeros.Models.Heros
             set => this.spells = value;
         }
 
+        public RaceName Race => this.race;
+
+        public List<ISpecialSkills> SpecialSkills => throw new System.NotImplementedException();
+
         public override void Attack(IHero oponent)
         {
             Thread.Sleep(this.AttackDelay);
@@ -36,26 +42,13 @@ namespace IngloriousHeros.Models.Heros
                 if (this.Health < 20 && this.hasUsedSpell == false)
                 {
                     this.hasUsedSpell = true;
-                    oponent.AttackDelay = 500;
+                    oponent.AttackDelay += 500;
                     Battle.MessageBuffer.Enqueue(spell);
                     Battle.MessageBuffer.PrintBuffer();
                 }
 
                 oponent.TakeDamage((int)this.Damage);
-
-                // What if oponent dies after damage above?
-                if (!Battle.Cts.Token.IsCancellationRequested)
-                {
-                    Battle.MessageBuffer.Enqueue($"{this.Name} deals {(int)((this.Damage))} damage to {oponent.Name}.");
-                    Battle.MessageBuffer.PrintBuffer();
-                    HealthBar.Update(oponent);
-                }
             }
-        }
-
-        public override void TakeDamage(int damage)
-        {
-            base.TakeDamage(damage);
         }
     }
 }

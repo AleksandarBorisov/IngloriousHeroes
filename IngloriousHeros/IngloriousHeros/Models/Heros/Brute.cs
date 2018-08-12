@@ -1,25 +1,28 @@
 ﻿using IngloriousHeros.Models.Contracts;
 using IngloriousHeros.Core.Game;
-using IngloriousHeros.Core.UI;
 using IngloriousHeros.Models.Common;
 using IngloriousHeros.Models.Heros.Abstracts;
-using IngloriousHeros.Models.Contracts;
-using IngloriousHeros.Models.Races;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
-
+using IngloriousHeros.Models.Races;
 
 namespace IngloriousHeros.Models.Heros
 {
-    public class Brute : Hero //IRobot, IHero
+    public class Brute : Hero, IRobot
     {
+        private RaceName race = RaceName.Robot;
+
         //TODO: Add properties specific to class Brute
         public Brute(string name, double health, double damage, int attackDelay, Location hbLocation, List<IItem> items)
             : base(name, health, damage, attackDelay, hbLocation, items)
         {
             
         }
+
+        public RaceName Race => this.race;
+
+        public List<ISpecialSkills> SpecialSkills => throw new System.NotImplementedException();
 
         public override void Attack(IHero oponent)
         {
@@ -36,18 +39,9 @@ namespace IngloriousHeros.Models.Heros
             {
                 if (!Battle.Cts.Token.IsCancellationRequested)
                 {
-                    // The formula below should be checked
-                    //Battle.MessageBuffer.Enqueue($"{this.Name} deals {(int)(this.Damage + bonusDamage)} damage to {oponent.Name}.");
-                    //Battle.MessageBuffer.PrintBuffer();
                     oponent.TakeDamage((int)this.Damage + bonusDamage);
-                    HealthBar.Update(oponent);
                 }
             }
-        }
-
-        public override void TakeDamage(int damage)
-        {
-            base.TakeDamage(damage);
         }
     }
 }

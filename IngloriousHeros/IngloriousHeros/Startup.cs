@@ -1,15 +1,17 @@
 ﻿using IngloriousHeros.Core;
+using IngloriousHeros.Models.Contracts;
 
 namespace IngloriousHeros
 {
-    using Tests;
-
     public class Startup
     {
         public static void Main()
         {
-            //Engine.Run();
-            GameEngineTest.Run();
+
+            // Build the SoundPlayer project (F6 only) before starting the game in order to have music
+
+            //IHero hero = MainScreen.Instance.Start();
+            GameEngine.Run();
         }
     }
 }

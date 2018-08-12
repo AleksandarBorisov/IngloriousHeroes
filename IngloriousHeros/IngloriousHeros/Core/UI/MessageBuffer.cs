@@ -47,5 +47,10 @@ namespace IngloriousHeros.Core.UI
                 }
             }
         }
+
+        public void Clear()
+        {
+            this.Elements.Clear();
+        }
     }
 }
