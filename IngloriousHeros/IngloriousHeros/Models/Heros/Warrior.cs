@@ -84,7 +84,7 @@ namespace IngloriousHeros.Models.Heros
                 wins = SpecialSkills.Count - 1;
             }
             this.Transformation = this.SpecialSkills[wins] as RobotSkills;
-
+            currentHits = 0;
             this.Damage += Transformation.AtackBonus;
             this.Health += Transformation.HealthBonus;
             this.Armour += Transformation.ArmourBonus;

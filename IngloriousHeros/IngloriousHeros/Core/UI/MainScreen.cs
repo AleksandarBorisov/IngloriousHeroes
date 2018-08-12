@@ -7,6 +7,7 @@ using IngloriousHeros.Models.Common;
 using IngloriousHeros.Core.Contracts;
 using IngloriousHeros.Models.Contracts;
 using IngloriousHeros.Core.Game;
+using System.Diagnostics;
 
 namespace IngloriousHeros.Core.UI
 {
@@ -93,7 +94,7 @@ namespace IngloriousHeros.Core.UI
             Console.WindowWidth = 120;
             Console.WindowHeight = Console.LargestWindowHeight;
             Draw drawType = Draw.Instance;
-
+            Process soundPlayer = Process.Start(@"../../../../SoundPlayer/bin/Debug/SoundPlayer.exe");
             drawType.CaptionLeftRight(CaptionOne.Row, CaptionOne.Col, CaptionOneValue, CaptionOneFont, 50);
             drawType.CaptionLeftRight(CaptionTwo.Row, CaptionTwo.Col, CaptionTwoValue, CaptionTwoFont, 50);
             drawType.CaptionBlinking(CaptionThree.Row, CaptionThree.Col, CaptionThreeValue, CaptionThreeFont);
