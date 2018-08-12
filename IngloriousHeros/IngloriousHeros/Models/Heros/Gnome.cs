@@ -5,27 +5,49 @@ using IngloriousHeros.Models.Heros.Abstracts;
 using IngloriousHeros.Models.Races;
 using System.Collections.Generic;
 using System.Threading;
+using IngloriousHeros.Models.SpecialSkills;
 
 namespace IngloriousHeros.Models.Heros
 {
     public class Gnome : Hero, IFantasoid
     {
-        //TODO: Add properties specific to class Gnome
-        private RaceName race = RaceName.Fantasoid;
+        private int mana;
 
         public Gnome(string name, double health, double damage, int attackDelay, Location hbLocation, List<IItem> items)
             : base(name, health, damage, attackDelay, hbLocation, items)
         {
-
+            base.Race = RaceName.Fantasoid;
+            this.Mana = 0;
         }
 
-        public RaceName Race => this.race;
-
         public List<ISpecialSkills> SpecialSkills => throw new System.NotImplementedException();
+
+        public int Mana
+        {
+            get => this.mana;
+            private set => this.mana = value;
+        }
+
+        public List<FantasoidSkill> Spells => throw new System.NotImplementedException();
 
         public override void Attack(IHero oponent)
         {
             Thread.Sleep(this.AttackDelay);
+
+            this.Mana++;
+
+            if (this.Mana > 30)
+            {
+                // Use skill at index 2
+            }
+            else if (this.Mana > 20)
+            {
+                // Use skill at index 1
+            }
+            else if (this.Mana > 10)
+            {
+                // Use skill at index 0
+            }
 
             lock (Battle.EnvLock)
             {

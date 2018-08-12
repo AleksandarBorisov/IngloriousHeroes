@@ -22,7 +22,7 @@ namespace IngloriousHeros.Core
             Process soundPlayer = Process.Start(@"../../../../SoundPlayer/bin/Debug/SoundPlayer.exe");
 
             int artefacts = 0;
-            IHero hero = GameUnitFactory.CreateGameUnit<Archer>("Legolas", 100, 5, 500, World.HeroHB, new List<IItem>());
+            IHero hero = GameUnitFactory.CreateGameUnit<Wizzard>("Harry Potter", 100, 1, 500, World.HeroHB, new List<IItem>());
             IHero enemy = null;
 
             while (hero.Health > 0 && artefacts < 10)
