@@ -25,6 +25,6 @@ namespace IngloriousHeros.Models.Contracts
 
         IEnumerable<IItem> Inventory { get; set; }
 
-        void Attack(IHero oponent);
+        void Attack();
     }
 }

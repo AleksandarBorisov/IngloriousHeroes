@@ -8,7 +8,6 @@ using IngloriousHeros.Models.Races;
 using System.Linq;
 using IngloriousHeros.Models.SpecialSkills;
 using System;
-using System.Threading.Tasks;
 using IngloriousHeros.Core.UI;
 
 namespace IngloriousHeros.Models.Heros
@@ -34,7 +33,6 @@ namespace IngloriousHeros.Models.Heros
         {
             base.Race = RaceName.Fantasoid;
             this.Spells = spells;
-            this.SpecialSkills = new List<ISpecialSkills>();
         }
 
         public int Mana
@@ -49,29 +47,22 @@ namespace IngloriousHeros.Models.Heros
             set => this.spells = value;
         }
 
-<<<<<<< HEAD
         public Minion MinionUndead
         {
             get => this.minionUndead;
             set => this.minionUndead = value;
         }
-=======
-        public RaceName Race => this.race;
 
-        public List<ISpecialSkills> SpecialSkills {get; set;}
->>>>>>> 180a5c2eda2e9054bf6b9ccf33b42e7a253089fa
-
-        public override void Attack(IHero oponent)
+        public override void Attack()
         {
             Thread.Sleep(this.AttackDelay);
 
             this.Mana += 5;
 
-            this.ConjureUpABlackMagic();
-
-            if (this.hasUsedBlackMagic)
+            if (this.Health < 10 && this.Oponent.Health > 10 && this.hasUsedBlackMagic == false)
             {
-                return;
+                this.hasUsedBlackMagic = true;
+                this.ConjureUpABlackMagic();
             }
 
             if (hasSummonedAMinion == false)
@@ -99,8 +90,8 @@ namespace IngloriousHeros.Models.Heros
                 if (this.Health < 20 && this.hasUsedAttackDelaySpell == false)
                 {
                     this.hasUsedAttackDelaySpell = true;
-                    string spell = $"{this.Name} has cast an AttackDelay spell on {oponent.Name}!     >>>>>>>>>> S P E L L L <<<<<<<<<<";
-                    oponent.AttackDelay += 500;
+                    string spell = $"{this.Name} has cast an AttackDelay spell on {this.Oponent.Name}!     >>>>>>>>>> S P E L L L <<<<<<<<<<";
+                    this.Oponent.AttackDelay += 500;
                     Battle.MessageBuffer.Enqueue(spell);
                     Battle.MessageBuffer.PrintBuffer();
                 }
@@ -111,7 +102,7 @@ namespace IngloriousHeros.Models.Heros
                     Battle.MessageBuffer.Enqueue($"The Minion deals {this.Damage} damage to {this.Oponent.Name}");
                 }
 
-                oponent.TakeDamage((int)this.Damage);
+                this.Oponent.TakeDamage((int)this.Damage);
             }
         }
 
@@ -143,22 +134,19 @@ namespace IngloriousHeros.Models.Heros
 
         private void ConjureUpABlackMagic()
         {
-            if (this.Health < 10 && this.Oponent.Health > 10 && this.hasUsedBlackMagic == false)
-            {
-                this.hasUsedBlackMagic = true;
+                double tempHealthHero = this.Health;
+                double tempHealthOponent = this.Oponent.Health;
 
-                double tempHealth = this.Health;
-                this.Health = this.Oponent.Health;
-                this.Oponent.Health = tempHealth;
+                this.Health = tempHealthOponent;
+                this.Oponent.Health = tempHealthHero;
 
                 HealthBar.Draw(this);
-                HealthBar.Draw(this.Oponent);
-
                 HealthBar.Update(this);
+
+                HealthBar.Draw(this.Oponent);
                 HealthBar.Update(this.Oponent);
 
                 Battle.MessageBuffer.Enqueue($"{this.Name} has used a black magic to steal {this.Oponent.Name}'s blood!");
-            }
         }
 
         private void SummonAMinion()

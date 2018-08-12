@@ -11,19 +11,17 @@ namespace IngloriousHeros.Models.Heros
     public class Jedi : Hero, IHuman
     {
         //TODO: Implement jedi class
-        private RaceName race = RaceName.Human;
 
         public Jedi(string name, double health, double damage, int attackDelay, Location hbLocation, List<IItem> items)
             : base(name, health, damage, attackDelay, hbLocation, items)
         {
+            base.Race = RaceName.Human;
             this.SpecialSkills = new List<ISpecialSkills>();
         }
 
-        public RaceName Race => this.race;
-
         public List<ISpecialSkills> SpecialSkills { get; set; }
 
-        public override void Attack(IHero oponent)
+        public override void Attack()
         {
             Thread.Sleep(this.AttackDelay);
 
@@ -31,7 +29,7 @@ namespace IngloriousHeros.Models.Heros
             {
                 if (!Battle.Cts.Token.IsCancellationRequested)
                 {
-                    oponent.TakeDamage((int)this.Damage);
+                    this.Oponent.TakeDamage((int)this.Damage);
                 }
             }
         }

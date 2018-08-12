@@ -75,7 +75,6 @@ namespace IngloriousHeros.Core.UI
 
         public static Location WizzardModel => wizzardModel;
 
-
         public static MainScreen Instance
         {
             get
@@ -92,8 +91,9 @@ namespace IngloriousHeros.Core.UI
         public IHero Start()
         {
             Console.WindowWidth = 120;
-            Console.WindowHeight = 50;
+            Console.WindowHeight = Console.LargestWindowHeight;
             Draw drawType = Draw.Instance;
+
             drawType.CaptionLeftRight(CaptionOne.Row, CaptionOne.Col, CaptionOneValue, CaptionOneFont, 50);
             drawType.CaptionLeftRight(CaptionTwo.Row, CaptionTwo.Col, CaptionTwoValue, CaptionTwoFont, 50);
             drawType.CaptionBlinking(CaptionThree.Row, CaptionThree.Col, CaptionThreeValue, CaptionThreeFont);
@@ -103,32 +103,35 @@ namespace IngloriousHeros.Core.UI
             drawType.HeroModel(BruteModel.Row, BruteModel.Col);
             drawType.HeroModel(JediModel.Row, JediModel.Col);
             drawType.HeroModel(WizzardModel.Row, WizzardModel.Col);
+
             ConsoleKeyInfo key = Console.ReadKey(true);
+
             int startRow = ArcherModel.Row;
             int startCol = ArcherModel.Col;
+
             while (key.Key != ConsoleKey.Enter)
             {
-                if (key.Key == ConsoleKey.RightArrow
-                    && startRow != GnomeModel.Row)
+                if (key.Key == ConsoleKey.RightArrow && startRow != GnomeModel.Row)
                 {
                     drawType.HeroModel(startRow, startCol);
                     startRow += HorizontalStep;
                     drawType.HeroModel(startRow, startCol, true);
                 }
-                if (key.Key == ConsoleKey.LeftArrow
-                    && startRow != ArcherModel.Row)
+
+                if (key.Key == ConsoleKey.LeftArrow && startRow != ArcherModel.Row)
                 {
                     drawType.HeroModel(startRow, startCol);
                     startRow -= HorizontalStep;
                     drawType.HeroModel(startRow, startCol, true);
                 }
-                if (key.Key == ConsoleKey.UpArrow
-                    && startCol != ArcherModel.Col)
+
+                if (key.Key == ConsoleKey.UpArrow && startCol != ArcherModel.Col)
                 {
                     drawType.HeroModel(startRow, startCol);
                     startCol -= VerticalStep;
                     drawType.HeroModel(startRow, startCol, true);
                 }
+
                 if (key.Key == ConsoleKey.DownArrow
                     && startCol != WizzardModel.Col)
                 {
@@ -136,27 +139,49 @@ namespace IngloriousHeros.Core.UI
                     startCol += VerticalStep;
                     drawType.HeroModel(startRow, startCol, true);
                 }
+
                 key = Console.ReadKey(true);
             }
+
             Console.Clear();
+
             drawType.CaptionLeftRight(30, 15, "choose", CaptionThreeFont, 0);
             drawType.CaptionLeftRight(18, 25, "username", CaptionThreeFont, 0);
+
             Console.SetCursorPosition(Console.WindowWidth / 2, Console.WindowHeight - 10);
             Console.CursorVisible = true;
+
             string userName = Console.ReadLine();
-            World.CreateWorld();
+
             IHero heroInstance = GameUnitFactory.CreateGameUnit<Archer>(userName, 100, 3, 500, World.HeroHB, new List<IItem>());
+
             if ((startRow == WarriorModel.Row) && (startCol == WarriorModel.Col))
-            { heroInstance = GameUnitFactory.CreateGameUnit<Warrior>(userName, 100, 5, 300, World.HeroHB, new List<IItem>()); }
+            {
+                heroInstance = GameUnitFactory.CreateGameUnit<Warrior>(userName, 100, 5, 300, World.HeroHB, new List<IItem>());
+            }
+
             if ((startRow == GnomeModel.Row) && (startCol == GnomeModel.Col))
-            { heroInstance = GameUnitFactory.CreateGameUnit<Gnome>(userName, 100, 5, 300, World.HeroHB, new List<IItem>()); }
+            {
+                heroInstance = GameUnitFactory.CreateGameUnit<Gnome>(userName, 100, 5, 300, World.HeroHB, new List<IItem>());
+            }
+
             if ((startRow == BruteModel.Row) && (startCol == BruteModel.Col))
-            { heroInstance = GameUnitFactory.CreateGameUnit<Brute>(userName, 100, 5, 300, World.HeroHB, new List<IItem>()); }
+            {
+                heroInstance = GameUnitFactory.CreateGameUnit<Brute>(userName, 100, 5, 300, World.HeroHB, new List<IItem>());
+            }
+
             if ((startRow == JediModel.Row) && (startCol == JediModel.Col))
-            { heroInstance = GameUnitFactory.CreateGameUnit<Jedi>(userName, 100, 5, 300, World.HeroHB, new List<IItem>()); }
+            {
+                heroInstance = GameUnitFactory.CreateGameUnit<Jedi>(userName, 100, 5, 300, World.HeroHB, new List<IItem>());
+            }
+
             if ((startRow == WizzardModel.Row) && (startCol ==WizzardModel.Col))
-            { heroInstance = GameUnitFactory.CreateGameUnit<Wizzard>(userName, 100, 5, 300, World.HeroHB, new List<IItem>()); }
+            {
+                heroInstance = GameUnitFactory.CreateGameUnit<Wizzard>(userName, 100, 5, 300, World.HeroHB, new List<IItem>());
+            }
+
             Console.Clear();
+
             return heroInstance;
         }
     }

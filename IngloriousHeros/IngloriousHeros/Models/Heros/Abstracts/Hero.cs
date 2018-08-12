@@ -115,7 +115,7 @@ namespace IngloriousHeros.Models.Heros.Abstracts
             }
         }
 
-        public abstract void Attack(IHero oponent);
+        public abstract void Attack();
 
         public virtual void TakeDamage(int damage)
         {
@@ -129,13 +129,12 @@ namespace IngloriousHeros.Models.Heros.Abstracts
             
             if (!Battle.Cts.Token.IsCancellationRequested)
             {
+                this.Health -= damage * (1 - bonusArmour / 100.0);
+
                 Battle.MessageBuffer.Enqueue($"{this.Oponent.Name} deals {(int)(damage) * (1 - bonusArmour / 100.0)} damage to {this.Name}.");// damage to {oponent.Name}.");
                 Battle.MessageBuffer.PrintBuffer();
                 HealthBar.Update(this);
             }
-
-            this.Health -= damage * (1 - bonusArmour / 100.0);
         }
-
     }
 }

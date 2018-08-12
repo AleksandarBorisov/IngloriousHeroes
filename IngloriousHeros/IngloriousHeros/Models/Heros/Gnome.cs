@@ -16,20 +16,9 @@ namespace IngloriousHeros.Models.Heros
         public Gnome(string name, double health, double damage, int attackDelay, Location hbLocation, List<IItem> items)
             : base(name, health, damage, attackDelay, hbLocation, items)
         {
-<<<<<<< HEAD
             base.Race = RaceName.Fantasoid;
             this.Mana = 0;
         }
-
-        public List<ISpecialSkills> SpecialSkills => throw new System.NotImplementedException();
-=======
-            this.SpecialSkills = new List<ISpecialSkills>();
-        }
-
-        public RaceName Race => this.race;
-
-        public List<ISpecialSkills> SpecialSkills { get; set; }
->>>>>>> 180a5c2eda2e9054bf6b9ccf33b42e7a253089fa
 
         public int Mana
         {
@@ -39,7 +28,7 @@ namespace IngloriousHeros.Models.Heros
 
         public List<FantasoidSkill> Spells => throw new System.NotImplementedException();
 
-        public override void Attack(IHero oponent)
+        public override void Attack()
         {
             Thread.Sleep(this.AttackDelay);
 
@@ -62,7 +51,7 @@ namespace IngloriousHeros.Models.Heros
             {
                 if (!Battle.Cts.Token.IsCancellationRequested)
                 {
-                    oponent.TakeDamage((int)this.Damage);
+                    this.Oponent.TakeDamage((int)this.Damage);
                 }
             }
         }

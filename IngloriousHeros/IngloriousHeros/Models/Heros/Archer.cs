@@ -13,7 +13,6 @@ namespace IngloriousHeros.Models.Heros
 {
     public class Archer : Hero, IHuman
     {
-        private RaceName race = RaceName.Human;
         private static bool doubleArrow = false;
         private static int criticalHitCount = 5;
         private static int hitCount = 0;
@@ -22,14 +21,12 @@ namespace IngloriousHeros.Models.Heros
         public Archer(string name, double health, double damage, int attackDelay, Location hbLocation, List<IItem> items)
             : base(name, health, damage, attackDelay, hbLocation, items)
         {
-
+            base.Race = RaceName.Human;
         }
-
-        public RaceName Race => this.race;
 
         public List<ISpecialSkills> SpecialSkills => throw new NotImplementedException();
 
-        public override void Attack(IHero oponent)
+        public override void Attack()
         {
             Thread.Sleep(this.AttackDelay);
 
@@ -48,13 +45,13 @@ namespace IngloriousHeros.Models.Heros
 
                     if (hitCount == criticalHitCount)
                     {
-                        oponent.TakeDamage((int)this.Damage + bonusDamage);
+                        this.Oponent.TakeDamage((int)this.Damage + bonusDamage);
                         Battle.MessageBuffer.Enqueue($"{this.Name} made critical hit------------------------------.");// damage to {oponent.Name}.");
                         Battle.MessageBuffer.PrintBuffer();
 
                         hitCount = 1;
                     }
-                    oponent.TakeDamage((int)this.Damage + bonusDamage);
+                    this.Oponent.TakeDamage((int)this.Damage + bonusDamage);
                 }
             }
         }

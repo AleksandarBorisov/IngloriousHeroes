@@ -38,7 +38,7 @@ namespace IngloriousHeros.Models.Heros
             }
         }
 
-        public override void Attack(IHero oponent)
+        public override void Attack()
         {
             currentHits++;
 
@@ -68,8 +68,8 @@ namespace IngloriousHeros.Models.Heros
             {
                 if (!Battle.Cts.Token.IsCancellationRequested)
                 {
-                    oponent.TakeDamage((int)(this.Damage + bonusDamage));
-                    if (oponent.Health <= 0 && hasTransformed)
+                    this.Oponent.TakeDamage((int)(this.Damage + bonusDamage));
+                    if (this.Oponent.Health <= 0 && hasTransformed)
                     {
                         BackToNormal();
                     }

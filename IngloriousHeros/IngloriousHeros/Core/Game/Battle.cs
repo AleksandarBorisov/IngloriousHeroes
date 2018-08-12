@@ -56,7 +56,7 @@ namespace IngloriousHeros.Core.Game
             {
                 if (hero.Oponent.Health > 0)
                 {
-                    hero.Attack(oponent);
+                    hero.Attack();
                 }
                 else
                 {
