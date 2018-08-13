@@ -128,9 +128,9 @@ namespace IngloriousHeros.Core.Game
         {
             robotSkills = new List<ISpecialSkills>()
             {
-                GameUnitFactory.CreateGameUnit<RobotSkills>("RoboKiller", 5, 300, 50, 50),
-                GameUnitFactory.CreateGameUnit<RobotSkills>("RoboKing", 10, 300, 100, 100),
-                GameUnitFactory.CreateGameUnit<RobotSkills>("WorldDestroyer", 15, 300, 150, 150),
+                GameUnitFactory.CreateGameUnit<RobotSkills>("RoboKiller", 2, 200, 50, 50),
+                GameUnitFactory.CreateGameUnit<RobotSkills>("RoboKing", 5, 200, 100, 100),
+                GameUnitFactory.CreateGameUnit<RobotSkills>("WorldDestroyer", 7, 200, 150, 150),
             };
         }
     }
