@@ -57,36 +57,37 @@ namespace IngloriousHeros.Models.Heros
         {
             Thread.Sleep(this.AttackDelay);
 
-            this.Mana += 5;
-
-            if (this.Health < 10 && this.Oponent.Health > 10 && this.hasUsedBlackMagic == false)
-            {
-                this.hasUsedBlackMagic = true;
-                this.ConjureUpABlackMagic();
-            }
-
-            if (hasSummonedAMinion == false)
-            {
-                hasSummonedAMinion = true;
-                SummonAMinion();
-            }
-
-            FantasoidSkill currentSpell;
-
-            try
-            {
-                currentSpell = GetSpell();
-                string spellDescription = GetSpellDescription(currentSpell);
-
-                Battle.MessageBuffer.Enqueue($"{this.Name} has used a spell --> {currentSpell.Name} <-- to {spellDescription}!");
-            }
-            catch (Exception)
-            {
-                Battle.MessageBuffer.Enqueue($"{this.Name} is low on Mana/Spells!");
-            }
-
             lock (Battle.EnvLock)
             {
+                this.Mana += 5;
+
+                if (this.Health < 10 && this.Oponent.Health > 10 && this.hasUsedBlackMagic == false)
+                {
+                    this.hasUsedBlackMagic = true;
+                    this.ConjureUpABlackMagic();
+                }
+
+                if (hasSummonedAMinion == false)
+                {
+                    hasSummonedAMinion = true;
+                    SummonAMinion();
+                }
+
+                FantasoidSkill currentSpell;
+
+                try
+                {
+                    currentSpell = GetSpell();
+                    string spellDescription = GetSpellDescription(currentSpell);
+
+                    Battle.MessageBuffer.Enqueue($"{this.Name} has used a spell --> {currentSpell.Name} <-- to {spellDescription}!");
+                }
+                catch (Exception)
+                {
+                    Battle.MessageBuffer.Enqueue($"{this.Name} is low on Mana/Spells!");
+                }
+
+
                 if (this.Health < 20 && this.hasUsedAttackDelaySpell == false)
                 {
                     this.hasUsedAttackDelaySpell = true;
@@ -139,6 +140,8 @@ namespace IngloriousHeros.Models.Heros
 
         private void ConjureUpABlackMagic()
         {
+            lock (Battle.EnvLock)
+            {
                 double tempHealthHero = this.Health;
                 double tempHealthOponent = this.Oponent.Health;
 
@@ -152,6 +155,7 @@ namespace IngloriousHeros.Models.Heros
                 HealthBar.Update(this.Oponent);
 
                 Battle.MessageBuffer.Enqueue($"{this.Name} has used a black magic to steal {this.Oponent.Name}'s blood!");
+            }
         }
 
         private void SummonAMinion()
@@ -161,14 +165,17 @@ namespace IngloriousHeros.Models.Heros
 
         private FantasoidSkill GetSpell()
         {
-            var curretSpell = this.Spells
-                .First(s => s.ManaRequirement > this.Mana);
+            lock (Battle.EnvLock)
+            {
+                var curretSpell = this.Spells
+                    .First(s => s.ManaRequirement > this.Mana);
 
-            this.Spells.Remove(curretSpell);
+                this.Spells.Remove(curretSpell);
 
-            this.Mana -= curretSpell.ManaRequirement;
+                this.Mana -= curretSpell.ManaRequirement;
 
-            return curretSpell;
+                return curretSpell;
+            }
         }
     }
 }
