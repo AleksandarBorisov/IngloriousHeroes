@@ -1,4 +1,5 @@
 ﻿using IngloriousHeros.Models.Contracts;
+using IngloriousHeros.Models.Heros.Abstracts;
 using System;
 
 namespace IngloriousHeros.Core.UI
@@ -34,6 +35,20 @@ namespace IngloriousHeros.Core.UI
             }
 
             Console.BackgroundColor = ConsoleColor.Black;
+        }
+
+        public void Subscribe(Hero hero)
+        {
+            // Subscribe to the HealthChange event
+            hero.HealthChange += Hero_HealthChange;
+        }
+
+        private void Hero_HealthChange(IHero sender)
+        {
+            // Code to be executed when the HealthChange event is raised
+            // After revision, the whole implementation of Update() will be here
+            // For now we still need a static Update() method
+            Update(sender);
         }
     }
 }

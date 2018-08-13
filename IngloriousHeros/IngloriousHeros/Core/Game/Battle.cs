@@ -3,6 +3,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using IngloriousHeros.Models.Contracts;
+using IngloriousHeros.Models.Heros.Abstracts;
 
 namespace IngloriousHeros.Core.Game
 {
@@ -11,7 +12,7 @@ namespace IngloriousHeros.Core.Game
         private static CancellationTokenSource cts;
         private static readonly object envLock = new object();
         private static readonly MessageBuffer messageBuffer = new MessageBuffer();
-        private readonly IHero hero;
+        private IHero hero;
 
         public Battle(IHero hero)
         {
@@ -24,11 +25,22 @@ namespace IngloriousHeros.Core.Game
 
         public static MessageBuffer MessageBuffer => messageBuffer;
 
-        public IHero Hero => this.hero;
+        public IHero Hero
+        {
+            get => this.hero;
+            set => this.hero = value;
+        }
 
         public void Start()
         {
             cts = new CancellationTokenSource();
+
+            HealthBar heroHB = new HealthBar();
+            HealthBar oponentHB = new HealthBar();
+
+            heroHB.Subscribe(this.Hero as Hero);
+            oponentHB.Subscribe(this.Hero.Oponent as Hero);
+
             this.DisplayBattleStats();
 
             Task[] battles = new Task[]

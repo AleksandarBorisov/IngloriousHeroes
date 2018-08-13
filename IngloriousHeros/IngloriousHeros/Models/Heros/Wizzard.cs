@@ -106,6 +106,11 @@ namespace IngloriousHeros.Models.Heros
             }
         }
 
+        public override void TakeDamage(int damage)
+        {
+            base.TakeDamage(damage);
+        }
+
         private string GetSpellDescription(FantasoidSkill spell)
         {
             string result = "";

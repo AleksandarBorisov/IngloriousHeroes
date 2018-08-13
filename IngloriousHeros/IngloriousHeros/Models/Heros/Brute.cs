@@ -79,6 +79,11 @@ namespace IngloriousHeros.Models.Heros
             }
         }
 
+        public override void TakeDamage(int damage)
+        {
+            base.TakeDamage(damage);
+        }
+
         public void Transform(int wins)
         {
             if (wins >= SpecialSkills.Count)

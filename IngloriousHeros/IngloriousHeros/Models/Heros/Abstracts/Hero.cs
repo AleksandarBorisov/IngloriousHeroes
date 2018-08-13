@@ -7,8 +7,12 @@ using System.Linq;
 
 namespace IngloriousHeros.Models.Heros.Abstracts
 {
+    public delegate void HealthChangeEventHandler(IHero sender);
+
     public abstract class Hero : IHero
     {
+        public event HealthChangeEventHandler HealthChange;
+
         private RaceName race;
         private string name;
         private double health;
@@ -119,8 +123,8 @@ namespace IngloriousHeros.Models.Heros.Abstracts
 
         public virtual void TakeDamage(int damage)
         {
-            // Iterate through Inventory and use items to modify damage before appolying to health
-            int bonusArmour = 0;//0 % reduction of damage
+            // Iterate through Inventory and use items to modify damage before applying to health
+            int bonusArmour = 0;
 
             if (Inventory.Count() > 0 && Inventory.Any(a => a is IArmour))
             {
@@ -133,7 +137,12 @@ namespace IngloriousHeros.Models.Heros.Abstracts
 
                 Battle.MessageBuffer.Enqueue($"{this.Oponent.Name} deals {(int)(damage) * (1 - bonusArmour / 100.0)} damage to {this.Name}.");// damage to {oponent.Name}.");
                 Battle.MessageBuffer.PrintBuffer();
-                HealthBar.Update(this);
+
+                // The line below raises the HealthChange event. The "this" parameter is the
+                // derived instance of Hero that called the base.TakeDamage() method
+                this.HealthChange(this);
+
+                //HealthBar.Update(this);
             }
         }
     }

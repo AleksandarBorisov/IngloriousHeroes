@@ -40,6 +40,8 @@ namespace IngloriousHeros.Models.Heros
 
         public override void Attack()
         {
+            Thread.Sleep((int)(this.AttackDelay));
+
             currentHits++;
 
             if (currentHits == hitsBeforeTransform)
@@ -62,8 +64,6 @@ namespace IngloriousHeros.Models.Heros
                 bonusDamage = this.Inventory.First(w => w is IWeapon).UseItem(this);
             }
 
-            Thread.Sleep((int)(this.AttackDelay));
-
             lock (Battle.EnvLock)
             {
                 if (!Battle.Cts.Token.IsCancellationRequested)
@@ -75,6 +75,11 @@ namespace IngloriousHeros.Models.Heros
                     }
                 }
             }
+        }
+
+        public override void TakeDamage(int damage)
+        {
+            base.TakeDamage(damage);
         }
 
         public void Transform(int wins)

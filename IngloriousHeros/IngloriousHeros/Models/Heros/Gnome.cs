@@ -55,5 +55,10 @@ namespace IngloriousHeros.Models.Heros
                 }
             }
         }
+
+        public override void TakeDamage(int damage)
+        {
+            base.TakeDamage(damage);
+        }
     }
 }
