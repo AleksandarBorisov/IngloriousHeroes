@@ -25,6 +25,11 @@ namespace IngloriousHeros.Core.UI
         private static Location captionThree = new Location(0, 20);
         private static string captionThreeValue = "choose hero";
         private static IFont captionThreeFont = new FontSolidLetters();
+        private static Location captionFour = new Location(33, 5);
+        private static string captionFourValue = "choose";
+        private static Location captionFive = new Location(21, 15);
+        private static string captionFiveValue = "username";
+        private static Location userName = new Location(55, 25);
 
         //HerosModels fields
         private static Location archerModel = new Location(0, 30);
@@ -59,6 +64,16 @@ namespace IngloriousHeros.Core.UI
         public static string CaptionThreeValue => captionThreeValue;
 
         public static IFont CaptionThreeFont => captionThreeFont;
+
+        public static Location CaptionFour => captionFour;
+
+        public static string CaptionFourValue => captionFourValue;
+
+        public static Location CaptionFive => captionFive;
+
+        public static string CaptionFiveValue => captionFiveValue;
+
+        public static Location UserName => userName;
 
         public static int HorizontalStep => horizontalStep;
 
@@ -145,10 +160,9 @@ namespace IngloriousHeros.Core.UI
             }
 
             Console.Clear();
-            drawType.CaptionLeftRight(30, 15, "choose", CaptionThreeFont, 0);
-            drawType.CaptionLeftRight(18, 25, "username", CaptionThreeFont, 0);
-
-            Console.SetCursorPosition(Console.WindowWidth / 2, Console.WindowHeight - 10);
+            drawType.CaptionLeftRight(CaptionFour.Row, captionFour.Col, CaptionFourValue, CaptionThreeFont, 0);
+            drawType.CaptionLeftRight(CaptionFive.Row, CaptionFive.Col, CaptionFiveValue, CaptionThreeFont, 0);
+            Console.SetCursorPosition(UserName.Row, UserName.Col);
             Console.CursorVisible = true;
             World.CreateWorld();
             string userName = Console.ReadLine();
@@ -174,7 +188,7 @@ namespace IngloriousHeros.Core.UI
                 heroInstance = GameUnitFactory.CreateGameUnit<Jedi>(userName, 100, 5, 500, World.HeroHB, new List<IItem>());
             }
 
-            if ((startRow == WizzardModel.Row) && (startCol ==WizzardModel.Col))
+            if ((startRow == WizzardModel.Row) && (startCol == WizzardModel.Col))
             {
                 heroInstance = GameUnitFactory.CreateGameUnit<Wizzard>(userName, 100, 5, 500, World.HeroHB, new List<IItem>());
             }
