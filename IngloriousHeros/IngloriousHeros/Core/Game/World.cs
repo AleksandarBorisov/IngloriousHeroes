@@ -47,8 +47,8 @@ namespace IngloriousHeros.Core.Game
         {
             Console.Clear();
             Console.WindowWidth = 120;
-            Console.BufferWidth = 120;
             Console.WindowHeight = 30;
+            Console.BufferWidth = 120;
             Console.BufferHeight = 30;
             Console.CursorVisible = false;
         }

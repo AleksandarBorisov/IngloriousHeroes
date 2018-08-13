@@ -151,7 +151,6 @@ namespace IngloriousHeros.Core.UI
             Console.SetCursorPosition(Console.WindowWidth / 2, Console.WindowHeight - 10);
             Console.CursorVisible = true;
             World.CreateWorld();
-
             string userName = Console.ReadLine();
             IHero heroInstance = GameUnitFactory.CreateGameUnit<Archer>(userName, 100, 3, 500, World.HeroHB, new List<IItem>());
 
@@ -180,8 +179,8 @@ namespace IngloriousHeros.Core.UI
                 heroInstance = GameUnitFactory.CreateGameUnit<Wizzard>(userName, 100, 5, 500, World.HeroHB, new List<IItem>());
             }
 
-            Console.Clear();
             themeSong.Kill();
+            World.InitializeEnvironment();
 
             return heroInstance;
         }
