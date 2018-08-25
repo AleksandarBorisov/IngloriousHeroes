@@ -1,6 +1,8 @@
 ﻿using Autofac;
+using IngloriousHeros.Core;
 using IngloriousHeros.Core.UI;
 using IngloriousHeros.Core.UI.Models;
+using IngloriousHeros.Core.Utilities;
 using IngloriousHeros.Models.Contracts;
 using System.Collections.Generic;
 using System.Reflection;
@@ -30,6 +32,9 @@ namespace IngloriousHeros.Config
         {
             builder.RegisterType<Draw>().As<IDraw>().SingleInstance();
             builder.RegisterType<MainScreen>().As<IMainScreen>().SingleInstance();
+            builder.RegisterType<GameEngine>().AsSelf();
+            builder.RegisterType<GameConsole>().As<IConsole>().SingleInstance();
+            builder.RegisterType<MessageBuffer>().As<IMessageBuffer>().SingleInstance();
         }
 
         private static void RegisterHeroTypes(ContainerBuilder builder)

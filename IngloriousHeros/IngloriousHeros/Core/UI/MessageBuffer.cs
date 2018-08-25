@@ -1,13 +1,19 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using IngloriousHeros.Core.Game;
+using IngloriousHeros.Core.Utilities;
 
 namespace IngloriousHeros.Core.UI
 {
-    public class MessageBuffer : IEnumerable
+    public class MessageBuffer : IEnumerable, IMessageBuffer
     {
         private Queue<string> elements = new Queue<string>();
+        private IConsole gameConsole;
+
+        public MessageBuffer(IConsole gameConsole)
+        {
+            this.gameConsole = gameConsole;
+        }
 
         public void Enqueue(string message)
         {
@@ -27,7 +33,7 @@ namespace IngloriousHeros.Core.UI
             return ((IEnumerable)Elements).GetEnumerator();
         }
 
-        public Queue<string> Elements
+        private Queue<string> Elements
         {
             get => this.elements;
         }
@@ -40,10 +46,10 @@ namespace IngloriousHeros.Core.UI
 
                 foreach (string message in this.Elements)
                 {
-                    Console.SetCursorPosition(10, row);
-                    Console.Write(new string(' ', Console.WindowWidth));
-                    Console.SetCursorPosition(10, row++);
-                    Console.Write(message);
+                    gameConsole.SetCursorPosition(10, row);
+                    gameConsole.Write(new string(' ', gameConsole.WindowWidth));
+                    gameConsole.SetCursorPosition(10, row++);
+                    gameConsole.Write(message);
                 }
             }
         }

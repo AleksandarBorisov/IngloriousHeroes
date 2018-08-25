@@ -20,7 +20,8 @@ namespace IngloriousHeros
                 var mainScreen = scope.Resolve<IMainScreen>();
                 IHero hero = mainScreen.Start();
 
-                GameEngine.Run(hero);
+                var newGame = scope.Resolve<GameEngine>();
+                newGame.Run(hero);
             }
         }
     }

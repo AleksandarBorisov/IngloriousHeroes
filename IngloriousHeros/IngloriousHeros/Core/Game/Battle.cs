@@ -4,6 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using IngloriousHeros.Models.Contracts;
 using IngloriousHeros.Models.Heros.Abstracts;
+using IngloriousHeros.Core.Utilities;
 
 namespace IngloriousHeros.Core.Game
 {
@@ -11,9 +12,11 @@ namespace IngloriousHeros.Core.Game
     {
         private static CancellationTokenSource cts;
         private static readonly object envLock = new object();
-        private static readonly MessageBuffer messageBuffer = new MessageBuffer();
-        private IHero hero;
 
+        // TODO: Resolve messageBuffer with Autofac
+        private static readonly IMessageBuffer messageBuffer = new MessageBuffer(new GameConsole());
+        private IHero hero;
+        
         public Battle(IHero hero)
         {
             this.hero = hero;
@@ -23,7 +26,7 @@ namespace IngloriousHeros.Core.Game
 
         public static object EnvLock => envLock;
 
-        public static MessageBuffer MessageBuffer => messageBuffer;
+        public static MessageBuffer MessageBuffer => (MessageBuffer)messageBuffer;
 
         public IHero Hero
         {
