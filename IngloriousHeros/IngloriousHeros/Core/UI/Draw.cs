@@ -5,31 +5,23 @@ using IngloriousHeros.Core.Contracts;
 
 namespace IngloriousHeros.Core.UI.Models
 {
-    class Draw
+    public class Draw : IDraw
     {
         //private const int leftRightSpeed = 50;
         private const int blinkPause = 200;
 
-        private static Draw instanceHolder;
-
-        private Draw()
+        public Draw()
         {
-            Console.CursorVisible = false;
-        }
-
-        public static Draw Instance
-        {
-            get
-            {
-                return instanceHolder = new Draw();
-            }
+            //Console.CursorVisible = false;
         }
 
         private char[,] ProcessLetter(char letterFromMessage, IFont currentFont)
         {
             string[] letterRows = currentFont[letterFromMessage != ' ' ? letterFromMessage - 'a' : 26]
                 .Split(new char[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+
             char[,] letterAsCharArray = new char[letterRows.Length, letterRows[0].Length];
+
             for (int row = 0; row < letterRows.Length; row++)
             {
                 for (int col = 0; col < letterRows[row].Length; col++)
@@ -37,6 +29,7 @@ namespace IngloriousHeros.Core.UI.Models
                     letterAsCharArray[row, col] = letterRows[row][col];
                 }
             }
+
             return letterAsCharArray;
         }
 

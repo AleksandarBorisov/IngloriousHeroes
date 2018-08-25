@@ -11,10 +11,8 @@ using System.Diagnostics;
 
 namespace IngloriousHeros.Core.UI
 {
-    class MainScreen
+    public class MainScreen : IMainScreen
     {
-        private static MainScreen instanceHolder;
-
         //Caption fields
         private static Location captionOne = new Location(0, 0);
         private static string captionOneValue = "inglorious";
@@ -42,11 +40,14 @@ namespace IngloriousHeros.Core.UI
         private static int horizontalStep = (ArcherModel.Row + WarriorModel.Row + GnomeModel.Row) / 3;
         private static int verticalStep = Math.Abs(ArcherModel.Col - WizzardModel.Col);
 
-        private MainScreen()
-        {
+        private IDraw drawType;
 
+        public MainScreen(IDraw drawType)
+        {
+            this.drawType = drawType;
         }
 
+        #region Properties
         public static Location CaptionOne => captionOne;
 
         public static string CaptionOneValue => captionOneValue;
@@ -90,25 +91,12 @@ namespace IngloriousHeros.Core.UI
         public static Location JediModel => jediModel;
 
         public static Location WizzardModel => wizzardModel;
-
-        public static MainScreen Instance
-        {
-            get
-            {
-                if (instanceHolder == null)
-                {
-                    instanceHolder = new MainScreen();
-                }
-
-                return instanceHolder;
-            }
-        }
+        #endregion
 
         public IHero Start()
         {
             Console.WindowWidth = 120;
             Console.WindowHeight = Console.LargestWindowHeight;
-            Draw drawType = Draw.Instance;
             Process themeSong = Process.Start(@"../../../../ThemeSong/bin/Debug/ThemeSong.exe");
             drawType.CaptionLeftRight(CaptionOne.Row, CaptionOne.Col, CaptionOneValue, CaptionOneFont, 50);
             drawType.CaptionLeftRight(CaptionTwo.Row, CaptionTwo.Col, CaptionTwoValue, CaptionTwoFont, 50);

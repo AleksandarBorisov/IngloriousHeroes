@@ -15,4 +15,8 @@
     <Folder Include="Tests\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="4.8.1" />
+  </ItemGroup>
+
 </Project>

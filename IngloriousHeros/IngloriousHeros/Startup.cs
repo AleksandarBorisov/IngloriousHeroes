@@ -1,6 +1,8 @@
 ﻿using IngloriousHeros.Core;
 using IngloriousHeros.Models.Contracts;
 using IngloriousHeros.Core.UI;
+using IngloriousHeros.Config;
+using Autofac;
 
 namespace IngloriousHeros
 {
@@ -8,12 +10,18 @@ namespace IngloriousHeros
     {
         public static void Main()
         {
-
             // Build the SoundPlayer & ThemeSong projects (F6 only) 
             // before starting the game in order to have music
 
-            IHero hero = MainScreen.Instance.Start();
-            GameEngine.Run(hero);
+            var container = AutofacConfig.Configure();
+
+            using (var scope = container.BeginLifetimeScope())
+            {
+                var mainScreen = scope.Resolve<IMainScreen>();
+                IHero hero = mainScreen.Start();
+
+                GameEngine.Run(hero);
+            }
         }
     }
 }
