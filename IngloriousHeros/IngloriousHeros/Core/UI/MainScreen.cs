@@ -9,7 +9,6 @@ using IngloriousHeros.Models.Contracts;
 using IngloriousHeros.Core.Game;
 using System.Diagnostics;
 using IngloriousHeros.Core.UI.DrawCaption;
-using IngloriousHeros.Core.UI.DrawCaption.Interfaces;
 using IngloriousHeros.Core.UI.DrawCaption.Factory;
 using System.Linq;
 
@@ -48,10 +47,10 @@ namespace IngloriousHeros.Core.UI
 
         private IDraw drawType;
 
-        public MainScreen(IDraw drawType, IDrawCaptionFactory drawCommands)
+        public MainScreen(IDraw drawType)
         {
             this.drawType = drawType;
-            this.drawCommands = drawCommands;
+            //this.drawCommands = drawCommands;
         }
 
         #region Properties
@@ -107,6 +106,8 @@ namespace IngloriousHeros.Core.UI
             Process themeSong = Process.Start(@"../../../../ThemeSong/bin/Debug/ThemeSong.exe");
 
             var listOfCommands = new List<string>();
+
+
             //listOfCommands = Worlds.GetListOfCommands;
             //foreach (var command in listOfCommands)
             //{
