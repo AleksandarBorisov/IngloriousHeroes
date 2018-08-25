@@ -3,7 +3,7 @@ using System;
 
 namespace IngloriousHeros.Core.Factories
 {
-    public static class GameUnitFactory
+    public class GameUnitFactory
     {
         public static T CreateGameUnit<T>(params object[] parameters)
         {

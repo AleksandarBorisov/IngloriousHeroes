@@ -2,8 +2,7 @@
 using IngloriousHeros.Core.UI;
 using IngloriousHeros.Core.UI.Models;
 using IngloriousHeros.Models.Contracts;
-using IngloriousHeros.Models.Heros;
-using System;
+using System.Collections.Generic;
 using System.Reflection;
 
 namespace IngloriousHeros.Config
@@ -14,18 +13,23 @@ namespace IngloriousHeros.Config
         {
             var builder = new ContainerBuilder();
 
-            // 
-            builder.RegisterType<Draw>().As<IDraw>().SingleInstance();
-            builder.RegisterType<MainScreen>().As<IMainScreen>().SingleInstance();
+            // RegisterAssemblyComponents should be called first in order to register the default services
+            RegisterAssemblyComponents(builder);
+
+            builder.RegisterType<List<IHero>>().As<IList<IHero>>();
+            builder.RegisterType<List<IItem>>().As<IList<IItem>>();
+            builder.RegisterType<List<ISpecialItem>>().As<IList<ISpecialItem>>();
+            
             RegisterCoreComponents(builder);
             RegisterHeroTypes(builder);
-            RegisterTypes(builder);
 
             return builder.Build();
         }
 
         private static void RegisterCoreComponents(ContainerBuilder builder)
         {
+            builder.RegisterType<Draw>().As<IDraw>().SingleInstance();
+            builder.RegisterType<MainScreen>().As<IMainScreen>().SingleInstance();
         }
 
         private static void RegisterHeroTypes(ContainerBuilder builder)
@@ -38,7 +42,7 @@ namespace IngloriousHeros.Config
             //builder.RegisterType<Wizzard>().Named<IHero>(typeof(Wizzard).Name);
         }
 
-        private static void RegisterTypes(ContainerBuilder builder)
+        private static void RegisterAssemblyComponents(ContainerBuilder builder)
         {
             var assembly = Assembly.GetExecutingAssembly();
 

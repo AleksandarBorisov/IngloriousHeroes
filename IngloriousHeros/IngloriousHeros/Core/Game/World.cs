@@ -10,30 +10,28 @@ using IngloriousHeros.Models.SpecialSkills;
 
 namespace IngloriousHeros.Core.Game
 {
-    public static class World
+    public class World
     {
-        private static IEnumerable<IHero> heroes;
-        private static IEnumerable<IItem> items;
-        private static IEnumerable<ISpecialSkills> robotSkills;
+        private static IList<IHero> heroes;
+        private static IList<IItem> items;
+        private static IList<ISpecialSkills> robotSkills;
         private static Location heroHB = new Location(1, 10);
         private static Location oponentHB = new Location(1, 90);
         private static Location bufferLocation = new Location(4, 0);
         private static Location outcomeLocation = new Location(26, 0);
 
-        //static world()
-        //{
-        //    heroes = new list<ihero>();
-        //    weapons = new list<iitem>();
-        //    armours = new list<iitem>();
-        //    robotSkills = new list<ISpecialSkills>();
-        //    specialitems = new list<iitem>();
-        //}
+        public World(IList<IHero> heroes, IList<IItem> items, IList<ISpecialSkills> robotSkills)
+        {
+            //this.Heroes = heroes;
+            //this.Items = items;
+            //this.RobotSkills = robotSkills;
+        }
 
-        public static IEnumerable<IHero> Heroes => heroes;
+        public static IList<IHero> Heroes => heroes;
 
-        public static IEnumerable<IItem> Items => items;
+        public static IList<IItem> Items => items;
 
-        public static IEnumerable<ISpecialSkills> RobotSkills => robotSkills;
+        public static IList<ISpecialSkills> RobotSkills => robotSkills;
 
         public static Location HeroHB => heroHB;
 
