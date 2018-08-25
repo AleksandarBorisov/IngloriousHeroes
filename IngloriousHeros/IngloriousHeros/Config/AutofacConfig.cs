@@ -1,10 +1,15 @@
 ﻿using Autofac;
 using IngloriousHeros.Core;
+using IngloriousHeros.Core.Contracts;
 using IngloriousHeros.Core.UI;
+using IngloriousHeros.Core.UI.DrawCaption;
+using IngloriousHeros.Core.UI.DrawModel;
+using IngloriousHeros.Core.UI.DrawModel.Factory;
 using IngloriousHeros.Core.UI.Models;
 using IngloriousHeros.Core.Utilities;
 using IngloriousHeros.Models.Contracts;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 
 namespace IngloriousHeros.Config
@@ -22,6 +27,7 @@ namespace IngloriousHeros.Config
             builder.RegisterType<List<IItem>>().As<IList<IItem>>();
             builder.RegisterType<List<ISpecialItem>>().As<IList<ISpecialItem>>();
             
+            RegisterUIComponents(builder);
             RegisterCoreComponents(builder);
             RegisterHeroTypes(builder);
 
@@ -52,6 +58,56 @@ namespace IngloriousHeros.Config
             var assembly = Assembly.GetExecutingAssembly();
 
             builder.RegisterAssemblyTypes(assembly).AsImplementedInterfaces();
+        }
+
+        private static void RegisterUIComponents(ContainerBuilder builder)
+        {
+            var assembly = Assembly.GetExecutingAssembly();
+
+            var captionTypes = assembly.DefinedTypes
+                .Where(typeInfo =>
+                typeInfo.ImplementedInterfaces.Contains(typeof(IDrawCaption)))
+                .ToList();
+            foreach (var caption in captionTypes)
+            {
+                builder.RegisterType(caption.AsType())
+                .Named<IDrawCaption>(
+                    caption.Name.ToLower().Replace("draw", ""));
+            }
+
+            var captionFonts = assembly.DefinedTypes
+                .Where(typeInfo =>
+                typeInfo.ImplementedInterfaces.Contains(typeof(IFont)))
+                .ToList();
+            foreach (var font in captionFonts)
+            {
+                builder.RegisterType(font.AsType())
+                .Named<IFont>(
+                    font.Name.ToLower().Replace("font", ""));
+            }
+
+            var drawModelTypes = assembly.DefinedTypes
+                .Where(typeInfo =>
+                typeInfo.ImplementedInterfaces.Contains(typeof(IDrawModel)))
+                .ToList();
+            foreach (var modelType in drawModelTypes)
+            {
+                builder.RegisterType(modelType.AsType())
+                .Named<IDrawModel>(
+                    modelType.Name.ToLower().Replace("draw", ""));
+            }
+
+            var models = assembly.DefinedTypes
+                .Where(typeInfo =>
+                typeInfo.ImplementedInterfaces.Contains(typeof(IModel)))
+                .ToList();
+            foreach (var model in models)
+            {
+                builder.RegisterType(model.AsType())
+                .Named<IModel>(
+                    model.Name.ToLower().Replace("model", ""));
+            }
+
         }
     }
 }
