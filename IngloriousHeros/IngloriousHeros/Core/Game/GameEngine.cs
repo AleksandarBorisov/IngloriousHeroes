@@ -9,12 +9,20 @@ using System.Threading;
 using IngloriousHeros.Models.Armours;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using IngloriousHeros.Core.Utilities;
 
 namespace IngloriousHeros.Core
 {
     public class GameEngine : IEngine
     {
-        public static void Run(IHero hero)
+        private readonly IConsole gameConsole;
+
+        public GameEngine(IConsole gameConsole)
+        {
+            this.gameConsole = gameConsole;
+        }
+
+        public void Run(IHero hero)
         {
             World.InitializeEnvironment();
             World.CreateWorld();
@@ -35,20 +43,20 @@ namespace IngloriousHeros.Core
                     if (hero.Health <= 95)
                     {
                         hero.Health += 5;
-                        Console.WriteLine($"{hero.Name} has recovered 5 units of health!");
+                        gameConsole.WriteLine($"{hero.Name} has recovered 5 units of health!");
                     }
                     else
                     {
                         int healthRecovered = 100 - (int)hero.Health;
                         hero.Health = 100;
-                        Console.WriteLine($"{hero.Name} has recovered {healthRecovered} units of health!");
+                        gameConsole.WriteLine($"{hero.Name} has recovered {healthRecovered} units of health!");
                     }
                 }
 
                 if (randomizer.Next(1, 101) <= 20)
                 {
                     // Hero has collected an artefact
-                    Console.WriteLine($"{hero.Name} has collected an artefact {++artefacts}/10!");
+                    gameConsole.WriteLine($"{hero.Name} has collected an artefact {++artefacts}/10!");
                     Thread.Sleep(1000);
                     continue;
                 }
@@ -60,7 +68,7 @@ namespace IngloriousHeros.Core
                     // Hero has collected an item
                     var item = GetItem(randomizer);
                     (hero.Inventory as List<IItem>).Add(item);
-                    Console.WriteLine($"{hero.Name} has collected a new {item.GetType().Name}!");
+                    gameConsole.WriteLine($"{hero.Name} has collected a new {item.GetType().Name}!");
                     Thread.Sleep(1000);
                     continue;
                 }
@@ -72,14 +80,14 @@ namespace IngloriousHeros.Core
                     // Hero has encountered an enemy
                     enemy = GetOponent(randomizer);
 
-                    Console.WriteLine($"{hero.Name} has encountered an enemy class {enemy.GetType().Name} from the {enemy.Race} race!\n\rLET THE BATTLE BEGIN!");
+                    gameConsole.WriteLine($"{hero.Name} has encountered an enemy class {enemy.GetType().Name} from the {enemy.Race} race!\n\rLET THE BATTLE BEGIN!");
                     Thread.Sleep(2000);
 
                     hero.Oponent = enemy;
                     enemy.Oponent = hero;
 
                     // Start battle
-                    Console.Clear();
+                    gameConsole.Clear();
                     Battle epicBattle = new Battle(hero);
                     epicBattle.Start();
                     Battle.MessageBuffer.Clear();
@@ -87,24 +95,24 @@ namespace IngloriousHeros.Core
 
                     if (hero.Health > 0)
                     {
-                        Console.WriteLine($"{hero.Name} has won the battle!");
-                        Console.WriteLine("Game continues...");
+                        gameConsole.WriteLine($"{hero.Name} has won the battle!");
+                        gameConsole.WriteLine("Game continues...");
                     }
                 }
             }
 
             if (hero.Health < 1)
             {
-                Console.WriteLine($"{hero.Name} is dead...");
-                Console.WriteLine("GAME OVER!");
+                gameConsole.WriteLine($"{hero.Name} is dead...");
+                gameConsole.WriteLine("GAME OVER!");
                 soundPlayer.Kill();
             }
             else
             {
-                Console.WriteLine($"{hero.Name} has finished the Quest!");
+                gameConsole.WriteLine($"{hero.Name} has finished the Quest!");
             }
 
-            Console.ReadLine();
+            gameConsole.ReadLine();
         }
 
         public static IHero GetOponent(Random randomizer)
