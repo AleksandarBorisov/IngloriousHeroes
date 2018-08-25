@@ -8,12 +8,18 @@ using IngloriousHeros.Core.Contracts;
 using IngloriousHeros.Models.Contracts;
 using IngloriousHeros.Core.Game;
 using System.Diagnostics;
+using IngloriousHeros.Core.UI.DrawCaption;
+using IngloriousHeros.Core.UI.DrawCaption.Interfaces;
+using IngloriousHeros.Core.UI.DrawCaption.Factory;
+using System.Linq;
 
 namespace IngloriousHeros.Core.UI
 {
     public class MainScreen : IMainScreen
     {
         //Caption fields
+        private IDrawCaptionFactory drawCommands;
+
         private static Location captionOne = new Location(0, 0);
         private static string captionOneValue = "inglorious";
         private static IFont captionOneFont = new FontEmptyLetters();
@@ -42,9 +48,10 @@ namespace IngloriousHeros.Core.UI
 
         private IDraw drawType;
 
-        public MainScreen(IDraw drawType)
+        public MainScreen(IDraw drawType, IDrawCaptionFactory drawCommands)
         {
             this.drawType = drawType;
+            this.drawCommands = drawCommands;
         }
 
         #region Properties
@@ -98,6 +105,30 @@ namespace IngloriousHeros.Core.UI
             Console.WindowWidth = 120;
             Console.WindowHeight = Console.LargestWindowHeight;
             Process themeSong = Process.Start(@"../../../../ThemeSong/bin/Debug/ThemeSong.exe");
+
+            var listOfCommands = new List<string>();
+            //listOfCommands = Worlds.GetListOfCommands;
+            //foreach (var command in listOfCommands)
+            //{
+            //    var splittedCommand = listOfCommands.Trim().Split();
+            //    var commandName = splittedCommand[0].ToLower();
+            //    var commandParameters = splittedCommand.Skip(1).ToList();
+            //    var command = this.commandFactory.GetCommand(commandName);
+            //    command.Execute(commandParameters)
+
+            //}
+
+            //listOfCommands.Add("captionleftright");
+            //listOfCommands.Add(CaptionOne.Row.ToString());
+            //listOfCommands.Add(CaptionOne.Col.ToString());
+            //listOfCommands.Add(CaptionOneValue);
+            //listOfCommands.Add(CaptionOneFont.ToString());
+            //listOfCommands.Add(50.ToString());
+
+            //var command = this.drawCommands.GetCommand(listOfCommands[0]);
+            //command.Execute(listOfCommands.Skip(0).ToList());
+
+
             drawType.CaptionLeftRight(CaptionOne.Row, CaptionOne.Col, CaptionOneValue, CaptionOneFont, 50);
             drawType.CaptionLeftRight(CaptionTwo.Row, CaptionTwo.Col, CaptionTwoValue, CaptionTwoFont, 50);
             drawType.CaptionBlinking(CaptionThree.Row, CaptionThree.Col, CaptionThreeValue, CaptionThreeFont);
