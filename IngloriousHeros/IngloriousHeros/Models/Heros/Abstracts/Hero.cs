@@ -22,7 +22,7 @@ namespace IngloriousHeros.Models.Heros.Abstracts
         private int wins;
         private IHero oponent;
         private Location hbLocation;
-        private IEnumerable<IItem> inventory;
+        private ICollection<IItem> inventory;
 
         public Hero(string name, double health, double damage, int attackDelay, Location hbLocation, List<IItem> items)
         {
@@ -107,7 +107,7 @@ namespace IngloriousHeros.Models.Heros.Abstracts
             set => this.hbLocation = value;
         }
 
-        public IEnumerable<IItem> Inventory
+        public ICollection<IItem> Inventory
         {
             get
             {

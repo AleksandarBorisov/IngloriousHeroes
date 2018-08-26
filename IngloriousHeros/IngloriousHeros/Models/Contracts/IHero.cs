@@ -23,7 +23,7 @@ namespace IngloriousHeros.Models.Contracts
 
         Location HbLocation { get; set; }
 
-        IEnumerable<IItem> Inventory { get; set; }
+        ICollection<IItem> Inventory { get; set; }
 
         void Attack();
     }

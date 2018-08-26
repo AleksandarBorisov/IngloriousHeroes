@@ -7,6 +7,7 @@ using System.Linq;
 using IngloriousHeros.Models.Heros.Abstracts;
 using System.Threading;
 using IngloriousHeros.Models.SpecialSkills;
+using IngloriousHeros.Core.Game.Interfaces;
 
 namespace IngloriousHeros.Models.Heros
 {
@@ -20,11 +21,14 @@ namespace IngloriousHeros.Models.Heros
 
         private int hitsBeforeTransform = 5;
 
+        //private IWorld world;
+
         public Warrior(string name, double health, double damage, int attackDelay, Location hbLocation, List<IItem> items)
             : base(name, health, damage, attackDelay, hbLocation, items)
         {
+            //this.world = world;
             base.Race = RaceName.Robot;
-            this.SpecialSkills = World.RobotSkills as List<ISpecialSkills>;
+            this.SpecialSkills = new List<ISpecialSkills>();
         }
 
         public List<ISpecialSkills> SpecialSkills { get; set; }

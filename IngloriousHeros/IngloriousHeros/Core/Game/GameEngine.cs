@@ -1,142 +1,138 @@
 ﻿using IngloriousHeros.Core.Contracts;
 using IngloriousHeros.Models.Contracts;
-using IngloriousHeros.Core.Factories;
 using System.Collections.Generic;
-using IngloriousHeros.Models.Heros;
-using System;
 using IngloriousHeros.Core.Game;
-using System.Threading;
-using IngloriousHeros.Models.Armours;
-using System.Diagnostics;
-using System.Threading.Tasks;
 using IngloriousHeros.Core.Utilities;
+using IngloriousHeros.Core.Game.Interfaces;
 
 namespace IngloriousHeros.Core
 {
     public class GameEngine : IEngine
     {
+        //private readonly IWorld world;
+        private readonly IHero hero;
         private readonly IConsole gameConsole;
+        private readonly IRandomizer randomizer;
+        private readonly IGameThread thread;
 
-        public GameEngine(IConsole gameConsole)
+        public GameEngine(IHero hero, IConsole gameConsole, IRandomizer randomizer, IGameThread thread)
         {
+            //this.world = world;
+            this.hero = hero;
             this.gameConsole = gameConsole;
+            this.randomizer = randomizer;
+            this.thread = thread;
         }
 
-        public void Run(IHero hero)
+        public void Run()
         {
             World.InitializeEnvironment();
             World.CreateWorld();
-
-            Process soundPlayer = Process.Start(@"../../../../SoundPlayer/bin/Debug/SoundPlayer.exe");
+            var soundPlayer = World.StartSoundPlayer();
 
             int artefacts = 0;
-            //IHero hero = GameUnitFactory.CreateGameUnit<Wizzard>("Harry Potter", 100, 1, 500, World.HeroHB, new List<IItem>());
-            //IHero hero = GameUnitFactory.CreateGameUnit<Warrior>("Hercules", 100, 15, 500, World.HeroHB, new List<IItem>());
-            IHero enemy = null;
+            //IHero enemy = null;
 
-            while (hero.Health > 0 && artefacts < 10)
+            while (this.hero.Health > 0 && artefacts < 10)
             {
-                Random randomizer = new Random(Guid.NewGuid().GetHashCode());
-
-                if (hero.Health != 100)
+                if (this.hero.Health != 100)
                 {
-                    if (hero.Health <= 95)
+                    if (this.hero.Health <= 95)
                     {
-                        hero.Health += 5;
-                        gameConsole.WriteLine($"{hero.Name} has recovered 5 units of health!");
+                        this.hero.Health += 5;
+                        this.gameConsole.WriteLine($"{this.hero.Name} has recovered 5 units of health!");
                     }
                     else
                     {
-                        int healthRecovered = 100 - (int)hero.Health;
-                        hero.Health = 100;
-                        gameConsole.WriteLine($"{hero.Name} has recovered {healthRecovered} units of health!");
+                        int healthRecovered = 100 - (int)this.hero.Health;
+                        this.hero.Health = 100;
+                        this.gameConsole.WriteLine($"{this.hero.Name} has recovered {healthRecovered} units of health!");
                     }
                 }
 
                 if (randomizer.Next(1, 101) <= 20)
                 {
                     // Hero has collected an artefact
-                    gameConsole.WriteLine($"{hero.Name} has collected an artefact {++artefacts}/10!");
-                    Thread.Sleep(1000);
+                    this.gameConsole.WriteLine($"{this.hero.Name} has collected an artefact {++artefacts}/10!");
+                    this.thread.Sleep(1000);
                     continue;
                 }
 
-                Thread.Sleep(100);
+                this.thread.Sleep(100);
 
                 if (randomizer.Next(1, 101) <= 20)
                 {
                     // Hero has collected an item
                     var item = GetItem(randomizer);
-                    (hero.Inventory as List<IItem>).Add(item);
-                    gameConsole.WriteLine($"{hero.Name} has collected a new {item.GetType().Name}!");
-                    Thread.Sleep(1000);
+                    this.hero.Inventory.Add(item);
+                    this.gameConsole.WriteLine($"{this.hero.Name} has collected a new {item.GetType().Name}!");
+                    this.thread.Sleep(1000);
                     continue;
                 }
 
-                Thread.Sleep(100);
+                this.thread.Sleep(100);
 
                 if (randomizer.Next(1, 101) <= 20)
                 {
                     // Hero has encountered an enemy
-                    enemy = GetOponent(randomizer);
+                    IHero enemy = GetOponent(randomizer);
 
-                    gameConsole.WriteLine($"{hero.Name} has encountered an enemy class {enemy.GetType().Name} from the {enemy.Race} race!\n\rLET THE BATTLE BEGIN!");
-                    Thread.Sleep(2000);
+                    this.gameConsole.WriteLine($"{hero.Name} has encountered an enemy class {enemy.GetType().Name} from the {enemy.Race} race!\n\rLET THE BATTLE BEGIN!");
+                    this.thread.Sleep(2000);
 
-                    hero.Oponent = enemy;
-                    enemy.Oponent = hero;
+                    this.hero.Oponent = enemy;
+                    enemy.Oponent = this.hero;
 
                     // Start battle
-                    gameConsole.Clear();
+                    this.gameConsole.Clear();
+
                     Battle epicBattle = new Battle(hero);
                     epicBattle.Start();
-                    Battle.MessageBuffer.Clear();
-                    Thread.Sleep(1000);
 
-                    if (hero.Health > 0)
+                    Battle.MessageBuffer.Clear();
+
+                    this.thread.Sleep(1000);
+
+                    if (this.hero.Health > 0)
                     {
-                        gameConsole.WriteLine($"{hero.Name} has won the battle!");
-                        gameConsole.WriteLine("Game continues...");
+                        this.gameConsole.WriteLine($"{this.hero.Name} has won the battle!");
+                        this.gameConsole.WriteLine("Game continues...");
                     }
                 }
             }
 
             if (hero.Health < 1)
             {
-                gameConsole.WriteLine($"{hero.Name} is dead...");
-                gameConsole.WriteLine("GAME OVER!");
+                this.gameConsole.WriteLine($"{this.hero.Name} is dead...");
+                this.gameConsole.WriteLine("GAME OVER!");
                 soundPlayer.Kill();
             }
             else
             {
-                gameConsole.WriteLine($"{hero.Name} has finished the Quest!");
+                this.gameConsole.WriteLine($"{this.hero.Name} has finished the Quest!");
             }
 
-            gameConsole.ReadLine();
+            this.gameConsole.ReadLine();
         }
 
-        public static IHero GetOponent(Random randomizer)
+        public IHero GetOponent(IRandomizer randomizer)
         {
-            List<IHero> enemies = World.Heroes as List<IHero>;
+            int enemyIndex = randomizer.Next(0, World.Heroes.Count);
 
-            int enemyIndex = randomizer.Next(0, enemies.Count);
+            IHero enemy = World.Heroes[enemyIndex];
 
-            IHero enemy = enemies[enemyIndex];
-
-            enemies.Remove(enemy);
+            World.Heroes.Remove(enemy);
 
             return enemy;
         }
 
-        public static IItem GetItem(Random randomizer)
+        public IItem GetItem(IRandomizer randomizer)
         {
-            List<IItem> items = World.Items as List<IItem>;
+            int itemIndex = randomizer.Next(0, World.Items.Count);
 
-            int itemIndex = randomizer.Next(0, items.Count);
+            IItem item = World.Items[itemIndex];
 
-            IItem item = items[itemIndex];
-
-            items.Remove(item);
+            World.Items.Remove(item);
 
             return item;
         }
