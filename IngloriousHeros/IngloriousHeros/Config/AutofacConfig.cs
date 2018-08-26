@@ -1,13 +1,16 @@
 ﻿using Autofac;
 using IngloriousHeros.Core;
+<<<<<<< HEAD
 using IngloriousHeros.Core.Contracts;
 using IngloriousHeros.Core.Game;
 using IngloriousHeros.Core.Game.Interfaces;
+=======
+using IngloriousHeros.Core.UI.DrawCaption.Fonts;
+>>>>>>> 2a1b097d9129439ba9fc0c6d9c7aebdaf49c6e24
 using IngloriousHeros.Core.UI;
 using IngloriousHeros.Core.UI.DrawCaption;
 using IngloriousHeros.Core.UI.DrawModel;
-using IngloriousHeros.Core.UI.DrawModel.Factory;
-using IngloriousHeros.Core.UI.Models;
+using IngloriousHeros.Core.UI.DrawModel.Models;
 using IngloriousHeros.Core.Utilities;
 using IngloriousHeros.Models.Contracts;
 using System.Collections.Generic;
@@ -38,7 +41,6 @@ namespace IngloriousHeros.Config
 
         private static void RegisterCoreComponents(ContainerBuilder builder)
         {
-            builder.RegisterType<Draw>().As<IDraw>().SingleInstance();
             builder.RegisterType<MainScreen>().As<IMainScreen>().SingleInstance();
             //builder.RegisterType<World>().As<IWorld>().SingleInstance();
             builder.RegisterType<GameEngine>().AsSelf();
@@ -75,7 +77,12 @@ namespace IngloriousHeros.Config
             foreach (var caption in captionTypes)
             {
                 builder.RegisterType(caption.AsType())
+<<<<<<< HEAD
                 .Named<IDrawCaption>(caption.Name.ToLower().Replace("draw", ""));
+=======
+                .Named<IDrawCaption>(
+                    caption.Name.ToLower());
+>>>>>>> 2a1b097d9129439ba9fc0c6d9c7aebdaf49c6e24
             }
 
             var captionFonts = assembly.DefinedTypes
@@ -86,7 +93,12 @@ namespace IngloriousHeros.Config
             foreach (var font in captionFonts)
             {
                 builder.RegisterType(font.AsType())
+<<<<<<< HEAD
                 .Named<IFont>(font.Name.ToLower().Replace("font", ""));
+=======
+                .Named<IFont>(
+                    font.Name.ToLower());
+>>>>>>> 2a1b097d9129439ba9fc0c6d9c7aebdaf49c6e24
             }
 
             var drawModelTypes = assembly.DefinedTypes
@@ -97,7 +109,12 @@ namespace IngloriousHeros.Config
             foreach (var modelType in drawModelTypes)
             {
                 builder.RegisterType(modelType.AsType())
+<<<<<<< HEAD
                 .Named<IDrawModel>(modelType.Name.ToLower().Replace("draw", ""));
+=======
+                .Named<IDrawModel>(
+                    modelType.Name.ToLower());
+>>>>>>> 2a1b097d9129439ba9fc0c6d9c7aebdaf49c6e24
             }
 
             var models = assembly.DefinedTypes
@@ -108,7 +125,12 @@ namespace IngloriousHeros.Config
             foreach (var model in models)
             {
                 builder.RegisterType(model.AsType())
+<<<<<<< HEAD
                 .Named<IModel>(model.Name.ToLower().Replace("model", ""));
+=======
+                .Named<IModel>(
+                    model.Name.ToLower());
+>>>>>>> 2a1b097d9129439ba9fc0c6d9c7aebdaf49c6e24
             }
         }
     }

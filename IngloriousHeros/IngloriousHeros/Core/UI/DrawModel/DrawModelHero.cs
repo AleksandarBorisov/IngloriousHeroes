@@ -1,5 +1,5 @@
 ﻿using Autofac;
-using IngloriousHeros.Core.UI.DrawModel.Factory;
+using IngloriousHeros.Core.UI.DrawModel.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,8 +45,7 @@ namespace IngloriousHeros.Core.UI.DrawModel
         public string[] ProcessModel(string modelType, int heroRow, int heroCol)
         {
             IModel currentModel = autofacContext.ResolveNamed<IModel>(modelType);
-            string heroModel = currentModel.Models[heroRow, heroCol];
-            string[] result = heroModel.Split(new char[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+            string[] result = currentModel.Model.Split(new char[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
             var maxLength = result.Max(x => x.Length);
             result = result.Select(s => s.PadRight(maxLength, ' ')).ToArray();
             return result;

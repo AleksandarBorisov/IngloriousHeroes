@@ -5,7 +5,7 @@ using System.Text;
 
 namespace IngloriousHeros.Core.UI.DrawModel.Factory
 {
-    class DrawModelFactory : IDrawModelFacory
+    class DrawModelFactory : IDrawModelFactory
     {
         private IComponentContext autofacContext;
 

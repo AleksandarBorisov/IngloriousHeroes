@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using System.Threading;
 using Autofac;
-using IngloriousHeros.Core.Contracts;
+using IngloriousHeros.Core.UI.DrawCaption.Fonts;
 
 namespace IngloriousHeros.Core.UI.DrawCaption
 {
-    class DrawCaptionBlinking : IDrawCaption
+    public class DrawCaptionBlinking : IDrawCaption
     {
         private IComponentContext autofacContext;
 
-        public DrawCaptionBlinking()
+        public DrawCaptionBlinking(IComponentContext autofacContext)
         {
-
+            this.autofacContext = autofacContext;
         }
 
         public void Execute(List<string> parameters)

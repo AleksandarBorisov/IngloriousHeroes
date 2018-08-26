@@ -2,7 +2,7 @@
 
 namespace IngloriousHeros.Core.UI.DrawCaption.Fonts
 {
-    class FontEmptyLetters : IFont
+    public class FontEmptyLetters : IFont
     {
         private readonly string[] letters =
         {

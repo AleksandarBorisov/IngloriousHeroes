@@ -1,9 +1,7 @@
-﻿namespace IngloriousHeros.Core.UI.DrawModel.Factory
+﻿namespace IngloriousHeros.Core.UI.DrawModel.Models
 {
     interface IModel
     {
-        string this[int indexRow, int indexCol] { get; }
-
-        string[,] Models { get; set; }
+        string Model { get; }
     }
 }
