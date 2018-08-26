@@ -1,12 +1,6 @@
 ﻿using Autofac;
 using IngloriousHeros.Core;
-<<<<<<< HEAD
-using IngloriousHeros.Core.Contracts;
-using IngloriousHeros.Core.Game;
-using IngloriousHeros.Core.Game.Interfaces;
-=======
 using IngloriousHeros.Core.UI.DrawCaption.Fonts;
->>>>>>> 2a1b097d9129439ba9fc0c6d9c7aebdaf49c6e24
 using IngloriousHeros.Core.UI;
 using IngloriousHeros.Core.UI.DrawCaption;
 using IngloriousHeros.Core.UI.DrawModel;
@@ -27,14 +21,14 @@ namespace IngloriousHeros.Config
 
             // RegisterAssemblyComponents should be called first in order to register the default services
             RegisterAssemblyComponents(builder);
-            RegisterCoreComponents(builder);
-            RegisterUIComponents(builder);
 
             builder.RegisterType<List<IHero>>().As<IList<IHero>>();
             builder.RegisterType<List<IItem>>().As<IList<IItem>>();
             builder.RegisterType<List<ISpecialItem>>().As<IList<ISpecialItem>>();
-            
-            //RegisterHeroTypes(builder);
+
+            RegisterUIComponents(builder);
+            RegisterCoreComponents(builder);
+            RegisterHeroTypes(builder);
 
             return builder.Build();
         }
@@ -42,7 +36,6 @@ namespace IngloriousHeros.Config
         private static void RegisterCoreComponents(ContainerBuilder builder)
         {
             builder.RegisterType<MainScreen>().As<IMainScreen>().SingleInstance();
-            //builder.RegisterType<World>().As<IWorld>().SingleInstance();
             builder.RegisterType<GameEngine>().AsSelf();
             builder.RegisterType<GameConsole>().As<IConsole>().SingleInstance();
             builder.RegisterType<MessageBuffer>().As<IMessageBuffer>().SingleInstance();
@@ -71,67 +64,48 @@ namespace IngloriousHeros.Config
 
             var captionTypes = assembly.DefinedTypes
                 .Where(typeInfo =>
-                    typeInfo.ImplementedInterfaces.Contains(typeof(IDrawCaption)))
+                typeInfo.ImplementedInterfaces.Contains(typeof(IDrawCaption)))
                 .ToList();
-
             foreach (var caption in captionTypes)
             {
                 builder.RegisterType(caption.AsType())
-<<<<<<< HEAD
-                .Named<IDrawCaption>(caption.Name.ToLower().Replace("draw", ""));
-=======
                 .Named<IDrawCaption>(
                     caption.Name.ToLower());
->>>>>>> 2a1b097d9129439ba9fc0c6d9c7aebdaf49c6e24
             }
 
             var captionFonts = assembly.DefinedTypes
                 .Where(typeInfo =>
-                    typeInfo.ImplementedInterfaces.Contains(typeof(IFont)))
+                typeInfo.ImplementedInterfaces.Contains(typeof(IFont)))
                 .ToList();
-
             foreach (var font in captionFonts)
             {
                 builder.RegisterType(font.AsType())
-<<<<<<< HEAD
-                .Named<IFont>(font.Name.ToLower().Replace("font", ""));
-=======
                 .Named<IFont>(
                     font.Name.ToLower());
->>>>>>> 2a1b097d9129439ba9fc0c6d9c7aebdaf49c6e24
             }
 
             var drawModelTypes = assembly.DefinedTypes
                 .Where(typeInfo =>
-                    typeInfo.ImplementedInterfaces.Contains(typeof(IDrawModel)))
+                typeInfo.ImplementedInterfaces.Contains(typeof(IDrawModel)))
                 .ToList();
-
             foreach (var modelType in drawModelTypes)
             {
                 builder.RegisterType(modelType.AsType())
-<<<<<<< HEAD
-                .Named<IDrawModel>(modelType.Name.ToLower().Replace("draw", ""));
-=======
                 .Named<IDrawModel>(
                     modelType.Name.ToLower());
->>>>>>> 2a1b097d9129439ba9fc0c6d9c7aebdaf49c6e24
             }
 
             var models = assembly.DefinedTypes
                 .Where(typeInfo =>
-                    typeInfo.ImplementedInterfaces.Contains(typeof(IModel)))
+                typeInfo.ImplementedInterfaces.Contains(typeof(IModel)))
                 .ToList();
-
             foreach (var model in models)
             {
                 builder.RegisterType(model.AsType())
-<<<<<<< HEAD
-                .Named<IModel>(model.Name.ToLower().Replace("model", ""));
-=======
                 .Named<IModel>(
                     model.Name.ToLower());
->>>>>>> 2a1b097d9129439ba9fc0c6d9c7aebdaf49c6e24
             }
+
         }
     }
 }
