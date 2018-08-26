@@ -28,7 +28,7 @@ namespace IngloriousHeros.Models.Heros
         private bool hasSummonedAMinion = false;
         private Minion minionUndead = null;
 
-        public Wizzard(string name, double health, double damage, int attackDelay, Location hbLocation, List<IItem> items)
+        public Wizzard(string name, byte health, double damage, int attackDelay, Location hbLocation, IList<IItem> items)
             : base(name, health, damage, attackDelay, hbLocation, items)
         {
             base.Race = RaceName.Fantasoid;
@@ -145,8 +145,8 @@ namespace IngloriousHeros.Models.Heros
                 double tempHealthHero = this.Health;
                 double tempHealthOponent = this.Oponent.Health;
 
-                this.Health = tempHealthOponent;
-                this.Oponent.Health = tempHealthHero;
+                this.Health = (byte)tempHealthOponent;
+                this.Oponent.Health = (byte)tempHealthHero;
 
                 HealthBar.Draw(this);
                 HealthBar.Update(this);

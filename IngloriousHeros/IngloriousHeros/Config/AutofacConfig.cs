@@ -10,6 +10,8 @@ using IngloriousHeros.Models.Contracts;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using IngloriousHeros.Core.Contracts;
+using IngloriousHeros.Models.Heros;
 
 namespace IngloriousHeros.Config
 {
@@ -36,19 +38,19 @@ namespace IngloriousHeros.Config
         private static void RegisterCoreComponents(ContainerBuilder builder)
         {
             builder.RegisterType<MainScreen>().As<IMainScreen>().SingleInstance();
-            builder.RegisterType<GameEngine>().AsSelf();
+            builder.RegisterType<GameEngine>().As<IEngine>().SingleInstance();
             builder.RegisterType<GameConsole>().As<IConsole>().SingleInstance();
             builder.RegisterType<MessageBuffer>().As<IMessageBuffer>().SingleInstance();
         }
 
         private static void RegisterHeroTypes(ContainerBuilder builder)
         {
-            //builder.RegisterType<Archer>().Named<IHero>(typeof(Archer).Name);
-            //builder.RegisterType<Brute>().Named<IHero>(typeof(Brute).Name);
-            //builder.RegisterType<Gnome>().Named<IHero>(typeof(Gnome).Name);
-            //builder.RegisterType<Jedi>().Named<IHero>(typeof(Jedi).Name);
-            //builder.RegisterType<Warrior>().Named<IHero>(typeof(Warrior).Name);
-            //builder.RegisterType<Wizzard>().Named<IHero>(typeof(Wizzard).Name);
+            builder.RegisterType<Archer>().Named<IHero>(typeof(Archer).Name);
+            builder.RegisterType<Brute>().Named<IHero>(typeof(Brute).Name);
+            builder.RegisterType<Gnome>().Named<IHero>(typeof(Gnome).Name);
+            builder.RegisterType<Jedi>().Named<IHero>(typeof(Jedi).Name);
+            builder.RegisterType<Warrior>().Named<IHero>(typeof(Warrior).Name);
+            builder.RegisterType<Wizzard>().Named<IHero>(typeof(Wizzard).Name);
         }
 
         private static void RegisterAssemblyComponents(ContainerBuilder builder)

@@ -9,7 +9,7 @@ namespace IngloriousHeros.Models.Contracts
 
         string Name { get; }
 
-        double Health { get; set; }
+        byte Health { get; set; }
 
         double Armour { get; }
 
@@ -23,7 +23,7 @@ namespace IngloriousHeros.Models.Contracts
 
         Location HbLocation { get; set; }
 
-        ICollection<IItem> Inventory { get; set; }
+        IList<IItem> Inventory { get; set; }
 
         void Attack();
     }

@@ -15,16 +15,16 @@ namespace IngloriousHeros.Models.Heros.Abstracts
 
         private RaceName race;
         private string name;
-        private double health;
+        private byte health;
         private double armour;
         private double damage;
         private int attackDelay;
         private int wins;
         private IHero oponent;
         private Location hbLocation;
-        private ICollection<IItem> inventory;
+        private IList<IItem> inventory;
 
-        public Hero(string name, double health, double damage, int attackDelay, Location hbLocation, List<IItem> items)
+        public Hero(string name, byte health, double damage, int attackDelay, Location hbLocation, IList<IItem> items)
         {
             this.Name = name;
             this.Health = health;
@@ -48,7 +48,7 @@ namespace IngloriousHeros.Models.Heros.Abstracts
             set => this.name = value;
         }
 
-        public double Health
+        public byte Health
         {
             get => this.health;
             set
@@ -107,7 +107,7 @@ namespace IngloriousHeros.Models.Heros.Abstracts
             set => this.hbLocation = value;
         }
 
-        public ICollection<IItem> Inventory
+        public IList<IItem> Inventory
         {
             get
             {
@@ -133,7 +133,7 @@ namespace IngloriousHeros.Models.Heros.Abstracts
             
             if (!Battle.Cts.Token.IsCancellationRequested)
             {
-                this.Health -= damage * (1 - bonusArmour / 100.0);
+                this.Health -= (byte)(damage * (1 - bonusArmour / 100.0));
 
                 Battle.MessageBuffer.Enqueue($"{this.Oponent.Name} deals {(int)(damage) * (1 - bonusArmour / 100.0)} damage to {this.Name}.");// damage to {oponent.Name}.");
                 Battle.MessageBuffer.PrintBuffer();

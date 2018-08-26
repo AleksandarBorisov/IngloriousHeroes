@@ -59,15 +59,15 @@ namespace IngloriousHeros.Core.Game
 
         private static void CreateHeroes()
         {
-            heroes.Add(GameUnitFactory.CreateGameUnit<Wizzard>("Harry Potter", 100, 3, 500, OponentHB, new List<IItem>()));
-            heroes.Add(GameUnitFactory.CreateGameUnit<Gnome>("Tom", 100, 3, 500, OponentHB, new List<IItem>()));
-            heroes.Add(GameUnitFactory.CreateGameUnit<Jedi>("Neo from The Matrix", 100, 6, 500, OponentHB, new List<IItem>()));
-            heroes.Add(GameUnitFactory.CreateGameUnit<Warrior>("Iron Man", 100, 3, 500, OponentHB, new List<IItem>()));
-            heroes.Add(GameUnitFactory.CreateGameUnit<Archer>("Spiderman", 100, 3, 500, OponentHB, new List<IItem>()));
-            heroes.Add(GameUnitFactory.CreateGameUnit<Wizzard>("Gandalf", 100, 3, 500, OponentHB, new List<IItem>()));
-            heroes.Add(GameUnitFactory.CreateGameUnit<Gnome>("Gnomey", 100, 3, 500, OponentHB, new List<IItem>()));
-            heroes.Add(GameUnitFactory.CreateGameUnit<Jedi>("Luke Skywalker", 100, 3, 500, OponentHB, new List<IItem>()));
-            heroes.Add(GameUnitFactory.CreateGameUnit<Warrior>("Spartacus", 100, 3, 500, OponentHB, new List<IItem>()));
+            heroes.Add(GameUnitFactory.CreateGameUnit<Wizzard>("Harry Potter", (byte)100, 3, 500, OponentHB, new List<IItem>()));
+            heroes.Add(GameUnitFactory.CreateGameUnit<Gnome>("Tom", (byte)100, 3, 500, OponentHB, new List<IItem>()));
+            heroes.Add(GameUnitFactory.CreateGameUnit<Jedi>("Neo from The Matrix", (byte)100, 6, 500, OponentHB, new List<IItem>()));
+            heroes.Add(GameUnitFactory.CreateGameUnit<Warrior>("Iron Man", (byte)100, 3, 500, OponentHB, new List<IItem>()));
+            heroes.Add(GameUnitFactory.CreateGameUnit<Archer>("Spiderman", (byte)100, 3, 500, OponentHB, new List<IItem>()));
+            heroes.Add(GameUnitFactory.CreateGameUnit<Wizzard>("Gandalf", (byte)100, 3, 500, OponentHB, new List<IItem>()));
+            heroes.Add(GameUnitFactory.CreateGameUnit<Gnome>("Gnomey", (byte)100, 3, 500, OponentHB, new List<IItem>()));
+            heroes.Add(GameUnitFactory.CreateGameUnit<Jedi>("Luke Skywalker", (byte)100, 3, 500, OponentHB, new List<IItem>()));
+            heroes.Add(GameUnitFactory.CreateGameUnit<Warrior>("Spartacus", (byte)100, 3, 500, OponentHB, new List<IItem>()));
         }
 
         private static void CreateItems()

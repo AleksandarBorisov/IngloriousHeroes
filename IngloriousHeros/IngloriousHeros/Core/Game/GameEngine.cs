@@ -31,7 +31,6 @@ namespace IngloriousHeros.Core
             var soundPlayer = World.StartSoundPlayer();
 
             int artefacts = 0;
-            //IHero enemy = null;
 
             while (this.hero.Health > 0 && artefacts < 10)
             {
@@ -86,7 +85,7 @@ namespace IngloriousHeros.Core
                     // Start battle
                     this.gameConsole.Clear();
 
-                    Battle epicBattle = new Battle(hero);
+                    Battle epicBattle = new Battle(hero, gameConsole);
                     epicBattle.Start();
 
                     Battle.MessageBuffer.Clear();

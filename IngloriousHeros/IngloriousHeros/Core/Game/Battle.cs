@@ -16,10 +16,12 @@ namespace IngloriousHeros.Core.Game
         // TODO: Resolve messageBuffer with Autofac
         private static readonly IMessageBuffer messageBuffer = new MessageBuffer(new GameConsole());
         private IHero hero;
-        
-        public Battle(IHero hero)
+        private readonly IConsole gameConsole;
+
+        public Battle(IHero hero, IConsole gameConsole)
         {
             this.hero = hero;
+            this.gameConsole = gameConsole;
         }
 
         public static CancellationTokenSource Cts => cts;
@@ -57,12 +59,12 @@ namespace IngloriousHeros.Core.Game
 
         private void DisplayBattleStats()
         {
-            Console.Clear();
+            this.gameConsole.Clear();
 
             HealthBar.Draw(hero);
             HealthBar.Draw(hero.Oponent);
-            Console.SetCursorPosition(World.BufferLocation.Col, World.BufferLocation.Row);
-            Console.WriteLine("Fight history:");
+            this.gameConsole.SetCursorPosition(World.BufferLocation.Col, World.BufferLocation.Row);
+            this.gameConsole.WriteLine("Fight history:");
         }
 
         public void BeginBattle(IHero hero, IHero oponent)
@@ -89,24 +91,24 @@ namespace IngloriousHeros.Core.Game
                 if (hero.Health > 0)
                 {
                     Console.ForegroundColor = ConsoleColor.Green;
-                    Console.SetCursorPosition(World.OutcomeLocation.Col, World.OutcomeLocation.Row);
-                    Console.WriteLine($"{hero.Name} wins this round!");
-                    Console.SetCursorPosition(World.OutcomeLocation.Col, World.OutcomeLocation.Row + 1);
-                    Console.WriteLine($"{hero.Name} health: {hero.Health}");
+                    this.gameConsole.SetCursorPosition(World.OutcomeLocation.Col, World.OutcomeLocation.Row);
+                    this.gameConsole.WriteLine($"{hero.Name} wins this round!");
+                    this.gameConsole.SetCursorPosition(World.OutcomeLocation.Col, World.OutcomeLocation.Row + 1);
+                    this.gameConsole.WriteLine($"{hero.Name} health: {hero.Health}");
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.SetCursorPosition(World.OutcomeLocation.Col, World.OutcomeLocation.Row + 2);
-                    Console.WriteLine($"{oponent.Name} health: {(oponent.Health < 0 ? 0 : oponent.Health)}");
+                    this.gameConsole.SetCursorPosition(World.OutcomeLocation.Col, World.OutcomeLocation.Row + 2);
+                    this.gameConsole.WriteLine($"{oponent.Name} health: {(oponent.Health < 0 ? 0 : oponent.Health)}");
                     Console.ForegroundColor = ConsoleColor.Gray;
                     Thread.Sleep(2000);
-                    Console.Clear();
+                    this.gameConsole.Clear();
                     hero.Wins++;
                 }
                 else
                 {
                     HealthBar.Update(oponent);
-                    Console.SetCursorPosition(World.OutcomeLocation.Col, World.OutcomeLocation.Row);
+                    this.gameConsole.SetCursorPosition(World.OutcomeLocation.Col, World.OutcomeLocation.Row);
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Everybody is dead!");
+                    this.gameConsole.WriteLine("Everybody is dead!");
                     Console.ForegroundColor = ConsoleColor.Gray;
                 }
             }

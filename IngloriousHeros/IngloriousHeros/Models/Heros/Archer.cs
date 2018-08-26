@@ -13,12 +13,11 @@ namespace IngloriousHeros.Models.Heros
 {
     public class Archer : Hero, IHuman
     {
-        private static bool doubleArrow = false;
         private static int criticalHitCount = 5;
         private static int hitCount = 0;
         
         //TODO: Add properties specific to class Archer
-        public Archer(string name, double health, double damage, int attackDelay, Location hbLocation, List<IItem> items)
+        public Archer(string name, byte health, double damage, int attackDelay, Location hbLocation, IList<IItem> items)
             : base(name, health, damage, attackDelay, hbLocation, items)
         {
             base.Race = RaceName.Human;

@@ -3,6 +3,7 @@ using IngloriousHeros.Models.Contracts;
 using IngloriousHeros.Core.UI;
 using IngloriousHeros.Config;
 using Autofac;
+using IngloriousHeros.Core.Contracts;
 
 namespace IngloriousHeros
 {
@@ -20,7 +21,7 @@ namespace IngloriousHeros
                 var mainScreen = scope.Resolve<IMainScreen>();
                 IHero hero = mainScreen.Start();
 
-                var newGame = scope.Resolve<GameEngine>(new TypedParameter(typeof(IHero), hero));
+                var newGame = scope.Resolve<IEngine>(new TypedParameter(typeof(IHero), hero));
                 newGame.Run();
             }
         }

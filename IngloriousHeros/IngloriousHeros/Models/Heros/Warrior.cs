@@ -23,7 +23,7 @@ namespace IngloriousHeros.Models.Heros
 
         //private IWorld world;
 
-        public Warrior(string name, double health, double damage, int attackDelay, Location hbLocation, List<IItem> items)
+        public Warrior(string name, byte health, double damage, int attackDelay, Location hbLocation, IList<IItem> items)
             : base(name, health, damage, attackDelay, hbLocation, items)
         {
             //this.world = world;
@@ -95,7 +95,7 @@ namespace IngloriousHeros.Models.Heros
             this.Transformation = this.SpecialSkills[wins] as RobotSkills;
             currentHits = 0;
             this.Damage += Transformation.AtackBonus;
-            this.Health += Transformation.HealthBonus;
+            this.Health += (byte)Transformation.HealthBonus;
             this.Armour += Transformation.ArmourBonus;
             this.AttackDelay -= Transformation.AtackDelayReduction;
             Battle.MessageBuffer.Enqueue($"{this.Name} has transformed into {this.Transformation.Name}");
@@ -104,7 +104,7 @@ namespace IngloriousHeros.Models.Heros
         public void BackToNormal()
         {
             this.Damage -= Transformation.AtackBonus;
-            this.Health -= Transformation.HealthBonus;
+            this.Health -= (byte)Transformation.HealthBonus;
             if (this.Health < 0)
             {
                 this.Health = 1;

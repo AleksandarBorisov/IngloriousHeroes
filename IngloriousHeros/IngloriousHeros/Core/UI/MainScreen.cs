@@ -9,6 +9,7 @@ using IngloriousHeros.Core.UI.DrawCaption.Factory;
 using IngloriousHeros.Core.UI.DrawModel.Factory;
 using System.Linq;
 using System.Diagnostics;
+using Autofac;
 
 namespace IngloriousHeros.Core.UI
 {
@@ -20,12 +21,15 @@ namespace IngloriousHeros.Core.UI
         private Location userName = new Location(55, 25);
         private int currentModelIndex = 0;
         private int maxModelsPerRow = 3;
+        private IComponentContext autofacContext;
 
         public MainScreen(IDrawCaptionFactory drawCaptionFactory,
-            IDrawModelFactory drawModelFactory)
+            IDrawModelFactory drawModelFactory,
+            IComponentContext autofacContext)
         {
             this.drawCaptionFactory = drawCaptionFactory;
             this.drawModelFactory = drawModelFactory;
+            this.autofacContext = autofacContext;
         }
 
         public Location UserName => userName;
@@ -44,8 +48,8 @@ namespace IngloriousHeros.Core.UI
             //This list will come from class World
             var listOfCaptions = new List<string>()
             {
-                "DrawCaptionLeftRight,0,0,inglorious,FontEmptyLetters,50",
-                "DrawCaptionLeftRight,70,9,heros,FontEmptyLetters,50",
+                //"DrawCaptionLeftRight,0,0,inglorious,FontEmptyLetters,50",
+                //"DrawCaptionLeftRight,70,9,heros,FontEmptyLetters,50",
                 "DrawCaptionBlinking,0,20,choose hero,FontSolidLetters,200",
             };
 
@@ -121,15 +125,18 @@ namespace IngloriousHeros.Core.UI
             Console.CursorVisible = true;
             World.CreateWorld();
             string userName = Console.ReadLine();
-            IHero heroInstance = GameUnitFactory.CreateGameUnit<Archer>(userName, 100, 3, 500, World.HeroHB, new List<IItem>());
-            switch (currentModelIndex)
-            {
-                case 1: heroInstance = GameUnitFactory.CreateGameUnit<Warrior>(userName, 100, 5, 500, World.HeroHB, new List<IItem>()); break;
-                case 2: heroInstance = GameUnitFactory.CreateGameUnit<Gnome>(userName, 100, 5, 500, World.HeroHB, new List<IItem>()); break;
-                case 3: heroInstance = GameUnitFactory.CreateGameUnit<Wizzard>(userName, 100, 5, 500, World.HeroHB, new List<IItem>()); break;
-                case 4: heroInstance = GameUnitFactory.CreateGameUnit<Jedi>(userName, 100, 5, 500, World.HeroHB, new List<IItem>()); break;
-                case 5: heroInstance = GameUnitFactory.CreateGameUnit<Brute>(userName, 100, 5, 500, World.HeroHB, new List<IItem>()); break;
-            }
+
+            string heroType = listOfModels[currentModelIndex].Split(',').Last().Replace("Model", "");
+
+            var heroInstance = autofacContext
+                .ResolveNamed<IHero>(heroType,
+                    new TypedParameter(typeof(string), userName),
+                    new TypedParameter(typeof(byte), 100),
+                    new TypedParameter(typeof(double), 5),
+                    new TypedParameter(typeof(int), 500),
+                    new TypedParameter(typeof(Location), World.HeroHB),
+                    new TypedParameter(typeof(IList<IItem>), new List<IItem>())
+                );
 
             themeSong.Kill();
             World.InitializeEnvironment();
