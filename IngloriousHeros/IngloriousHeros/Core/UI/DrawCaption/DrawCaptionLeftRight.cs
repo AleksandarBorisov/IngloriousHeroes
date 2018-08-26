@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using Autofac;
 using System.Threading;
-using IngloriousHeros.Core.Contracts;
+using IngloriousHeros.Core.UI.DrawCaption.Fonts;
 
 namespace IngloriousHeros.Core.UI.DrawCaption
 {
-    class DrawCaptionLeftRight : IDrawCaption
+    public class DrawCaptionLeftRight : IDrawCaption
     {
         private IComponentContext autofacContext;
 
@@ -17,8 +17,8 @@ namespace IngloriousHeros.Core.UI.DrawCaption
 
         public void Execute(List<string> parameters)
         {
-            int currentColumn = int.Parse(parameters[0]);
-            int currentRow = int.Parse(parameters[1]);
+            int currentRow = int.Parse(parameters[0]);
+            int currentColumn = int.Parse(parameters[1]);
             string message = parameters[2];
             string currentFont = parameters[3].ToLower();
             int leftRightSpeed = int.Parse(parameters[4]);

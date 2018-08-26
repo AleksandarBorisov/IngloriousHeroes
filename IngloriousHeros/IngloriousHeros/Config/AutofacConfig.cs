@@ -1,11 +1,10 @@
 ﻿using Autofac;
 using IngloriousHeros.Core;
-using IngloriousHeros.Core.Contracts;
+using IngloriousHeros.Core.UI.DrawCaption.Fonts;
 using IngloriousHeros.Core.UI;
 using IngloriousHeros.Core.UI.DrawCaption;
 using IngloriousHeros.Core.UI.DrawModel;
-using IngloriousHeros.Core.UI.DrawModel.Factory;
-using IngloriousHeros.Core.UI.Models;
+using IngloriousHeros.Core.UI.DrawModel.Models;
 using IngloriousHeros.Core.Utilities;
 using IngloriousHeros.Models.Contracts;
 using System.Collections.Generic;
@@ -36,7 +35,6 @@ namespace IngloriousHeros.Config
 
         private static void RegisterCoreComponents(ContainerBuilder builder)
         {
-            builder.RegisterType<Draw>().As<IDraw>().SingleInstance();
             builder.RegisterType<MainScreen>().As<IMainScreen>().SingleInstance();
             builder.RegisterType<GameEngine>().AsSelf();
             builder.RegisterType<GameConsole>().As<IConsole>().SingleInstance();
@@ -72,7 +70,7 @@ namespace IngloriousHeros.Config
             {
                 builder.RegisterType(caption.AsType())
                 .Named<IDrawCaption>(
-                    caption.Name.ToLower().Replace("draw", ""));
+                    caption.Name.ToLower());
             }
 
             var captionFonts = assembly.DefinedTypes
@@ -83,7 +81,7 @@ namespace IngloriousHeros.Config
             {
                 builder.RegisterType(font.AsType())
                 .Named<IFont>(
-                    font.Name.ToLower().Replace("font", ""));
+                    font.Name.ToLower());
             }
 
             var drawModelTypes = assembly.DefinedTypes
@@ -94,7 +92,7 @@ namespace IngloriousHeros.Config
             {
                 builder.RegisterType(modelType.AsType())
                 .Named<IDrawModel>(
-                    modelType.Name.ToLower().Replace("draw", ""));
+                    modelType.Name.ToLower());
             }
 
             var models = assembly.DefinedTypes
@@ -105,7 +103,7 @@ namespace IngloriousHeros.Config
             {
                 builder.RegisterType(model.AsType())
                 .Named<IModel>(
-                    model.Name.ToLower().Replace("model", ""));
+                    model.Name.ToLower());
             }
 
         }
