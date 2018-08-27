@@ -10,6 +10,7 @@ using IngloriousHeros.Core.UI.DrawModel.Factory;
 using System.Linq;
 using System.Diagnostics;
 using Autofac;
+using IngloriousHeros.Core.Utilities;
 
 namespace IngloriousHeros.Core.UI
 {
@@ -18,6 +19,7 @@ namespace IngloriousHeros.Core.UI
         //Caption fields
         private IDrawCaptionFactory drawCaptionFactory;
         private IDrawModelFactory drawModelFactory;
+        private readonly IConsole gameConsole;
         private Location userName = new Location(55, 25);
         private int currentModelIndex = 0;
         private int maxModelsPerRow = 3;
@@ -25,11 +27,13 @@ namespace IngloriousHeros.Core.UI
 
         public MainScreen(IDrawCaptionFactory drawCaptionFactory,
             IDrawModelFactory drawModelFactory,
-            IComponentContext autofacContext)
+            IComponentContext autofacContext,
+            IConsole gameConsole)
         {
             this.drawCaptionFactory = drawCaptionFactory;
             this.drawModelFactory = drawModelFactory;
             this.autofacContext = autofacContext;
+            this.gameConsole = gameConsole;
         }
 
         public Location UserName => userName;
@@ -40,9 +44,9 @@ namespace IngloriousHeros.Core.UI
 
         public IHero Start()
         {
-            Console.WindowWidth = 120;
-            Console.WindowHeight = Console.LargestWindowHeight;
-            Console.CursorVisible = false;
+            gameConsole.WindowWidth = 120;
+            gameConsole.WindowHeight = gameConsole.LargestWindowHeight;
+            gameConsole.CursorVisible = false;
             Process themeSong = Process.Start(@"../../../../ThemeSong/bin/Debug/ThemeSong.exe");
 
             //This list will come from class World
@@ -71,7 +75,7 @@ namespace IngloriousHeros.Core.UI
                 ProcessSingleModelCommand(model);
             }
 
-            ConsoleKeyInfo key = Console.ReadKey(true);
+            ConsoleKeyInfo key = gameConsole.ReadKey(true);
 
             while (key.Key != ConsoleKey.Enter)
             {
@@ -108,10 +112,10 @@ namespace IngloriousHeros.Core.UI
                     ProcessSingleModelCommand(listOfModels[CurrentModelIndex].Replace("false", "true"));
                 }
 
-                key = Console.ReadKey(true);
+                key = gameConsole.ReadKey(true);
             }
 
-            Console.Clear();
+            gameConsole.Clear();
             //You already know where this list comes from
             var listOfAfterCredits = new List<string>()
             {
@@ -121,10 +125,10 @@ namespace IngloriousHeros.Core.UI
 
             ProcessCaptionCommands(listOfAfterCredits);
 
-            Console.SetCursorPosition(UserName.Row, UserName.Col);
-            Console.CursorVisible = true;
+            gameConsole.SetCursorPosition(UserName.Row, UserName.Col);
+            gameConsole.CursorVisible = true;
             World.CreateWorld();
-            string userName = Console.ReadLine();
+            string userName = gameConsole.ReadLine();
 
             string heroType = listOfModels[currentModelIndex].Split(',').Last().Replace("Model", "");
 

@@ -90,15 +90,15 @@ namespace IngloriousHeros.Core.Game
             {
                 if (hero.Health > 0)
                 {
-                    Console.ForegroundColor = ConsoleColor.Green;
+                    this.gameConsole.ForegroundColor = ConsoleColor.Green;
                     this.gameConsole.SetCursorPosition(World.OutcomeLocation.Col, World.OutcomeLocation.Row);
                     this.gameConsole.WriteLine($"{hero.Name} wins this round!");
                     this.gameConsole.SetCursorPosition(World.OutcomeLocation.Col, World.OutcomeLocation.Row + 1);
                     this.gameConsole.WriteLine($"{hero.Name} health: {hero.Health}");
-                    Console.ForegroundColor = ConsoleColor.Red;
+                    this.gameConsole.ForegroundColor = ConsoleColor.Red;
                     this.gameConsole.SetCursorPosition(World.OutcomeLocation.Col, World.OutcomeLocation.Row + 2);
                     this.gameConsole.WriteLine($"{oponent.Name} health: {(oponent.Health < 0 ? 0 : oponent.Health)}");
-                    Console.ForegroundColor = ConsoleColor.Gray;
+                    this.gameConsole.ForegroundColor = ConsoleColor.Gray;
                     Thread.Sleep(2000);
                     this.gameConsole.Clear();
                     hero.Wins++;
@@ -107,9 +107,9 @@ namespace IngloriousHeros.Core.Game
                 {
                     HealthBar.Update(oponent);
                     this.gameConsole.SetCursorPosition(World.OutcomeLocation.Col, World.OutcomeLocation.Row);
-                    Console.ForegroundColor = ConsoleColor.Red;
+                    this.gameConsole.ForegroundColor = ConsoleColor.Red;
                     this.gameConsole.WriteLine("Everybody is dead!");
-                    Console.ForegroundColor = ConsoleColor.Gray;
+                    this.gameConsole.ForegroundColor = ConsoleColor.Gray;
                 }
             }
         }

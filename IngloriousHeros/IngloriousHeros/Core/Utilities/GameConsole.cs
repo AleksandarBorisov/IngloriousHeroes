@@ -28,6 +28,29 @@ namespace IngloriousHeros.Core.Utilities
             set => Console.BufferHeight = value;
         }
 
+        public ConsoleColor ForegroundColor
+        {
+            get => Console.ForegroundColor;
+            set => Console.ForegroundColor = value;
+        }
+
+        public ConsoleColor BackgroundColor
+        {
+            get => Console.BackgroundColor;
+            set => Console.BackgroundColor = value;
+        }
+
+        public bool CursorVisible
+        {
+            get => Console.CursorVisible;
+            set => Console.CursorVisible = value;
+        }
+
+        public int LargestWindowHeight
+        {
+            get => Console.LargestWindowHeight;
+        }
+
         public void Write(string message)
         {
             Console.Write(message);
@@ -52,5 +75,11 @@ namespace IngloriousHeros.Core.Utilities
         {
             return Console.ReadLine();
         }
+
+        public ConsoleKeyInfo ReadKey(bool intercept = false)
+        {
+            return Console.ReadKey(intercept);
+        }
+        
     }
 }
