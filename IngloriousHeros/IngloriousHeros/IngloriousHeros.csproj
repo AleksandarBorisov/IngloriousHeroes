@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <PackageReference Include="Autofac" Version="4.8.1" />
+    <PackageReference Include="Moq" Version="4.9.0" />
   </ItemGroup>
 
 </Project>

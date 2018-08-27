@@ -20,7 +20,7 @@ namespace IngloriousHeros.Models.Armours
             int armourToAdd = this.BonusArmour;
             if (BonusArmour <= 0)
             {
-                (hero.Inventory as List<IItem>).Remove(this);
+                hero.Inventory.Remove(this);
             }
             BonusArmour -= 10;
 

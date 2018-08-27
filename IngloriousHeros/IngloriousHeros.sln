@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoundPlayer", "SoundPlayer\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThemeSong", "ThemeSong\ThemeSong.csproj", "{4716125A-6B15-4454-BFA1-89F6571DFDEC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IngloriousHeros.Tests", "IngloriousHeros.Tests\IngloriousHeros.Tests.csproj", "{673E70C4-0455-4609-96A5-05461FE9F5FA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{4716125A-6B15-4454-BFA1-89F6571DFDEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4716125A-6B15-4454-BFA1-89F6571DFDEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4716125A-6B15-4454-BFA1-89F6571DFDEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{673E70C4-0455-4609-96A5-05461FE9F5FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{673E70C4-0455-4609-96A5-05461FE9F5FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{673E70C4-0455-4609-96A5-05461FE9F5FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{673E70C4-0455-4609-96A5-05461FE9F5FA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
