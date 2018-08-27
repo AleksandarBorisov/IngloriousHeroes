@@ -33,7 +33,7 @@ namespace IngloriousHeros.Tests.Core.UI.DrawCaptionTests.FactoryTests.CaptionFac
         //[TestMethod]
         //public void ThrowArgumentException_WhenCommandIsNotValid()
         //{
-        //    string commandName = "DrawCaptionBlinking";
+        //    string commandName = "hghgh";
         //    var commandMock = new Mock<IDrawCaption>();
         //    var autofacMock = new Mock<IComponentContext>();
         //    autofacMock

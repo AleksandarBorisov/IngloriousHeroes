@@ -3,16 +3,19 @@ using System.Collections.Generic;
 using System.Threading;
 using Autofac;
 using IngloriousHeros.Core.UI.DrawCaption.Fonts;
+using IngloriousHeros.Core.Utilities;
 
 namespace IngloriousHeros.Core.UI.DrawCaption
 {
     public class DrawCaptionBlinking : IDrawCaption
     {
         private IComponentContext autofacContext;
+        private IConsole gameConsole;
 
-        public DrawCaptionBlinking(IComponentContext autofacContext)
+        public DrawCaptionBlinking(IComponentContext autofacContext, IConsole gameConsole)
         {
             this.autofacContext = autofacContext;
+            this.gameConsole = gameConsole;
         }
 
         public void Execute(List<string> parameters)
@@ -36,14 +39,14 @@ namespace IngloriousHeros.Core.UI.DrawCaption
                 for (int i = 0; i < message.Length; i++)
                 {
                     char[,] letterAsCharArray = ProcessLetter(message[i], currentFont);
-                    Console.SetCursorPosition(currentRow, currentColumn++);
+                    gameConsole.SetCursorPosition(currentRow, currentColumn++);
                     for (int row = 0; row < letterAsCharArray.GetLength(0); row++)
                     {
                         for (int col = 0; col < letterAsCharArray.GetLength(1); col++)
                         {
                             Console.Write(printWhiteSpace ? letterAsCharArray[row, col] : ' ');
                         }
-                        Console.SetCursorPosition(currentRow, currentColumn++);
+                        gameConsole.SetCursorPosition(currentRow, currentColumn++);
                     }
                     currentRow += letterAsCharArray.GetLength(1);
                     currentColumn = startingColumn;
