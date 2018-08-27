@@ -3,13 +3,17 @@ using System.Collections.Generic;
 
 namespace IngloriousHeros.Models.Contracts
 {
+    public delegate void HealthChangeEventHandler(IHero sender);
+
     public interface IHero : IExhaustible
     {
+        event HealthChangeEventHandler HealthChange;
+
         RaceName Race { get; }
 
         string Name { get; }
 
-        byte Health { get; set; }
+        sbyte Health { get; set; }
 
         double Armour { get; }
 

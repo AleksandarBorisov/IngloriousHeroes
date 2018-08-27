@@ -43,8 +43,8 @@ namespace IngloriousHeros.Core.Game
             HealthBar heroHB = new HealthBar();
             HealthBar oponentHB = new HealthBar();
 
-            heroHB.Subscribe(this.Hero as Hero);
-            oponentHB.Subscribe(this.Hero.Oponent as Hero);
+            heroHB.Subscribe(this.Hero);
+            oponentHB.Subscribe(this.Hero.Oponent);
 
             this.DisplayBattleStats();
 
