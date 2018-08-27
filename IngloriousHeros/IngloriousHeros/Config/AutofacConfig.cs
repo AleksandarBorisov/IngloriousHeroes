@@ -66,48 +66,47 @@ namespace IngloriousHeros.Config
 
             var captionTypes = assembly.DefinedTypes
                 .Where(typeInfo =>
-                typeInfo.ImplementedInterfaces.Contains(typeof(IDrawCaption)))
+                    typeInfo.ImplementedInterfaces.Contains(typeof(IDrawCaption)))
                 .ToList();
+
             foreach (var caption in captionTypes)
             {
                 builder.RegisterType(caption.AsType())
-                .Named<IDrawCaption>(
-                    caption.Name.ToLower());
+                    .Named<IDrawCaption>(caption.Name.ToLower());
             }
 
             var captionFonts = assembly.DefinedTypes
                 .Where(typeInfo =>
-                typeInfo.ImplementedInterfaces.Contains(typeof(IFont)))
+                    typeInfo.ImplementedInterfaces.Contains(typeof(IFont)))
                 .ToList();
+
             foreach (var font in captionFonts)
             {
                 builder.RegisterType(font.AsType())
-                .Named<IFont>(
-                    font.Name.ToLower());
+                    .Named<IFont>(font.Name.ToLower());
             }
 
             var drawModelTypes = assembly.DefinedTypes
                 .Where(typeInfo =>
-                typeInfo.ImplementedInterfaces.Contains(typeof(IDrawModel)))
+                    typeInfo.ImplementedInterfaces.Contains(typeof(IDrawModel)))
                 .ToList();
+
             foreach (var modelType in drawModelTypes)
             {
                 builder.RegisterType(modelType.AsType())
-                .Named<IDrawModel>(
-                    modelType.Name.ToLower());
+                    .Named<IDrawModel>(modelType.Name.ToLower());
             }
 
             var models = assembly.DefinedTypes
                 .Where(typeInfo =>
-                typeInfo.ImplementedInterfaces.Contains(typeof(IModel)))
+                    typeInfo.ImplementedInterfaces.Contains(typeof(IModel)))
                 .ToList();
+
             foreach (var model in models)
             {
                 builder.RegisterType(model.AsType())
-                .Named<IModel>(
-                    model.Name.ToLower());
+                    .Named<IModel>(model.Name.ToLower());
             }
-
         }
     }
 }

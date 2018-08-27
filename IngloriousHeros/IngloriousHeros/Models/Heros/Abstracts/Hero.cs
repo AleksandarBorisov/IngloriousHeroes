@@ -4,18 +4,17 @@ using IngloriousHeros.Core.UI;
 using IngloriousHeros.Models.Common;
 using System.Collections.Generic;
 using System.Linq;
+using IngloriousHeros.Providers;
 
 namespace IngloriousHeros.Models.Heros.Abstracts
 {
-    public delegate void HealthChangeEventHandler(IHero sender);
-
     public abstract class Hero : IHero
     {
         public event HealthChangeEventHandler HealthChange;
 
         private RaceName race;
         private string name;
-        private byte health;
+        private sbyte health;
         private double armour;
         private double damage;
         private int attackDelay;
@@ -24,7 +23,7 @@ namespace IngloriousHeros.Models.Heros.Abstracts
         private Location hbLocation;
         private IList<IItem> inventory;
 
-        public Hero(string name, byte health, double damage, int attackDelay, Location hbLocation, IList<IItem> items)
+        public Hero(string name, sbyte health, double damage, int attackDelay, Location hbLocation, IList<IItem> items)
         {
             this.Name = name;
             this.Health = health;
@@ -43,14 +42,13 @@ namespace IngloriousHeros.Models.Heros.Abstracts
         public string Name
         {
             get => this.name;
-
-            // Add validation
             set => this.name = value;
         }
 
-        public byte Health
+        public sbyte Health
         {
             get => this.health;
+
             set
             {
                 //ValueCheck.Positive(value, "Health can't be negative!");
@@ -61,6 +59,7 @@ namespace IngloriousHeros.Models.Heros.Abstracts
         public double Armour
         {
             get => this.armour;
+
             set
             {
                 //ValueCheck.Positive(value, "Armour can't be negative!");
@@ -71,6 +70,7 @@ namespace IngloriousHeros.Models.Heros.Abstracts
         public double Damage
         {
             get => this.damage;
+
             set
             {
                 //ValueCheck.Positive(value, "Damage can't be negative!");
@@ -82,12 +82,17 @@ namespace IngloriousHeros.Models.Heros.Abstracts
         {
             get => this.attackDelay;
 
-            // Add validation
-            set => this.attackDelay = value;
+            set
+            {
+                //ValueCheck.Positive(value, "AttackDelay can't be negative!");
+                this.attackDelay = value;
+            }
         }
 
-        public int Wins {
+        public int Wins
+        {
             get => this.wins;
+
             set
             {
                 //ValueCheck.Positive(value, "Wins can't be negative!");
@@ -109,14 +114,8 @@ namespace IngloriousHeros.Models.Heros.Abstracts
 
         public IList<IItem> Inventory
         {
-            get
-            {
-                return this.inventory;
-            }
-            set
-            {
-                this.inventory = value;
-            }
+            get => this.inventory;
+            set => this.inventory = value;
         }
 
         public abstract void Attack();
@@ -133,7 +132,7 @@ namespace IngloriousHeros.Models.Heros.Abstracts
             
             if (!Battle.Cts.Token.IsCancellationRequested)
             {
-                this.Health -= (byte)(damage * (1 - bonusArmour / 100.0));
+                this.Health -= (sbyte)(damage * (1 - bonusArmour / 100.0));
 
                 Battle.MessageBuffer.Enqueue($"{this.Oponent.Name} deals {(int)(damage) * (1 - bonusArmour / 100.0)} damage to {this.Name}.");// damage to {oponent.Name}.");
                 Battle.MessageBuffer.PrintBuffer();
@@ -141,8 +140,6 @@ namespace IngloriousHeros.Models.Heros.Abstracts
                 // The line below raises the HealthChange event. The "this" parameter is the
                 // derived instance of Hero that called the base.TakeDamage() method
                 this.HealthChange(this);
-
-                //HealthBar.Update(this);
             }
         }
     }

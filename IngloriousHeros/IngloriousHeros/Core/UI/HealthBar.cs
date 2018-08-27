@@ -37,7 +37,7 @@ namespace IngloriousHeros.Core.UI
             Console.BackgroundColor = ConsoleColor.Black;
         }
 
-        public void Subscribe(Hero hero)
+        public void Subscribe(IHero hero)
         {
             // Subscribe to the HealthChange event
             hero.HealthChange += Hero_HealthChange;

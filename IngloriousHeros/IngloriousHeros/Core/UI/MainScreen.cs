@@ -135,7 +135,7 @@ namespace IngloriousHeros.Core.UI
             var heroInstance = autofacContext
                 .ResolveNamed<IHero>(heroType,
                     new TypedParameter(typeof(string), userName),
-                    new TypedParameter(typeof(byte), 100),
+                    new TypedParameter(typeof(sbyte), 100),
                     new TypedParameter(typeof(double), 5),
                     new TypedParameter(typeof(int), 500),
                     new TypedParameter(typeof(Location), World.HeroHB),

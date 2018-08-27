@@ -13,7 +13,7 @@ namespace IngloriousHeros.Models.Heros
     {
         private int mana;
 
-        public Gnome(string name, byte health, double damage, int attackDelay, Location hbLocation, IList<IItem> items)
+        public Gnome(string name, sbyte health, double damage, int attackDelay, Location hbLocation, IList<IItem> items)
             : base(name, health, damage, attackDelay, hbLocation, items)
         {
             base.Race = RaceName.Fantasoid;

@@ -17,7 +17,7 @@ namespace IngloriousHeros.Models.Heros
         private static int hitCount = 0;
         
         //TODO: Add properties specific to class Archer
-        public Archer(string name, byte health, double damage, int attackDelay, Location hbLocation, IList<IItem> items)
+        public Archer(string name, sbyte health, double damage, int attackDelay, Location hbLocation, IList<IItem> items)
             : base(name, health, damage, attackDelay, hbLocation, items)
         {
             base.Race = RaceName.Human;

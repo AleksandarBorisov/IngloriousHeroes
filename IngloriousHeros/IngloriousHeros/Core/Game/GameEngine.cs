@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using IngloriousHeros.Core.Game;
 using IngloriousHeros.Core.Utilities;
 using IngloriousHeros.Core.Game.Interfaces;
+using Autofac;
 
 namespace IngloriousHeros.Core
 {
@@ -38,13 +39,13 @@ namespace IngloriousHeros.Core
                 {
                     if (this.hero.Health <= 95)
                     {
-                        this.hero.Health += 5;
+                        this.hero.Health += (sbyte)5;
                         this.gameConsole.WriteLine($"{this.hero.Name} has recovered 5 units of health!");
                     }
                     else
                     {
                         int healthRecovered = 100 - (int)this.hero.Health;
-                        this.hero.Health = 100;
+                        this.hero.Health = (sbyte)100;
                         this.gameConsole.WriteLine($"{this.hero.Name} has recovered {healthRecovered} units of health!");
                     }
                 }

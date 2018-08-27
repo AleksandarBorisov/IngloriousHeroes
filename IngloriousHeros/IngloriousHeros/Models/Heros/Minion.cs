@@ -34,7 +34,7 @@ namespace IngloriousHeros.Models.Heros
         public void Attack(IHero enemy)
         {
             Thread.Sleep(this.AttackDelay);
-            enemy.Health -= (byte)this.Damage;
+            enemy.Health -= (sbyte)this.Damage;
             HealthBar.Update(enemy);
         }
     }

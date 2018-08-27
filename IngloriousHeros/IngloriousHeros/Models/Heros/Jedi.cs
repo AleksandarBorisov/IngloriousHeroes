@@ -12,7 +12,7 @@ namespace IngloriousHeros.Models.Heros
     {
         //TODO: Implement jedi class
 
-        public Jedi(string name, byte health, double damage, int attackDelay, Location hbLocation, IList<IItem> items)
+        public Jedi(string name, sbyte health, double damage, int attackDelay, Location hbLocation, IList<IItem> items)
             : base(name, health, damage, attackDelay, hbLocation, items)
         {
             base.Race = RaceName.Human;
