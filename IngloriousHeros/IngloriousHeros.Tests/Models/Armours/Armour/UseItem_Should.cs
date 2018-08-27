@@ -25,7 +25,7 @@ namespace IngloriousHeros.Tests.Models.Armours.Armour
             var armourMock = new Mock<IngloriousHeros.Models.Armours.Armour>(10);
             armourMock.CallBase = true;
             armourMock.Object.BonusArmour = negativeBonusArmour;
-            var heroMock = new Mock<Hero>("name",(byte)25,50d,100,lockMock,new List<IItem>());
+            var heroMock = new Mock<Hero>("name", (byte)25,50d,100,lockMock,new List<IItem>());
             heroMock.CallBase = true;
             heroMock.Object.Inventory = new List<IItem>() { armourMock.Object };
 

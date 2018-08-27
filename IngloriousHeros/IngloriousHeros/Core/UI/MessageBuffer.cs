@@ -15,6 +15,13 @@ namespace IngloriousHeros.Core.UI
             this.gameConsole = gameConsole;
         }
 
+        private Queue<string> Elements
+        {
+            get => this.elements;
+        }
+
+        public int Count => this.Elements.Count;
+
         public void Enqueue(string message)
         {
             lock (Battle.EnvLock)
@@ -28,14 +35,25 @@ namespace IngloriousHeros.Core.UI
             }
         }
 
+        public string Dequeue()
+        {
+            string element = null;
+
+            try
+            {
+                element = this.Elements.Dequeue();
+            }
+            catch (System.Exception)
+            {
+                throw;
+            }
+
+            return element;
+        }
+
         public IEnumerator GetEnumerator()
         {
             return ((IEnumerable)Elements).GetEnumerator();
-        }
-
-        private Queue<string> Elements
-        {
-            get => this.elements;
         }
 
         public void PrintBuffer()
