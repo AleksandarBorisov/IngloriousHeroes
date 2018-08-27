@@ -4,28 +4,48 @@ using Moq;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using IngloriousHeros.Models.Armours;
 using IngloriousHeros.Models.Contracts;
 using IngloriousHeros.Models.Common;
+using IngloriousHeros.Models.Armours;
 
-namespace IngloriousHeros.Tests.Models.Armours.Armour
+namespace IngloriousHeros.Tests.Models.Armours.Armours
 {
     [TestClass]
     public class UseItem_Should
     {
-        private int negativeBonusArmour = -10;
+        private int negativeBonusArmour;
+        private Location locationMock;
+        private string heroMockName;
+        private sbyte heroMockHealth;
+        private double heroMockDamage;
+        private int heroMockAtackDelay;
+        private List<IItem> heroMockItems;
 
 
+        [TestInitialize]
+        public void TestInitialize()
+        {
+            // Arrange
+            negativeBonusArmour = -10;
+            locationMock = new Location(0, 0);
+            heroMockName = "TestHeroName";
+            heroMockHealth = (sbyte)25;
+            heroMockDamage = 50d;
+            heroMockAtackDelay = 100;
+            heroMockItems = new List<IItem>();
+        }
 
         [TestMethod]
         public void RemoveItemFromInventory_WhenBonusArmourIsNegative()
         {
-            Location lockMock= new Location(0, 0);
+            // Arrange
             var itemMock = new Mock<IItem>();
-            var armourMock = new Mock<IngloriousHeros.Models.Armours.Armour>(10);
+            var armourMock = new Mock<Armour>(10);
             armourMock.CallBase = true;
             armourMock.Object.BonusArmour = negativeBonusArmour;
-            var heroMock = new Mock<Hero>("name",(byte)25,50d,100,lockMock,new List<IItem>());
+            var heroMock = 
+                new Mock<Hero>(heroMockName,heroMockHealth,heroMockDamage,
+                heroMockAtackDelay, locationMock, heroMockItems);
             heroMock.CallBase = true;
             heroMock.Object.Inventory = new List<IItem>() { armourMock.Object };
 
@@ -39,12 +59,14 @@ namespace IngloriousHeros.Tests.Models.Armours.Armour
         [TestMethod]
         public void ReturnCorrectBonusArmour_WhenBonusArmourIsPositive()
         {
-            Location lockMock = new Location(0, 0);
+            // Arrange
             var itemMock = new Mock<IItem>();
             var armourMock = new Mock<IngloriousHeros.Models.Armours.Armour>(10);
             armourMock.CallBase = true;
             armourMock.Object.BonusArmour = negativeBonusArmour;
-            var heroMock = new Mock<Hero>("name", (byte)25, 50d, 100, lockMock, new List<IItem>());
+            var heroMock =
+                new Mock<Hero>(heroMockName, heroMockHealth, heroMockDamage,
+                heroMockAtackDelay, locationMock, heroMockItems);
             heroMock.CallBase = true;
             heroMock.Object.Inventory = new List<IItem>() { armourMock.Object };
 

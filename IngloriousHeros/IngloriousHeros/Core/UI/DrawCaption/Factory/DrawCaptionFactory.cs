@@ -1,4 +1,6 @@
 ﻿using Autofac;
+using Autofac.Core;
+using System;
 
 namespace IngloriousHeros.Core.UI.DrawCaption.Factory
 {
@@ -13,7 +15,14 @@ namespace IngloriousHeros.Core.UI.DrawCaption.Factory
 
         public IDrawCaption GetCommand(string commandName)
         {
-            return autofacContext.ResolveNamed<IDrawCaption>(commandName);
+            try
+            {
+                return autofacContext.ResolveNamed<IDrawCaption>(commandName);
+            }
+            catch(DependencyResolutionException ex)
+            {
+                throw new ArgumentException("No such command implemented! Consider implementing it before using!", ex);
+            }
         }
 
     }
