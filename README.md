@@ -16,5 +16,13 @@ For out project we chose to create a Role Playing Game, where a hero goes on a q
 # Class diagram:
 - The class diagram is inside the project solution.
 
+# Problems before refactoring
+
+All the classes were tightly coupled and the cohesion was low. We were unable to create unit tests for any of the classes mainly because of the single instance classes.
+
+# Used design patterns
+
+We used factory pattern for centralised creating of game units and avoiding ambiguity. We also used adapter pattern for removing the static classes and use interfaces instaed. It helped in the detachment and decoupling of the classes.
+
 # GitLab URL:
 https://gitlab.com/RobAlek/TeamProject.git
