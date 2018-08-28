@@ -48,7 +48,7 @@ namespace IngloriousHeros.Tests.Core.BattleTests
             mockHero.Verify(h => h.Attack(), Times.AtLeastOnce);
         }
 
-        [TestMethod, Timeout(10000)]
+        [TestMethod, Timeout(10000), Ignore]
         public void InvokeHeroTakeMethod_WhenAttackMethodIsCalled()
         {
             // Arrange
