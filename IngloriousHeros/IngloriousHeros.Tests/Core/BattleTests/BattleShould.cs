@@ -18,21 +18,26 @@ namespace IngloriousHeros.Tests.Core.BattleTests
             var mockConsole = new Mock<IConsole>();
 
             // Setup hero
-            mockHero
-                .SetupGet(h => h.Oponent)
-                .Returns(mockOponent.Object);
+            mockHero.SetupProperty(h => h.Health);
+            mockHero.SetupProperty(h => h.Damage);
+            mockHero.SetupProperty(h => h.Oponent);
+            mockHero.SetupProperty(h => h.AttackDelay);
 
-            mockHero
-                .Setup(h => h.Health);
+            mockHero.Object.Health = 0;
+            mockHero.Object.Damage = 10;
+            mockHero.Object.Oponent = mockOponent.Object;
+            mockHero.Object.AttackDelay = 250;
 
             // Setup oponent
-            mockOponent
-                .SetupGet(o => o.Oponent)
-                .Returns(mockHero.Object);
+            mockOponent.SetupProperty(h => h.Health);
+            mockOponent.SetupProperty(h => h.Damage);
+            mockOponent.SetupProperty(h => h.Oponent);
+            mockOponent.SetupProperty(h => h.AttackDelay);
 
-            mockOponent
-                .Setup(o => o.Health)
-                .Returns(100);
+            mockOponent.Object.Health = 100;
+            mockOponent.Object.Damage = 10;
+            mockOponent.Object.Oponent = mockHero.Object;
+            mockOponent.Object.AttackDelay = 350;
 
             var sut = new Battle(mockHero.Object, mockConsole.Object);
 
