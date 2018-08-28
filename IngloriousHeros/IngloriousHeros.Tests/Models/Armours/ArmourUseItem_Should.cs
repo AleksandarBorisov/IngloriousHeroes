@@ -8,10 +8,10 @@ using IngloriousHeros.Models.Contracts;
 using IngloriousHeros.Models.Common;
 using IngloriousHeros.Models.Armours;
 
-namespace IngloriousHeros.Tests.Models.Armours.Armours
+namespace IngloriousHeros.Tests.Models.Armours
 {
     [TestClass]
-    public class UseItem_Should
+    public class ArmourUseItem_Should
     {
         private int negativeBonusArmour;
         private Location locationMock;
@@ -20,7 +20,6 @@ namespace IngloriousHeros.Tests.Models.Armours.Armours
         private double heroMockDamage;
         private int heroMockAtackDelay;
         private List<IItem> heroMockItems;
-
 
         [TestInitialize]
         public void TestInitialize()
@@ -61,7 +60,7 @@ namespace IngloriousHeros.Tests.Models.Armours.Armours
         {
             // Arrange
             var itemMock = new Mock<IItem>();
-            var armourMock = new Mock<IngloriousHeros.Models.Armours.Armour>(10);
+            var armourMock = new Mock<Armour>(10);
             armourMock.CallBase = true;
             armourMock.Object.BonusArmour = negativeBonusArmour;
             var heroMock =
@@ -75,6 +74,24 @@ namespace IngloriousHeros.Tests.Models.Armours.Armours
 
             // Assert
             Assert.AreEqual(negativeBonusArmour, result, "Failed to return correct bonus armour");
+        }
+
+        [TestMethod]
+        public void ThrowArgumentException_WhenInventoryIsEmpty()
+        {
+            // Arrange
+            var itemMock = new Mock<IItem>();
+            var weaponMock = new Mock<Armour>(10);
+            weaponMock.CallBase = true;
+            weaponMock.Object.BonusArmour = negativeBonusArmour;
+            var heroMock =
+                new Mock<Hero>(heroMockName, heroMockHealth, heroMockDamage,
+                heroMockAtackDelay, locationMock, heroMockItems);
+            heroMock.CallBase = true;
+            heroMock.Object.Inventory = new List<IItem>() { };
+
+            // Act and Assert
+            Assert.ThrowsException<ArgumentException>(() => weaponMock.Object.UseItem(heroMock.Object));
         }
     }
 }

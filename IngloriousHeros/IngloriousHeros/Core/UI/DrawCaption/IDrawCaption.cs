@@ -6,6 +6,6 @@ namespace IngloriousHeros.Core.UI.DrawCaption
     {
         void Execute(List<string> parameters);
 
-        char[,] ProcessLetter(char letterFromMessage, string font);
+        //char[,] ProcessLetter(char letterFromMessage, string font);
     }
 }

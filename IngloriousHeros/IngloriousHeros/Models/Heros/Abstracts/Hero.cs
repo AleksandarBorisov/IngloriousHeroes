@@ -5,6 +5,7 @@ using IngloriousHeros.Models.Common;
 using System.Collections.Generic;
 using System.Linq;
 using IngloriousHeros.Providers;
+using System;
 
 namespace IngloriousHeros.Models.Heros.Abstracts
 {
@@ -74,6 +75,10 @@ namespace IngloriousHeros.Models.Heros.Abstracts
             set
             {
                 //ValueCheck.Positive(value, "Damage can't be negative!");
+                if (value < 0)
+                {
+                    throw new ArgumentException("Damage can't be negative!");
+                }
                 this.damage = value;
             }
         }
@@ -85,6 +90,10 @@ namespace IngloriousHeros.Models.Heros.Abstracts
             set
             {
                 //ValueCheck.Positive(value, "AttackDelay can't be negative!");
+                if (value < 0)
+                {
+                    throw new ArgumentException("AttackDelay can't be negative!");
+                }
                 this.attackDelay = value;
             }
         }

@@ -1,4 +1,5 @@
 ﻿using IngloriousHeros.Models.Contracts;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -20,6 +21,10 @@ namespace IngloriousHeros.Models.Armours
             int armourToAdd = this.BonusArmour;
             if (BonusArmour <= 0)
             {
+                if (hero.Inventory.Count == 0)
+                {
+                    throw new ArgumentException("There is no item to be removed from inventory");
+                }
                 hero.Inventory.Remove(this);
             }
             BonusArmour -= 10;

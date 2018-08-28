@@ -3,18 +3,21 @@ using System.Collections.Generic;
 using System.Threading;
 using Autofac;
 using IngloriousHeros.Core.UI.DrawCaption.Fonts;
+using IngloriousHeros.Core.UI.DrawCaption.Providers;
 using IngloriousHeros.Core.Utilities;
 
 namespace IngloriousHeros.Core.UI.DrawCaption
 {
     public class DrawCaptionBlinking : IDrawCaption
     {
-        private IComponentContext autofacContext;
+        //private IComponentContext autofacContext;
+        private IProcessLetter processLetter;
         private IConsole gameConsole;
 
-        public DrawCaptionBlinking(IComponentContext autofacContext, IConsole gameConsole)
+        public DrawCaptionBlinking(IProcessLetter processLetter, IConsole gameConsole)
         {
-            this.autofacContext = autofacContext;
+            //this.autofacContext = autofacContext;
+            this.processLetter = processLetter;
             this.gameConsole = gameConsole;
         }
 
@@ -38,7 +41,7 @@ namespace IngloriousHeros.Core.UI.DrawCaption
                 int currentRow = startingRow;
                 for (int i = 0; i < message.Length; i++)
                 {
-                    char[,] letterAsCharArray = ProcessLetter(message[i], currentFont);
+                    char[,] letterAsCharArray = processLetter.Execute(message[i], currentFont);
                     gameConsole.SetCursorPosition(currentRow, currentColumn++);
                     for (int row = 0; row < letterAsCharArray.GetLength(0); row++)
                     {
@@ -56,23 +59,23 @@ namespace IngloriousHeros.Core.UI.DrawCaption
             }
         }
 
-        public char[,] ProcessLetter(char letterFromMessage, string font)
-        {
-            IFont currentFont = autofacContext.ResolveNamed<IFont>(font);
-            string[] letterRows = currentFont[letterFromMessage != ' ' ? letterFromMessage - 'a' : 26]
-                .Split(new char[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+        //public char[,] ProcessLetter(char letterFromMessage, string font)
+        //{
+        //    IFont currentFont = autofacContext.ResolveNamed<IFont>(font);
+        //    string[] letterRows = currentFont[letterFromMessage != ' ' ? letterFromMessage - 'a' : 26]
+        //        .Split(new char[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
 
-            char[,] letterAsCharArray = new char[letterRows.Length, letterRows[0].Length];
+        //    char[,] letterAsCharArray = new char[letterRows.Length, letterRows[0].Length];
 
-            for (int row = 0; row < letterRows.Length; row++)
-            {
-                for (int col = 0; col < letterRows[row].Length; col++)
-                {
-                    letterAsCharArray[row, col] = letterRows[row][col];
-                }
-            }
+        //    for (int row = 0; row < letterRows.Length; row++)
+        //    {
+        //        for (int col = 0; col < letterRows[row].Length; col++)
+        //        {
+        //            letterAsCharArray[row, col] = letterRows[row][col];
+        //        }
+        //    }
 
-            return letterAsCharArray;
-        }
+        //    return letterAsCharArray;
+        //}
     }
 }

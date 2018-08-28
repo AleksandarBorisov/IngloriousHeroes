@@ -52,8 +52,8 @@ namespace IngloriousHeros.Core.UI
             //This list will come from class World
             var listOfCaptions = new List<string>()
             {
-                //"DrawCaptionLeftRight,0,0,inglorious,FontEmptyLetters,50",
-                //"DrawCaptionLeftRight,70,9,heros,FontEmptyLetters,50",
+                "DrawCaptionLeftRight,0,0,inglorious,FontEmptyLetters,50",
+                "DrawCaptionLeftRight,70,9,heros,FontEmptyLetters,50",
                 "DrawCaptionBlinking,0,20,choose hero,FontSolidLetters,200",
             };
 

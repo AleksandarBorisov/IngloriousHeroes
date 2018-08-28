@@ -2,6 +2,7 @@
 using IngloriousHeros.Models.Heros;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 namespace IngloriousHeros.Models.Weapons
 {
@@ -20,7 +21,11 @@ namespace IngloriousHeros.Models.Weapons
             BonusDamage--;//Засега не използваме TakeDamage, защото не сме сложили Charge-ове на самия Item
             if (BonusDamage <= 0)
             {
-                (hero.Inventory as List<IItem>).Remove(this);
+                if (hero.Inventory.Count == 0)
+                {
+                    throw new ArgumentException("There is no item to be removed from inventory");
+                }
+                hero.Inventory.Remove(this);
             }
 
             return damageToAdd;
